@@ -89,7 +89,7 @@ var mapSprite = new Image();
 mapSprite.src = "https://mcamp117.github.io/NavTest/HTML/drawMaps/MASTER%20SICTC%20FLOOR%20PLAN.jpg";
 var Button = function () {
     this.Sprite = new Image();
-    this.Sprite.src = "/images/dropdown.png"
+    this.Sprite.src = "./images/dropdown.png"
     this.Width = 75;
     this.Height = 75;
     this.XPos = 0;
@@ -118,9 +118,9 @@ function mouseClicked(event) {
     if (currentButtonPos[0]-25 < currentMousePos[0] && currentButtonPos[0]+25 > currentMousePos[0] && currentButtonPos[1]-25 < currentMousePos[1] && currentButtonPos[1]+25 > currentMousePos[1]) {
       document.getElementById("main").style.display = "block"
       document.getElementById("main").innerHTML=butten[i].innerHTML
-      buttons[i].Sprite.src="/images/dropdowns.png"
+      buttons[i].Sprite.src="./images/dropdowns.png"
     }
-    else{buttons[i].Sprite.src = "/images/dropdown.png"}
+    else{buttons[i].Sprite.src = "./images/dropdown.png"}
   }
 }
 
