@@ -1,5 +1,4 @@
 #https://www.freecodecamp.org/news/how-to-get-started-with-firebase-using-python/
-from time import time
 from firebase_admin import initialize_app, credentials, db
 import sys
 valid = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -22,14 +21,14 @@ class FirebaseClass:
             ref.child(i).set(dict[i])
     
     def getItems(self):
-        try:
-            tempdata = db.reference(f"/Items").get(True)
-            data = []
-            for i in tempdata[0]:
+        tempdata = db.reference(f"/Items").get(True)
+        data = []
+        for i in tempdata[0]:
+            try:
                 data.append(str(tempdata[0][i]["name"]))
-            return data
-        except:
-            return []
+            except:
+                print("Failed at",i,"in get items.")
+        return data
     
     def delItemFromIndex(self,index):
         tempdata = db.reference(f"/Items").get(True)
@@ -44,7 +43,6 @@ class FirebaseClass:
             i = i.split('\t')
             if len(i) == 1 or i[0] == "x" or i[0] == "":
                 continue
-            print(i)
             #Name of Organization,Interest Area,Desc,picture url,website,college/company/military,Completed?,On Website
             #0 Name, 3 Logo URL, 4 Website, 2 Desc, 1 Interests, 5 Type
             tempdata={}
@@ -53,6 +51,8 @@ class FirebaseClass:
             if tempdata["logo"] == "0":
                 tempdata["logo"]=""
             tempdata["web"] = i[4]
+            if len(tempdata["web"]) > 1 and not tempdata["web"].startswith("http"):
+                tempdata["web"] = "https://"+tempdata["web"]
             tempdata["desc"] = i[2]
             current = 0
             for interest in i[1].split(","):
@@ -69,4 +69,3 @@ class FirebaseClass:
             if tempdata["type"] == "0":
                 tempdata["type"]="Company"
             self.new(tempdata)
-        
