@@ -3,14 +3,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase
 
 //setting up a constant variable (never changes) with all of the database information
 const firebaseConfig = {
-    apiKey: "AIzaSyAneiYMGEzQslJ9stxikkG-WDIp4vFBIdE",
-    authDomain: "sictc-career-fair.firebaseapp.com",
-    projectId: "sictc-career-fair",
-    storageBucket: "sictc-career-fair.appspot.com",
-    messagingSenderId: "513234627322",
-    appId: "1:513234627322:web:bb29fecd5ceeea674b3743",
-    measurementId: "G-1GKEYRGJXZ",
-    databaseURL: "https://sictc-career-fair-default-rtdb.firebaseio.com/"
+    apiKey: "AIzaSyBIgYvPowZd3viGd7moLOUjAe92r3H4SlE",
+    authDomain: "sictcccf.firebaseapp.com",
+    databaseURL: "https://sictcccf-default-rtdb.firebaseio.com",
+    projectId: "sictcccf",
+    storageBucket: "sictcccf.appspot.com",
+    messagingSenderId: "238921521038",
+    appId: "1:238921521038:web:417620ad7630a3330276df"
 };
 
 //initializing the firebase with our config

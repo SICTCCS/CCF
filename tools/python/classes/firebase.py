@@ -7,9 +7,9 @@ valid = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 class FirebaseClass:
     def __init__(self):
         try:
-            self.default_app = initialize_app(credentials.Certificate('./private/private.json'),{'databaseURL': "https://sictc-career-fair-default-rtdb.firebaseio.com/"})
+            self.default_app = initialize_app(credentials.Certificate('./private/private.json'),{'databaseURL': "https://sictcccf-default-rtdb.firebaseio.com/"})
         except:
-            self.default_app = initialize_app(credentials.Certificate(f"{sys._MEIPASS}/private.json"),{'databaseURL': "https://sictc-career-fair-default-rtdb.firebaseio.com/"})
+            self.default_app = initialize_app(credentials.Certificate(f"{sys._MEIPASS}/private.json"),{'databaseURL': "https://sictcccf-default-rtdb.firebaseio.com/"})
     
     #https://www.geeksforgeeks.org/how-to-convert-python-dictionary-to-json/
     def new(self,dict):
@@ -22,11 +22,14 @@ class FirebaseClass:
             ref.child(i).set(dict[i])
     
     def getItems(self):
-        tempdata = db.reference(f"/Items").get(True)
-        data = []
-        for i in tempdata[0]:
-            data.append(str(tempdata[0][i]["name"]))
-        return data
+        try:
+            tempdata = db.reference(f"/Items").get(True)
+            data = []
+            for i in tempdata[0]:
+                data.append(str(tempdata[0][i]["name"]))
+            return data
+        except:
+            return []
     
     def delItemFromIndex(self,index):
         tempdata = db.reference(f"/Items").get(True)
@@ -39,8 +42,9 @@ class FirebaseClass:
             if i.startswith("Name of Organization"):
                 continue
             i = i.split('\t')
-            if len(i) == 1 or not i[7] == "x" or not i[6] == "x":
+            if len(i) == 1 or i[0] == "x" or i[0] == "":
                 continue
+            print(i)
             #Name of Organization,Interest Area,Desc,picture url,website,college/company/military,Completed?,On Website
             #0 Name, 3 Logo URL, 4 Website, 2 Desc, 1 Interests, 5 Type
             tempdata={}

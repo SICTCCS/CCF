@@ -1,4 +1,4 @@
-/python/private
-/python/build
-/python/dist
+private
+build
+dist
 __pycache__
