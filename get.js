@@ -90,9 +90,21 @@ function addMilitary() {
     });
 }
 
+function addUnions() {
+    database.ref("Items").on('value', (snapshot) => {
+        document.getElementById("body-output").innerHTML = "";
+        const data = snapshot.val();
+        var items = Object.values(data);
+        for (let l in items) {
+            if (items[l]["type"] === "Unions") {
+                addCard(items[l]);
+            }
+        }
+    });
+}
 
 function addinterest(intrest) {
-    let content=false
+    let content = false
     database.ref("Items").on('value', (snapshot) => {
         document.getElementById("body-output").innerHTML = "";
         const data = snapshot.val();
@@ -101,26 +113,26 @@ function addinterest(intrest) {
             // checks what you searched if its in the name intrest areas and desc if it is add to add card else skip and check other one 
             if (items[l]["ia1"] === intrest || items[l]["ia2"] === intrest || items[l]["ia3"] === intrest || items[l]["ia4"] === intrest || items[l]["name"].toLowerCase().includes(intrest) || items[l]["desc"].toLowerCase().includes(intrest)) {
                 addCard(items[l]);
-                content=true
+                content = true
             }
-            
+
         }
         // if no resalts are found then show this page saying try anouther search
-        if (content===false){
-            document.getElementById("body-output").innerHTML ="<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
-        
-        
-        
-        
-        
-        
+        if (content === false) {
+            document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
+
+
+
+
+
+
             // addCard(items[])
             // window.open("https://"+document.getElementById("ui").value+".github.io/", '_blank')
         }
     });
-    
+
     // if(document.getElementById("ui").value.toLowerCase() == "nathan"){window.open("https://natebrant.github.io/", '_blank');}
-    
+
 }
 
 
@@ -134,6 +146,7 @@ document.getElementById("allbutton").onclick = function () { addAll() };
 document.getElementById("collegesbutton").onclick = function () { addColleges() };
 document.getElementById("companiesbutton").onclick = function () { addCompanies() };
 document.getElementById("militarybutton").onclick = function () { addMilitary() };
+document.getElementById("Unionsbutton").onclick = function () { addUnions() };
 document.getElementById("Manufacturing").onclick = function () { addinterest("Manufacturing") };
 document.getElementById("Transportation").onclick = function () { addinterest("Transportation") };
 document.getElementById("Engineering").onclick = function () { addinterest("Engineering") };
@@ -144,17 +157,17 @@ document.getElementById("CulinaryArts").onclick = function () { addinterest("Cul
 document.getElementById("Construction").onclick = function () { addinterest("Construction") };
 document.getElementById("ComputerTechnology").onclick = function () { addinterest("Computer Technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function () { addinterest("Animal Science/Agriculture") };
-document.getElementById("search").onclick = function () { addinterest((document.getElementById("ui").value).toLowerCase())};
+document.getElementById("search").onclick = function () { addinterest((document.getElementById("ui").value).toLowerCase()) };
 
 
 // adds a event to lisen if enter is clicked when it is it will search the page becuase its annoying to have to type then click search button
 document.onkeydown = function (e) {
     e = e || window.event;
     switch (e.which || e.keyCode) {
-          case 13 : addinterest((document.getElementById("ui").value).toLowerCase())
-              break;
+        case 13: addinterest((document.getElementById("ui").value).toLowerCase())
+        break;
     }
-  }
+}
 
 
 //  addinterest(prompt(document.getElementById("ui").innerText))
@@ -164,78 +177,81 @@ async function addCard(l) {
 
     //getting the body's previous information
     var prevDiv = document.getElementById("body-output").innerHTML;
-
+    
     var div = `
     <div class="card mb-3" style="max-width: 75%;" align="left">
     <div class="row g-0">
     <div class="col-md-2">
     <img src="{0}" class="img-fluid rounded-start" style="padding:10px;" alt="{1} logo" >
     </div>
-            <div class="col-md-7">
-            <div class="card-body">
-            <h5 class="card-title" style="font-size: 27px;">{1}</h5>
-            <div class="card-body">`.format(l["logo"], l["name"]);
-
+    <div class="col-md-7">
+    <div class="card-body">
+    <h5 class="card-title" style="font-size: 27px;">{1}</h5>
+    <div class="card-body">`.format(l["logo"], l["name"]);
+    
     if (l["type"] === "College") {
         div = div + `<a href="{0}" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
     } else if (l["type"] === "Company") {
         div = div + `<a href="{0}" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
-    } else {
+    } else if (l["type"] === "Unions") {
+        div = div + `<a href="{0}" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+    }
+    else {
         div = div + `<a href="{0}" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
-
+    
     div = div + `   </div>
     <p class="card-text">{0}</p>
                 </div>
-            </div>
-            <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+                </div>
+                <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
             <div class="card-body">
             <p class="card-text">Interest Areas:</p>
             </div> 
                 <ul class="list-group list-group-flush">`.format(l["desc"]);
 
-
-    //adding to div depending on how many interest areas are blank
-    //will make this smaller is a final version
-    if (l["ia2"]==="" && l["ia3"]==="" && l["ia4"]==="" && l["ia5"]===""){
-        div = div +`<li class="list-group-item">{0}</li>`.format(l["ia1"]);
-    } else if (l["ia3"]==="" && l["ia4"]==="" && l["ia5"]===""){
-        div = div +`<li class="list-group-item">{0}</li> 
-                    <li class="list-group-item">{1}</li>`.format(l["ia1"],l["ia2"]);
-    } else if (l["ia4"]==="" && l["ia5"]===""){
-        div = div +`<li class="list-group-item">{0}</li> 
+                
+                //adding to div depending on how many interest areas are blank
+                //will make this smaller is a final version
+                if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
+                    div = div + `<li class="list-group-item">{0}</li>`.format(l["ia1"]);
+                } else if (l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
+                    div = div + `<li class="list-group-item">{0}</li> 
+                    <li class="list-group-item">{1}</li>`.format(l["ia1"], l["ia2"]);
+                } else if (l["ia4"] === "" && l["ia5"] === "") {
+                    div = div + `<li class="list-group-item">{0}</li> 
                     <li class="list-group-item">{1}</li> 
-                    <li class="list-group-item">{2}</li>`.format(l["ia1"],l["ia2"],l["ia3"]);
-    } else if (l["ia5"]===""){
-        div = div +`<li class="list-group-item">{0}</li> 
+                    <li class="list-group-item">{2}</li>`.format(l["ia1"], l["ia2"], l["ia3"]);
+                } else if (l["ia5"] === "") {
+                    div = div + `<li class="list-group-item">{0}</li> 
                     <li class="list-group-item">{1}</li> 
                     <li class="list-group-item">{2}</li> 
-                    <li class="list-group-item">{3}</li>`.format(l["ia1"],l["ia2"],l["ia3"],l["ia4"]);
+                    <li class="list-group-item">{3}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"]);
     } else {
-        div = div +`<li class="list-group-item">{0}</li> 
-                    <li class="list-group-item">{1}</li> 
+        div = div + `<li class="list-group-item">{0}</li> 
+        <li class="list-group-item">{1}</li> 
                     <li class="list-group-item">{2}</li> 
                     <li class="list-group-item">{3}</li> 
-                    <li class="list-group-item">{4}</li>`.format(l["ia1"],l["ia2"],l["ia3"],l["ia4"],l["ia5"]);
-    }
-    div = div + `</ul></div></div></div>`;
-    //adding the new information to the previous information and putting it into the body
-    document.getElementById("body-output").innerHTML = prevDiv + div;
-    // document.onclick=sortInterest(1)
-}
-
-
-// jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
-$(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {       
+                    <li class="list-group-item">{4}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"], l["ia5"]);
+                }
+                div = div + `</ul></div></div></div>`;
+                //adding the new information to the previous information and putting it into the body
+                document.getElementById("body-output").innerHTML = prevDiv + div;
+                // document.onclick=sortInterest(1)
+            }
+            
+            
+            // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
+            $(window).scroll(function () {
+    if ($(this).scrollTop() >= 50) {
         $('.return-to-top').fadeIn(250);
     } else {
-        $('.return-to-top').fadeOut(250);  
+        $('.return-to-top').fadeOut(250);
     }
 });
-$('.return-to-top').click(function() {      //add an animation to return back to the top of the screen
+$('.return-to-top').click(function () {      //add an animation to return back to the top of the screen
     $('body,html').animate({
-        scrollTop : 0                       
+        scrollTop: 0
     }, 100);
 });
 
@@ -252,18 +268,51 @@ if (search != undefined) {
 var intrest = document.URL.split("?intrest=")[1]
 if (intrest != undefined) {
     intrest = decodeURI(intrest)
-    console.log(typeof(intrest))
-    console.log(intrest)
-    if(intrest=="college"){
+    if (intrest == "college") {
         addColleges()
     }
-    else if(intrest=="military"){
+    else if (intrest == "military") {
         addMilitary()
     }
-    else if(intrest=="companies"){
+    else if (intrest == "companies") {
         addCompanies()
     }
-    else{
-    addinterest((intrest))}
+    else if (intrest == "unions") {
+        addUnions()
+    }
+    else {
+        addinterest((intrest))
+    }
     
 }
+var inverted = false;
+const css = `
+img, .btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content {
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -ms-filter: invert(100%);
+    z-index: 999;
+}
+html {
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -ms-filter: invert(100%);
+}`
+
+const head = document.head
+const style = document.createElement('style')
+function invertColor(){
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    if (inverted){head.removeChild(style);inverted=false;return}
+    inverted=true;
+    head.appendChild(style);
+    
+// document.getElementById("invert").
+}
+document.getElementById("invert").onclick = function () { invertColor() };

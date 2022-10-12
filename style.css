@@ -103,7 +103,7 @@
   bottom: 20px;
   right: 20px;
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgba(0, 0, 0, 0.7); */
   width: 50px;
   height: 50px;
   display: block;
@@ -117,9 +117,10 @@
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  z-index: 999;
 }
 .return-to-top i {
-  color: #fff;
+  color: black;
   margin: 0;
   position: relative;
   top: 13px;
@@ -130,7 +131,7 @@
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: peru;
+  color: white;
 }
 .return-to-top:hover {
   background: rgba(0, 0, 0, 0.9);
@@ -153,3 +154,48 @@
 
   .ddm{border-bottom:solid black 1px;}
   .ddm2{border-bottom:none;text-decoration:none;font-size: 135%;font-weight:bold;}
+
+
+
+  #invert {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgb(0, 0, 0);
+    /* background: rgba(0, 0, 0, 0.7); */
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  #invert i {
+    color: black;
+    margin: 0;
+    position: relative;
+    top: 13px;
+    left:15px;
+    font-size: 22px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  #invert:hover {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  #invert:hover i {
+    color: #fff;
+    top: 5px;
+  }
