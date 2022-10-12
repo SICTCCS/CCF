@@ -96,7 +96,7 @@ function addUnions() {
         const data = snapshot.val();
         var items = Object.values(data);
         for (let l in items) {
-            if (items[l]["type"] === "Unions") {
+            if (items[l]["type"] === "Union") {
                 addCard(items[l]);
             }
         }
@@ -177,7 +177,7 @@ async function addCard(l) {
 
     //getting the body's previous information
     var prevDiv = document.getElementById("body-output").innerHTML;
-    
+    if(l["logo"]===" "){l["logo"]="./images/duck.png"}
     var div = `
     <div class="card mb-3" style="max-width: 75%;" align="left">
     <div class="row g-0">
@@ -190,14 +190,14 @@ async function addCard(l) {
     <div class="card-body">`.format(l["logo"], l["name"]);
     
     if (l["type"] === "College") {
-        div = div + `<a href="{0}" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
+        div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
     } else if (l["type"] === "Company") {
-        div = div + `<a href="{0}" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
-    } else if (l["type"] === "Unions") {
-        div = div + `<a href="{0}" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+        div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+    } else if (l["type"] === "Union") {
+        div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
     }
     else {
-        div = div + `<a href="{0}" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
+        div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
     
     div = div + `   </div>
@@ -277,7 +277,7 @@ if (intrest != undefined) {
     else if (intrest == "companies") {
         addCompanies()
     }
-    else if (intrest == "unions") {
+    else if (intrest == "Union") {
         addUnions()
     }
     else {
