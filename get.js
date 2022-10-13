@@ -126,9 +126,9 @@ function addinterest(interest) {
             document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
         }
+        document.getElementById("ui").value="";
     });
 
-    // if(document.getElementById("ui").value.toLowerCase() == "nathan"){window.open("https://natebrant.github.io/", '_blank');}
 
 }
 
@@ -146,7 +146,7 @@ document.getElementById("Manufacturing").onclick = function () { addinterest("Ma
 document.getElementById("Transportation").onclick = function () { addinterest("Transportation") };
 document.getElementById("Engineering").onclick = function () { addinterest("Engineering") };
 document.getElementById("HealthSciences").onclick = function () { addinterest("Health Sciences") };
-document.getElementById("Communication").onclick = function () { addinterest("Communication") };
+document.getElementById("Communication").onclick = function () { addinterest("Communications") };
 document.getElementById("PublicSafety").onclick = function () { addinterest("Public Safety") };
 document.getElementById("CulinaryArts").onclick = function () { addinterest("Culinary Arts") };
 document.getElementById("Construction").onclick = function () { addinterest("Construction") };
@@ -159,14 +159,10 @@ document.getElementById("search").onclick = function () { addinterest((document.
 document.onkeydown = function (e) {
     e = e || window.event;
     switch (e.which || e.keyCode) {
-        case 13: addinterest((document.getElementById("ui").value).toLowerCase())
+        case 13:{ window.open("index.html?search="+document.getElementById("ui").value,"_self");}
             break;
     }
 }
-
-
-//  addinterest(prompt(document.getElementById("ui").innerText))
-// function sortInterest(interest){addinterest(interest)} 
 //the addCard function takes in "l" which would be a list and uses it to build out each card 
 async function addCard(l) {
 
@@ -252,13 +248,16 @@ $('.return-to-top').click(function () {      //add an animation to return back t
 
 // when ?search= is entered after the url it is loaded into the search bar and automatically searched.
 // this is used by the map
-var search = document.URL.split("?search=")[1]
-if (search != undefined) {
-    search = decodeURI(search)
-    document.getElementById("ui").value = search
-    addinterest((document.getElementById("ui").value).toLowerCase())
+search(document.URL.split("?search=")[1])
 
-}
+function search(search){
+    var search = search
+    if (search != undefined) {
+        search = decodeURI(search)
+        document.getElementById("ui").value = search
+        addinterest((document.getElementById("ui").value).toLowerCase())
+
+    }}
 
 var interest = document.URL.split("?interest=")[1]
 if (interest != undefined) {

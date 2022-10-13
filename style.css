@@ -71,8 +71,6 @@
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {display: block;}
   
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: darkmagenta;}
 
   i.fa{ 
     font-family:FontAwesome!important; 
@@ -202,3 +200,5 @@
   .btn-union{color:#fff !important;
     background-color:purple !important;
     border-color:purple !important}
+
+  .dropdown-content a:hover{cursor:pointer;}
