@@ -63,6 +63,7 @@ function addColleges() {
         }
     });
 }
+//same function just with an if statement to only pass in Companies
 
 function addCompanies() {
     database.ref("Items").on('value', (snapshot) => {
@@ -76,6 +77,7 @@ function addCompanies() {
         }
     });
 }
+//same function just with an if statement to only pass in Military
 
 function addMilitary() {
     database.ref("Items").on('value', (snapshot) => {
@@ -89,6 +91,7 @@ function addMilitary() {
         }
     });
 }
+//same function just with an if statement to only pass in Union 
 
 function addUnions() {
     database.ref("Items").on('value', (snapshot) => {
@@ -102,16 +105,17 @@ function addUnions() {
         }
     });
 }
-
-function addinterest(intrest) {
+//same function but now that if it dosent pass the other ones it will pass it into the search bar and run this
+// this one will check name interests and decs of then item
+function addinterest(interest) {
     let content = false
     database.ref("Items").on('value', (snapshot) => {
         document.getElementById("body-output").innerHTML = "";
         const data = snapshot.val();
         var items = Object.values(data);
         for (let l in items) {
-            // checks what you searched if its in the name intrest areas and desc if it is add to add card else skip and check other one 
-            if (items[l]["ia1"] === intrest || items[l]["ia2"] === intrest || items[l]["ia3"] === intrest || items[l]["ia4"] === intrest || items[l]["name"].toLowerCase().includes(intrest) || items[l]["desc"].toLowerCase().includes(intrest)) {
+            // checks what you searched if its in the name interest areas and desc if it is add to add card else skip and check other one 
+            if (items[l]["ia1"] === interest || items[l]["ia2"] === interest || items[l]["ia3"] === interest || items[l]["ia4"] === interest || items[l]["name"].toLowerCase().includes(interest) || items[l]["desc"].toLowerCase().includes(interest)) {
                 addCard(items[l]);
                 content = true
             }
@@ -121,13 +125,6 @@ function addinterest(intrest) {
         if (content === false) {
             document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
-
-
-
-
-
-            // addCard(items[])
-            // window.open("https://"+document.getElementById("ui").value+".github.io/", '_blank')
         }
     });
 
@@ -139,9 +136,7 @@ function addinterest(intrest) {
 
 //run addAll() by default
 await addAll();
-let test = "test"
-//https://www.w3schools.com/jsref/event_onclick.asp
-//these are basically if statements or "onClickListeners" if you will
+//these are if statements or "onClickListeners" that listen for you to click on a button
 document.getElementById("allbutton").onclick = function () { addAll() };
 document.getElementById("collegesbutton").onclick = function () { addColleges() };
 document.getElementById("companiesbutton").onclick = function () { addCompanies() };
@@ -165,7 +160,7 @@ document.onkeydown = function (e) {
     e = e || window.event;
     switch (e.which || e.keyCode) {
         case 13: addinterest((document.getElementById("ui").value).toLowerCase())
-        break;
+            break;
     }
 }
 
@@ -177,7 +172,7 @@ async function addCard(l) {
 
     //getting the body's previous information
     var prevDiv = document.getElementById("body-output").innerHTML;
-    if(l["logo"]===" "){l["logo"]="./images/duck.png"}
+    if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
     var div = `
     <div class="card mb-3" style="max-width: 75%;" align="left">
     <div class="row g-0">
@@ -188,7 +183,7 @@ async function addCard(l) {
     <div class="card-body">
     <h5 class="card-title" style="font-size: 27px;">{1}</h5>
     <div class="card-body">`.format(l["logo"], l["name"]);
-    
+
     if (l["type"] === "College") {
         div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
     } else if (l["type"] === "Company") {
@@ -199,7 +194,7 @@ async function addCard(l) {
     else {
         div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
-    
+
     div = div + `   </div>
     <p class="card-text">{0}</p>
                 </div>
@@ -210,20 +205,20 @@ async function addCard(l) {
             </div> 
                 <ul class="list-group list-group-flush">`.format(l["desc"]);
 
-                
-                //adding to div depending on how many interest areas are blank
-                //will make this smaller is a final version
-                if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
-                    div = div + `<li class="list-group-item">{0}</li>`.format(l["ia1"]);
-                } else if (l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
-                    div = div + `<li class="list-group-item">{0}</li> 
+
+    //adding to div depending on how many interest areas are blank
+    //will make this smaller is a final version
+    if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
+        div = div + `<li class="list-group-item">{0}</li>`.format(l["ia1"]);
+    } else if (l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
+        div = div + `<li class="list-group-item">{0}</li> 
                     <li class="list-group-item">{1}</li>`.format(l["ia1"], l["ia2"]);
-                } else if (l["ia4"] === "" && l["ia5"] === "") {
-                    div = div + `<li class="list-group-item">{0}</li> 
+    } else if (l["ia4"] === "" && l["ia5"] === "") {
+        div = div + `<li class="list-group-item">{0}</li> 
                     <li class="list-group-item">{1}</li> 
                     <li class="list-group-item">{2}</li>`.format(l["ia1"], l["ia2"], l["ia3"]);
-                } else if (l["ia5"] === "") {
-                    div = div + `<li class="list-group-item">{0}</li> 
+    } else if (l["ia5"] === "") {
+        div = div + `<li class="list-group-item">{0}</li> 
                     <li class="list-group-item">{1}</li> 
                     <li class="list-group-item">{2}</li> 
                     <li class="list-group-item">{3}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"]);
@@ -233,16 +228,16 @@ async function addCard(l) {
                     <li class="list-group-item">{2}</li> 
                     <li class="list-group-item">{3}</li> 
                     <li class="list-group-item">{4}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"], l["ia5"]);
-                }
-                div = div + `</ul></div></div></div>`;
-                //adding the new information to the previous information and putting it into the body
-                document.getElementById("body-output").innerHTML = prevDiv + div;
-                // document.onclick=sortInterest(1)
-            }
-            
-            
-            // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
-            $(window).scroll(function () {
+    }
+    div = div + `</ul></div></div></div>`;
+    //adding the new information to the previous information and putting it into the body
+    document.getElementById("body-output").innerHTML = prevDiv + div;
+    // document.onclick=sortInterest(1)
+}
+
+
+// jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
+$(window).scroll(function () {
     if ($(this).scrollTop() >= 50) {
         $('.return-to-top').fadeIn(250);
     } else {
@@ -262,38 +257,39 @@ if (search != undefined) {
     search = decodeURI(search)
     document.getElementById("ui").value = search
     addinterest((document.getElementById("ui").value).toLowerCase())
-    
+
 }
 
-var intrest = document.URL.split("?intrest=")[1]
-if (intrest != undefined) {
-    intrest = decodeURI(intrest)
-    if (intrest == "college") {
+var interest = document.URL.split("?interest=")[1]
+if (interest != undefined) {
+    interest = decodeURI(interest)
+    if (interest == "college") {
         addColleges()
     }
-    else if (intrest == "military") {
+    else if (interest == "military") {
         addMilitary()
     }
-    else if (intrest == "companies") {
+    else if (interest == "companies") {
         addCompanies()
     }
-    else if (intrest == "Union") {
+    else if (interest == "Union") {
         addUnions()
     }
     else {
-        addinterest((intrest))
+        addinterest((interest))
     }
-    
+
 }
 var inverted = false;
 const css = `
-img, .btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content {
+img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
     -o-filter: invert(100%);
     -ms-filter: invert(100%);
     z-index: 999;
 }
+
 html {
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
@@ -303,16 +299,22 @@ html {
 
 const head = document.head
 const style = document.createElement('style')
-function invertColor(){
+function invertColor() {
+
+    document.getElementById("inverted").classList.add("fa-sun-o")
+    document.getElementById("inverted").classList.remove("fa-moon-o")
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
         style.appendChild(document.createTextNode(css));
     }
-    if (inverted){head.removeChild(style);inverted=false;return}
-    inverted=true;
+    if (inverted) {
+        head.removeChild(style); inverted = false; document.getElementById("inverted").classList.add("fa-moon-o");
+        document.getElementById("inverted").classList.remove("fa-sun-o"); return
+    }
+    inverted = true;
     head.appendChild(style);
-    
-// document.getElementById("invert").
+
+    // document.getElementById("invert").
 }
 document.getElementById("invert").onclick = function () { invertColor() };

@@ -21,8 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--use the js file go through everything-->
     <script type="module" src="map.js"></script>
-    <!-- <script src="invert.js"></script> -->
-    <!-- <script>function sortInterest(interest){addinterest(interest)} </script> -->
 </head>
 
 <!-- this is how bootstrap centers their words-->
@@ -37,18 +35,14 @@
     <div>
         <ul class="nav nav-pills">
             <!--pulls the buttons in the top right corner and depending on which button is pressed will call the class from the js file to organize it-->
-            <!-- <li class="nav-item" style="padding-right:10px;">
-                <a class="btn btn-secondary" id="allbutton" href="index.html" style="text-decoration:none;">Return</a>
-            </li>
-            <li class="nav-item" style="padding-right:10px;">
-                <a class="dropbtn2" href="mapView.html" style="text-decoration:none; background-color: green;">Map View</a>
-            </li> -->
             <li class="nav-item" style="padding-right:10px;">
                 <button class="btn btn-secondary" id="allbutton">All</button>
             </li>
             <li class="nav-item" style="padding-right:10px;">
-                <a class="dropbtn2" href="index.html" style="text-decoration:none; background-color: green;">List View</a>
+                <a class="dropbtn2" href="index.html" style="text-decoration:none; background-color: green;">List
+                    View</a>
             </li>
+            <!-- types buttons  -->
             <li class="nav-item" style="padding-right:10px;">
                 <div class="dropdown">
                     <button class="dropbtn2">Types <i class="fa fa-caret-down"></i></button>
@@ -60,6 +54,7 @@
                     </div>
                 </div>
             </li>
+            <!-- Intrests Buttons  -->
             <li class="nav-item" style="padding-right:10px;">
                 <div class="dropdown">
                     <button class="dropbtn">Interests <i class="fa fa-caret-down"></i></button>
@@ -89,27 +84,12 @@
 </header>
 
 
-<body class="container-sm" >
+<body class="container-sm">
     <center class="contain" style="display:flex">
+        <!-- canvas that shows the school with btns on it to be able to hover over -->
         <canvas id="imgcanvas" width="700" height="700" style="border:solid black 1px; display:flex;"></canvas>
+        <!-- side bar of canvis that shows all the places  -->
         <div id="main" style="border: solid black 1px;width:20%">Click A Button</div>
-                <!-- <img scr="https://mcamp117.github.io/NavTest/HTML/drawMaps/MASTER%20SICTC%20FLOOR%20PLAN.jpg"> -->
-            <!-- <div class="dropdown spot">
-                <button class="dropbtn2" style="bottom:-8em; right:50em;"><i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content drop" style="bottom:-10em; right:50em;" id="auto"></div>
-            </div>
-            <div class="dropdown spot">
-                <button class="dropbtn2" style="bottom:10em; right:31em;"><i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content drop" style="bottom:10em; right:31em;" id="foyer"></div>
-            </div>
-            <div class="dropdown spot">
-                <button class="dropbtn2" style="bottom:-7em; right:9em;"><i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content drop" style="bottom:-7em; right:9em;" id="cont"></div>
-            </div>
-            <div class="dropdown spot">
-                <button class="dropbtn2" style="bottom:15em; right:15em;"><i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content drop" style="bottom:15em; right:15em;" id="asse"></div>
-            </div>  -->
     </center>
 </body>
 
