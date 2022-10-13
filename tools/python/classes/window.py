@@ -5,6 +5,7 @@ from classes.firebase import FirebaseClass
 import sys
 
 class WindowClass:
+    # Creates and calls functions.
     def __init__(self):
         self.firebase = FirebaseClass()
         self.tk = Tk()
@@ -13,25 +14,31 @@ class WindowClass:
         self.showItems()
         self.tk.mainloop()
     
+    #Sets up basic settings for window.
     def startup(self):
         self.tk.title("CCF Manager")
         self.tk.resizable(False,False)
         #https://stackoverflow.com/questions/14900510/changing-the-application-and-taskbar-icon-python-tkinter
         try:
+            #Runs if ran through python.
             self.tk.iconbitmap(default="./../images/logo.ico")
         except:
+            #Runs if ran through .exe.
             self.tk.iconbitmap(default=f"{sys._MEIPASS}/logo.ico")
 
         #widgets
-        #don't blame me: https://stackoverflow.com/questions/13148975/tkinter-label-does-not-show-image
+        #This is odd but not much I can do. I recommend reading up on https://stackoverflow.com/questions/13148975/tkinter-label-does-not-show-image
         try:
+            #Runs if ran through python.
             self.img = Image.open("./../images/logo.png").convert("RGBA")
         except:
+            #Runs if ran through .exe.
             self.img = Image.open(f"{sys._MEIPASS}/logo.png").convert("RGBA")
         self.img = ImageTk.PhotoImage(self.img.resize([self.img.size[0]//15,self.img.size[1]//15]))
         self.addToGrid(Label(self.tk,image=self.img,bg="black"),0,0,3)
         self.addToGrid(Label(self.tk,text="College Career Fair Manager",bg="black",fg="white",font=("ArialBold",15)),1,0,3)
 
+    #Screen to add a card to firebase.
     def addItem(self):
         self.type = StringVar(value="College")
         #https://www.pythontutorial.net/tkinter/tkinter-open-file-dialog/
@@ -53,10 +60,12 @@ class WindowClass:
         self.addToGrid(Button(self.tk,text="Submit",bg="darkgreen",fg="lime",command=self.submit),999,0,3)
         self.addToGrid(Button(self.tk,text="Item List",bg="black",fg="yellow",command=lambda:self.newWindow(self.showItems)),1000,0,3)
 
+    #Select file and upload to firebase.
     def select_file(self):
         file = filedialog.askopenfile(title='Open a file',initialdir='/',filetypes=(('tsv', '*.tsv'),('All files', '*.*')))
-        self.firebase.uploadCSV(file.name)
+        self.firebase.uploadTSV(file.name)
 
+    #Destroy current items in window and run startup again. Will call function after.
     def newWindow(self,fun):
         self.remember = []
         for widget in self.tk.winfo_children():
@@ -64,12 +73,14 @@ class WindowClass:
         self.startup()
         fun()
     
+    #Delete prompt
     def select(self,evt):
         #https://www.geeksforgeeks.org/how-to-create-a-pop-up-message-when-a-button-is-pressed-in-python-tkinter/
         if messagebox.askyesno(title="Are you sure?",message=f"Delete {evt.widget.get(evt.widget.curselection()[0])}?"):
             self.firebase.delItemFromIndex(evt.widget.curselection()[0])
             self.newWindow(self.showItems)
 
+    #Gets items for item list screen.
     def showItems(self):
         #https://www.tutorialspoint.com/python/tk_listbox.htm
         items = self.firebase.getItems()
@@ -81,13 +92,16 @@ class WindowClass:
         self.addToGrid(listBar,3,0)
         self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),4,0)
 
+    #Add to grid and be able to call it later through the remember variable.
     def addToGridRemember(self,name,widget,row,column,columnspan=1,sticky="news"):
         self.remember.append([name,widget])
         widget.grid(row=row,column=column,columnspan=columnspan,sticky=sticky)
 
+    #Add to grid without remembering.
     def addToGrid(self,widget,row,column,columnspan=1,sticky="news"):
         widget.grid(row=row,column=column,columnspan=columnspan,sticky=sticky)
 
+    #Runs when submit is hit on add card screen.
     def submit(self):
         data = {}
         for i in self.remember:
@@ -96,8 +110,6 @@ class WindowClass:
         data["type"] = self.type.get()
         self.firebase.new(data)
 
+    #Goodbye
     def exit(self):
         self.tk.destroy()
-
-    def setTitle(self,title):
-        self.tk.title(title)

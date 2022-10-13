@@ -1,16 +1,20 @@
 #https://www.freecodecamp.org/news/how-to-get-started-with-firebase-using-python/
 from firebase_admin import initialize_app, credentials, db
 import sys
+
+#Valid characters for firebase names.
 valid = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
 class FirebaseClass:
     def __init__(self):
         try:
+            #Runs if ran with python.
             self.default_app = initialize_app(credentials.Certificate('./private/private.json'),{'databaseURL': "https://sictcccf-default-rtdb.firebaseio.com/"})
         except:
+            #Runs if ran from .exe.
             self.default_app = initialize_app(credentials.Certificate(f"{sys._MEIPASS}/private.json"),{'databaseURL': "https://sictcccf-default-rtdb.firebaseio.com/"})
     
-    #https://www.geeksforgeeks.org/how-to-convert-python-dictionary-to-json/
+    #Adds new card.
     def new(self,dict):
         name = ""
         for i in dict['name']:
@@ -20,6 +24,7 @@ class FirebaseClass:
         for i in dict.keys():
             ref.child(i).set(dict[i])
     
+    #Creates list of cards.
     def getItems(self):
         tempdata = db.reference(f"/Items").get(True)
         data = []
@@ -30,11 +35,13 @@ class FirebaseClass:
                 print("Failed at",i,"in get items.")
         return data
     
+    #Delete card.
     def delItemFromIndex(self,index):
         tempdata = db.reference(f"/Items").get(True)
         db.reference(f"/Items/{list(tempdata[0].keys())[index]}").delete()
     
-    def uploadCSV(self,file):
+    #Upload TSV. (this breaks very easily from minor changes)
+    def uploadTSV(self,file):
         data = open(file,encoding="utf-8").read().split("\n")
         db.reference("/Items").delete()
         for i in data:
