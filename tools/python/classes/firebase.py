@@ -35,6 +35,24 @@ class FirebaseClass:
                 print("Failed at",i,"in get items.")
         return data
     
+    def getInterests(self):
+        tempdata = db.reference(f"/Items").get(True)
+        unique = {}
+        for i in tempdata[0]:
+            for j in range(5):
+                type = tempdata[0][i][f"ia{j+1}"].strip()
+                if type == "":
+                    continue
+                if type in unique:
+                    unique[type]+=1
+                else:
+                    unique[type]=1
+        #https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
+        temp = sorted(unique.items(), key=lambda item: item[1])
+        temp.reverse()
+        unique = dict(temp)
+        return unique
+    
     #Delete card.
     def delItemFromIndex(self,index):
         tempdata = db.reference(f"/Items").get(True)

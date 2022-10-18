@@ -90,7 +90,26 @@ class WindowClass:
         #https://stackoverflow.com/questions/6554805/getting-a-callback-when-a-tkinter-listbox-selection-is-changed
         listBar.bind('<<ListboxSelect>>', self.select)
         self.addToGrid(listBar,3,0)
-        self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),4,0)
+        self.addToGrid(Button(self.tk,text="Interests",bg="black",fg="yellow",command=lambda:self.newWindow(self.showInterests)),4,0)
+        self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),5,0)
+
+    #Gets interests for item list screen.
+    def showInterests(self):
+        #https://www.tutorialspoint.com/python/tk_listbox.htm
+        items = self.firebase.getInterests()
+        listBar = Listbox(self.tk,width=70,height=35)
+        output = ""
+        for i in items:
+            listBar.insert("end",i+" x"+str(items[i]))
+            output+=i+" x"+str(items[i])+"\n"
+        self.addToGrid(Button(self.tk,text="Save as File",bg="black",fg="red",command=lambda:self.saveFile(output)),3,0)
+        self.addToGrid(listBar,4,0)
+        self.addToGrid(Button(self.tk,text="Cards",bg="black",fg="yellow",command=lambda:self.newWindow(self.showItems)),5,0)
+        self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),6,0)
+
+    def saveFile(self,text):
+        file = filedialog.asksaveasfile(title='Open a file',initialdir='/',filetypes=(('txt', '*.txt'),('All files', '*.*')))
+        open(file.name,"w").write(text)
 
     #Add to grid and be able to call it later through the remember variable.
     def addToGridRemember(self,name,widget,row,column,columnspan=1,sticky="news"):
