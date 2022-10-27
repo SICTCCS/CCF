@@ -109,7 +109,7 @@ class WindowClass:
 
     def saveFile(self,text):
         file = filedialog.asksaveasfile(title='Open a file',initialdir='/',filetypes=(('txt', '*.txt'),('All files', '*.*')))
-        open(file.name,"w").write(text)
+        open(file.name+".txt","w").write(text)
 
     #Add to grid and be able to call it later through the remember variable.
     def addToGridRemember(self,name,widget,row,column,columnspan=1,sticky="news"):
