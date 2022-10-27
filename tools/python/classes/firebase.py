@@ -71,14 +71,14 @@ class FirebaseClass:
             #Name of Organization,Interest Area,Desc,picture url,website,college/company/military,Completed?,On Website
             #0 Name, 3 Logo URL, 4 Website, 2 Desc, 1 Interests, 5 Type
             tempdata={}
-            tempdata["name"] = i[0]
-            tempdata["logo"] = i[3]
+            tempdata["name"] = i[0].strip()
+            tempdata["logo"] = i[3].strip()
             if tempdata["logo"] == "0":
                 tempdata["logo"]=""
-            tempdata["web"] = i[4]
+            tempdata["web"] = i[4].strip()
             if len(tempdata["web"]) > 1 and not tempdata["web"].startswith("http"):
-                tempdata["web"] = "https://"+tempdata["web"]
-            tempdata["desc"] = i[2]
+                tempdata["web"] = "https://"+tempdata["web"].strip()
+            tempdata["desc"] = i[2].strip()
             current = 0
             for interest in i[1].split(","):
                 if interest == "x":
@@ -86,11 +86,11 @@ class FirebaseClass:
                 current+=1
                 if current > 5:
                     continue
-                tempdata["ia"+str(current)] = interest
+                tempdata["ia"+str(current)] = interest.strip()
             for n in range(5):
                 if not "ia"+str(n+1) in tempdata.keys():
                     tempdata["ia"+str(n+1)] = ""
-            tempdata["type"] = i[5].capitalize()
+            tempdata["type"] = i[5].capitalize().strip()
             if tempdata["type"] == "0":
                 tempdata["type"]="Company"
             self.new(tempdata)
