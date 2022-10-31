@@ -1,8 +1,8 @@
 
-const automotive = [1, 434, 42, 131, 5, 3, 13, 21, 2421, 5, 231, 3]
-const construction = [3]
-const foyer = ["Hopf Equipment"]
-const assembly = [69]
+const automotive = ["Hopf Equipment","H&R Agri-Power","Henderson Ford","Ivy Tech Automotive","Evapar, Inc.","Hutson, Inc.","Boyd Company","Black Equipment","Wabash Valley College"]
+const construction = ["Healthy Spaces","Hydromax Plumbing Inc.","BNG Heating & Cooling","Indiana Laborers Training Fund","Evansville Electrical JATC","Sheet Metal Workers Local 20","Southwestern Indiana Builders Association","A+ Derr Heating & Cooling","Bricklayers Local 4","Greer's Flooring America","Carpenter/IKORCC","Danco Construction, Inc."]
+const foyer = ["Kiesel Enterprises, INC","Red Spot Paint & Varnish","Parrish Consulting Services, Inc.","AmeriQual Group LLC","Berry Global","Hafer","Uniseal, LG Chem","Jasper Rubber Products, Inc","University of Evansville","Vincennes University","Traylor Brothers","AstraZeneca","Menard Inc.","Universal Technical Institute","Silgan Closures","Matrix Design Group","PIA Automation","University of Southern Indiana -Dept of Engineering","Industrial Filter Manufacturers","Brake Supply Company Inc","KIMBALL ELECTRONICS","Henderson Community College","McDonald's","Warehouse Services, Inc.","Ascension St. Vincent Evansville","Indiana Tech","Keller Schroeder","Murray State University","Sign Crafters, Inc.","Trilogy Health Services","Plumbers & Steamfitters LU 136","NIX","S & S Machine Shop, Inc","American Senior Communities","Triad Fabricators, LLC","Purdue Polytechnic Vincennes","SABIC","ProgressiveHealth","ProRehab","Koorsen Fire & Security","FLANDERS","Meyer Distributing & Meyer Logistics","WNIN Tri-State Public Media, Inc.","Owensboro Community","Southern Illinois University","Wabash Valley College Radio/TV","Vanderburgh County Sheriff's Office","WEOA RADIO","HCC FAME","Murray State University","Marine Corps","Prodigy Mold & Tool, Inc.","BFit"]
+const assembly = ["United States Navy","Good Samaritan Home","LIFT Academy","Evansville Police Department","Evansville Fire Department","Southern Illinois University School of Health Sciences","Infinity Molding & Assembly, Inc.","US Army","Deaconess","Ciholas, Inc.","BWX Technologies","Metronet","ECS Solutions Inc","Project Associates Inc.","Gribbins Specialty Group, Inc.","The Arc Southwest Indiana","Torsion Plastics","Indiana Job Corps","IU Luddy School of Informatics, Computing, and Engineering","Hella Electronics Corp.","Illinois Eastern Community Colleges","Rose-Hulman Institute of Technology","FedEx Ground","Alliance Technical Group, LLC","Franklin College","ECS LIMITED","Ivy Tech Community College"]
 // makes list of loctaions
 
 // OLD TOLIST keep might eventualy go back to a img tag instade of canvas
@@ -139,7 +139,7 @@ var draw = function () {
 addButton(530,180)
 
 addButton(360,210)
-addButton(300,150)
+addButton(315,150)
 
 addButton(100,450)
 
