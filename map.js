@@ -74,10 +74,10 @@ document.onkeydown = function (e) {
 
 
 
-toList(automotive, "Automotive")
+toList(construction, "Construction")
 toList(foyer, "Foyer")
 toList(assembly, "Assembly")
-toList(construction, "Construction")
+toList(automotive, "Automotive")
 
 
 // Original: 
