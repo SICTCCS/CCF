@@ -115,7 +115,7 @@ function addinterest(interest) {
         var items = Object.values(data);
         for (let l in items) {
             // checks what you searched if its in the name interest areas and desc if it is add to add card else skip and check other one 
-            if (items[l]["ia1"] === interest || items[l]["ia2"] === interest || items[l]["ia3"] === interest || items[l]["ia4"] === interest || items[l]["name"].toLowerCase().includes(interest) || items[l]["desc"].toLowerCase().includes(interest)) {
+            if (items[l]["ia1"] === interest || items[l]["ia2"] === interest || items[l]["ia3"] === interest || items[l]["ia4"] === interest ||items[l]["ia5"] === interest|| items[l]["name"].toLowerCase().includes(interest) || items[l]["desc"].toLowerCase().includes(interest)) {
                 addCard(items[l]);
                 content = true
             }
