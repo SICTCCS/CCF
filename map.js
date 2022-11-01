@@ -136,11 +136,9 @@ var draw = function () {
     }
 };
 
-addButton(530,180)
-
+addButton(620,440)
 addButton(360,210)
 addButton(315,150)
-
 addButton(100,450)
 
 
