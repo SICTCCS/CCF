@@ -35,7 +35,7 @@ if (!String.prototype.format) {
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
-    //call database catagory (reference) "Items" and on a changed value take a snapshot, then:
+    // call database catagory (reference) "Items" and on a changed value take a snapshot, then:
     database.ref("Items").on('value', (snapshot) => {
         //call the HTML document and get element with id "body-output" (body), set the HTML code to "" (resets the body to prevent duplication)
         document.getElementById("body-output").innerHTML = "";
@@ -137,7 +137,7 @@ function addinterest(interest) {
 //run addAll() by default
 await addAll();
 //these are if statements or "onClickListeners" that listen for you to click on a button
-document.getElementById("allbutton").onclick = function () { addAll() };
+document.getElementById("allbutton").onclick = function () { window.open("index.html","_self");addAll() };
 document.getElementById("collegesbutton").onclick = function () { addColleges() };
 document.getElementById("companiesbutton").onclick = function () { addCompanies() };
 document.getElementById("militarybutton").onclick = function () { addMilitary() };
