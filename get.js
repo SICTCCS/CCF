@@ -142,16 +142,16 @@ document.getElementById("collegesbutton").onclick = function () { addColleges() 
 document.getElementById("companiesbutton").onclick = function () { addCompanies() };
 document.getElementById("militarybutton").onclick = function () { addMilitary() };
 document.getElementById("Unionsbutton").onclick = function () { addUnions() };
-document.getElementById("Manufacturing").onclick = function () { addinterest("Manufacturing") };
-document.getElementById("Transportation").onclick = function () { addinterest("Transportation") };
-document.getElementById("Engineering").onclick = function () { addinterest("Engineering") };
-document.getElementById("HealthSciences").onclick = function () { addinterest("Health Sciences") };
-document.getElementById("Communication").onclick = function () { addinterest("Communications") };
-document.getElementById("PublicSafety").onclick = function () { addinterest("Public Safety") };
-document.getElementById("CulinaryArts").onclick = function () { addinterest("Culinary Arts") };
-document.getElementById("Construction").onclick = function () { addinterest("Construction") };
-document.getElementById("ComputerTechnology").onclick = function () { addinterest("Computer Technology") };
-document.getElementById("AnimalScience/Agriculture").onclick = function () { addinterest("Animal Science/Agriculture") };
+document.getElementById("Manufacturing").onclick = function () { addinterest("manufacturing") };
+document.getElementById("Transportation").onclick = function () { addinterest("transportation") };
+document.getElementById("Engineering").onclick = function () { addinterest("engineering") };
+document.getElementById("HealthSciences").onclick = function () { addinterest("health sciences") };
+document.getElementById("Communication").onclick = function () { addinterest("communications") };
+document.getElementById("PublicSafety").onclick = function () { addinterest("public safety") };
+document.getElementById("CulinaryArts").onclick = function () { addinterest("culinary Arts") };
+document.getElementById("Construction").onclick = function () { addinterest("construction") };
+document.getElementById("ComputerTechnology").onclick = function () { addinterest("computer technology") };
+document.getElementById("AnimalScience/Agriculture").onclick = function () { addinterest("animal science/agriculture") };
 document.getElementById("search").onclick = function () { addinterest((document.getElementById("ui").value).toLowerCase()) };
 
 
