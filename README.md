@@ -24,7 +24,7 @@
 
 **OR**
 
-* Run build.bat
+* First get pyinstaller by running "pip install pyinstaller" then run build.bat
 
 ![image](https://user-images.githubusercontent.com/91961334/202524328-d6d9a6ff-a2c0-4acf-bdc5-daded166f1c8.png)
 
