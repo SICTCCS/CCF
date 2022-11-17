@@ -80,7 +80,7 @@ class WindowClass:
             self.firebase.delItemFromIndex(evt.widget.curselection()[0])
             self.newWindow(self.showItems)
 
-    #Gets items for item list screen.
+    #Firebase item list screen.
     def showItems(self):
         #https://www.tutorialspoint.com/python/tk_listbox.htm
         items = self.firebase.getItems()
@@ -93,7 +93,7 @@ class WindowClass:
         self.addToGrid(Button(self.tk,text="Interests",bg="black",fg="yellow",command=lambda:self.newWindow(self.showInterests)),4,0)
         self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),5,0)
 
-    #Gets interests for item list screen.
+    #Interest list with count from firebase.
     def showInterests(self):
         #https://www.tutorialspoint.com/python/tk_listbox.htm
         items = self.firebase.getInterests()
@@ -107,6 +107,7 @@ class WindowClass:
         self.addToGrid(Button(self.tk,text="Cards",bg="black",fg="yellow",command=lambda:self.newWindow(self.showItems)),5,0)
         self.addToGrid(Button(self.tk,text="Add Card",bg="black",fg="yellow",command=lambda:self.newWindow(self.addItem)),6,0)
 
+    # Save file to os.
     def saveFile(self,text):
         file = filedialog.asksaveasfile(title='Open a file',initialdir='/',filetypes=(('txt', '*.txt'),('All files', '*.*')))
         open(file.name+".txt","w").write(text)

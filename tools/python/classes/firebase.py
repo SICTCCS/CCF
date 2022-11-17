@@ -35,6 +35,7 @@ class FirebaseClass:
                 print("Failed at",i,"in get items.")
         return data
     
+    #Gets dictionary of interests
     def getInterests(self):
         tempdata = db.reference(f"/Items").get(True)
         unique = {}

@@ -1,7 +1,8 @@
 from classes.window import WindowClass
 
-# Should be used to call startup classes.
-# If you are adding something major to the program
-# I recommend calling it here.
+#If you are wanting to add something
+#remember that window class is a loop.
+#You will need to create a new thread.
+#https://www.geeksforgeeks.org/multithreading-python-set-1/
 if __name__ == "__main__":
     WindowClass()
