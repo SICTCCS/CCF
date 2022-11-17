@@ -6,6 +6,15 @@
 
 ![image](https://user-images.githubusercontent.com/91961334/200907431-7ac2dd2b-4d10-4275-b0f6-b86223fe67a6.png)
 
+* You need a private folder if you don't already have one.
+
+![image](https://user-images.githubusercontent.com/91961334/202522154-8a64c792-246c-4509-b2d9-ec977fc5656d.png)
+
+* You'll need to rename the file to "private.json".
+
+![image](https://user-images.githubusercontent.com/91961334/202522325-ef452d66-10bb-4e01-998a-31fbdd7aea10.png)
+
+
 **DO NOT PUSH THIS TO A PUBLIC GITHUB**
 
 # Enable Auth (NOT REQUIRED)
