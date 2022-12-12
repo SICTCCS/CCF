@@ -76,4 +76,4 @@ This method was used for the addCard.html but is not required for the python scr
 
 * initialize fire base database
 
-![image](https://user-images.githubusercontent.com/91961334/firebase.png)
+![image](https://github.com/SICTCCS/CCF/blob/87e620f3e2dac1b37c6a786672d60efd7f1d06ea/images/firebase.PNG)
