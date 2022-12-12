@@ -18,6 +18,7 @@ const assembly = ["United States Navy","Good Samaritan Home","LIFT Academy","Eva
 //   }
 // }
 var butten=[]
+// makes list that can be hover over to show whats in them 
 function toList(listy, name) {
   let all = document.createElement("div")
   let div = document.createElement("div")
@@ -72,7 +73,7 @@ document.onkeydown = function (e) {
 
 
 
-
+// Runs list of them
 
 toList(construction, "Construction")
 toList(foyer, "Foyer")
@@ -85,6 +86,7 @@ toList(automotive, "Automotive")
 var canvas = document.getElementById('imgcanvas');
 var context = canvas.getContext("2d");
 
+// makes map sprite so i can uses the cord on the image and will resize to the size of the users screen
 var mapSprite = new Image();
 mapSprite.src = "https://mcamp117.github.io/NavTest/HTML/drawMaps/MASTER%20SICTC%20FLOOR%20PLAN.jpg";
 var Button = function () {
@@ -123,7 +125,7 @@ function mouseClicked(event) {
     else{buttons[i].Sprite.src = "./images/dropdown.png"}
   }
 }
-
+// draws the map 
 var draw = function () {
     context.fillStyle = "#000";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -135,7 +137,7 @@ var draw = function () {
         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
     }
 };
-
+// plans the button on the map
 addButton(620,440)
 addButton(360,210)
 addButton(315,150)

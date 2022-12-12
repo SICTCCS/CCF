@@ -168,7 +168,10 @@ async function addCard(l) {
 
     //getting the body's previous information
     var prevDiv = document.getElementById("body-output").innerHTML;
+    // sets image to duck if img is broken 
     if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
+    // creates basic div layout of the div that we append to the main div
+
     var div = `
     <div class="card mb-3" style="max-width: 75%;" align="left">
     <div class="row g-0">
@@ -179,7 +182,7 @@ async function addCard(l) {
     <div class="card-body">
     <h5 class="card-title" style="font-size: 27px;">{1}</h5>
     <div class="card-body">`.format(l["logo"], l["name"]);
-
+    // check the type and make the color change depending of wha type it is 
     if (l["type"] === "College") {
         div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
     } else if (l["type"] === "Company") {
@@ -258,6 +261,7 @@ function search(search){
         addinterest((document.getElementById("ui").value).toLowerCase())
 
     }}
+// check if you prevesley searched something and keep it on the searchbar so if you refressh then it wont un search
 
 var interest = document.URL.split("?interest=")[1]
 if (interest != undefined) {
@@ -279,6 +283,7 @@ if (interest != undefined) {
     }
 
 }
+// add the code to invert the colors of the screen 
 var inverted = false;
 const css = `
 img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
@@ -298,6 +303,8 @@ html {
 
 const head = document.head
 const style = document.createElement('style')
+// function to invert the colors of the screen 
+
 function invertColor() {
 
     document.getElementById("inverted").classList.add("fa-sun-o")
