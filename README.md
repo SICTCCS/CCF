@@ -74,6 +74,66 @@ This method was used for the addCard.html but is not required for the python scr
 
 # nathan doc get.js
 
+# init firebase
 * initialize fire base database
 
 ![image](https://github.com/SICTCCS/CCF/blob/87e620f3e2dac1b37c6a786672d60efd7f1d06ea/images/firebase.PNG)
+
+# functions for site
+
+* add all function this will be called auto to load everything from firebase server in order to show all 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/addall.PNG)
+
+
+* then is is one of the 4 function used to sort by intrests they are all almost the same just detect different types 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/addC.PNG)
+
+
+* next is a function that will if they use search it will sort through all data and if name type or dec match at all it will show it
+
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/search.PNG)
+
+# Website start up
+
+* this will run to set up all the button ready to be clicked and load the allall showing all the base information
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/load.PNG)
+
+* then a button was create in oder to remove the annying ness of haveing to click the search icon every time so that if you clicked enter it would load
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/enter.PNG)
+
+# Add Card
+
+* This is what will make and append the divs to the main
+* First this will go through the data it was given and create the baic div template then chect the data for its type and add that to the template and set default image 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/addcardp1.PNG)
+
+* Then it will finish the base div template
+* after that it will sort through and through a conditional check how many intress there are and after getting amout of intress it will add each on to the intress sections 
+* finaly append the div create to the main div this all will repeat for every item that passed the sort opetion the user picks through
+![image](https://github.com/SICTCCS/CCF/blob/main/images/addCardp2.PNG)
+
+# to top btn
+
+* A simple button that will show when scrolled slightly down it will add a fast animation to to seting the scrolltop to 0
+![image](https://github.com/SICTCCS/CCF/blob/main/images/scroll.PNG)
+
+# Querry tags
+
+* this is used to save info to the search bar so if the user reload the page it will save there search and re do it
+* it was also made to be able to send the link while something is looked up and it to still be the way they sent it
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/tags.PNG)
+
+# dark/light mode
+
+* this will invert the color of everything to make them dark or light depenting what they where befor they click then set button logo to a sun or moon 
+1. sets the consts that will be set to or inverted from
+![image](https://github.com/SICTCCS/CCF/blob/main/images/invertp1.PNG)
+2. makes the functon to swap the colors when clicked 
+![image](https://github.com/SICTCCS/CCF/blob/main/images/invertp2.PNG)

@@ -21,13 +21,12 @@ var database = firebase.database();
 //modifying String's prototype in order to add python-like formatting - i love stack overflow
 //literally making a function for the String class
 if (!String.prototype.format) {
-    String.prototype.format = function () {
+    String.prototype.format = function() {
         var args = arguments;
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined'
-                ? args[number]
-                : match
-                ;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+            return typeof args[number] != 'undefined' ?
+                args[number] :
+                match;
         });
     };
 }
@@ -115,7 +114,7 @@ function addinterest(interest) {
         var items = Object.values(data);
         for (let l in items) {
             // checks what you searched if its in the name interest areas and desc if it is add to add card else skip and check other one 
-            if (items[l]["ia1"].toLowerCase() === interest || items[l]["ia2"].toLowerCase() === interest || items[l]["ia3"].toLowerCase() === interest || items[l]["ia4"].toLowerCase() === interest ||items[l]["ia5"].toLowerCase() === interest|| items[l]["name"].toLowerCase().includes(interest) || items[l]["desc"].toLowerCase().includes(interest)) {
+            if (items[l]["ia1"].toLowerCase() === interest || items[l]["ia2"].toLowerCase() === interest || items[l]["ia3"].toLowerCase() === interest || items[l]["ia4"].toLowerCase() === interest || items[l]["ia5"].toLowerCase() === interest || items[l]["name"].toLowerCase().includes(interest) || items[l]["desc"].toLowerCase().includes(interest)) {
                 addCard(items[l]);
                 content = true
             }
@@ -126,7 +125,7 @@ function addinterest(interest) {
             document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
         }
-        document.getElementById("ui").value="";
+        document.getElementById("ui").value = "";
     });
 
 
@@ -134,36 +133,38 @@ function addinterest(interest) {
 
 
 
-//run addAll() by default
+//run addAll() by default and waits for it to finish befor anything else
 await addAll();
 //these are if statements or "onClickListeners" that listen for you to click on a button
-document.getElementById("allbutton").onclick = function () { window.open("index.html","_self");addAll() };
-document.getElementById("collegesbutton").onclick = function () { addColleges() };
-document.getElementById("companiesbutton").onclick = function () { addCompanies() };
-document.getElementById("militarybutton").onclick = function () { addMilitary() };
-document.getElementById("Unionsbutton").onclick = function () { addUnions() };
-document.getElementById("Manufacturing").onclick = function () { addinterest("manufacturing") };
-document.getElementById("Transportation").onclick = function () { addinterest("transportation") };
-document.getElementById("Engineering").onclick = function () { addinterest("engineering") };
-document.getElementById("HealthSciences").onclick = function () { addinterest("health sciences") };
-document.getElementById("Communication").onclick = function () { addinterest("communications") };
-document.getElementById("PublicSafety").onclick = function () { addinterest("public safety") };
-document.getElementById("CulinaryArts").onclick = function () { addinterest("culinary Arts") };
-document.getElementById("Construction").onclick = function () { addinterest("construction") };
-document.getElementById("ComputerTechnology").onclick = function () { addinterest("computer technology") };
-document.getElementById("AnimalScience/Agriculture").onclick = function () { addinterest("animal science/agriculture") };
-document.getElementById("search").onclick = function () { addinterest((document.getElementById("ui").value).toLowerCase()) };
+document.getElementById("allbutton").onclick = function() { window.open("index.html", "_self");
+    addAll() };
+document.getElementById("collegesbutton").onclick = function() { addColleges() };
+document.getElementById("companiesbutton").onclick = function() { addCompanies() };
+document.getElementById("militarybutton").onclick = function() { addMilitary() };
+document.getElementById("Unionsbutton").onclick = function() { addUnions() };
+document.getElementById("Manufacturing").onclick = function() { addinterest("manufacturing") };
+document.getElementById("Transportation").onclick = function() { addinterest("transportation") };
+document.getElementById("Engineering").onclick = function() { addinterest("engineering") };
+document.getElementById("HealthSciences").onclick = function() { addinterest("health sciences") };
+document.getElementById("Communication").onclick = function() { addinterest("communications") };
+document.getElementById("PublicSafety").onclick = function() { addinterest("public safety") };
+document.getElementById("CulinaryArts").onclick = function() { addinterest("culinary Arts") };
+document.getElementById("Construction").onclick = function() { addinterest("construction") };
+document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
+document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
+document.getElementById("search").onclick = function() { addinterest((document.getElementById("ui").value).toLowerCase()) };
 
 
 // adds a event to lisen if enter is clicked when it is it will search the page becuase its annoying to have to type then click search button
-document.onkeydown = function (e) {
-    e = e || window.event;
-    switch (e.which || e.keyCode) {
-        case 13:{ window.open("index.html?search="+document.getElementById("ui").value,"_self");}
-            break;
+document.onkeydown = function(e) {
+        e = e || window.event;
+        switch (e.which || e.keyCode) {
+            case 13:
+                { window.open("index.html?search=" + document.getElementById("ui").value, "_self"); }
+                break;
+        }
     }
-}
-//the addCard function takes in "l" which would be a list and uses it to build out each card 
+    //the addCard function takes in "l" which would be a list and uses it to build out each card 
 async function addCard(l) {
 
     //getting the body's previous information
@@ -189,8 +190,7 @@ async function addCard(l) {
         div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
     } else if (l["type"] === "Union") {
         div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
-    }
-    else {
+    } else {
         div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
 
@@ -236,14 +236,14 @@ async function addCard(l) {
 
 
 // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
-$(window).scroll(function () {
+$(window).scroll(function() {
     if ($(this).scrollTop() >= 50) {
         $('.return-to-top').fadeIn(250);
     } else {
         $('.return-to-top').fadeOut(250);
     }
 });
-$('.return-to-top').click(function () {      //add an animation to return back to the top of the screen
+$('.return-to-top').click(function() { //add an animation to return back to the top of the screen
     $('body,html').animate({
         scrollTop: 0
     }, 100);
@@ -253,14 +253,15 @@ $('.return-to-top').click(function () {      //add an animation to return back t
 // this is used by the map
 search(document.URL.split("?search=")[1])
 
-function search(search){
+function search(search) {
     var search = search
     if (search != undefined) {
         search = decodeURI(search)
         document.getElementById("ui").value = search
         addinterest((document.getElementById("ui").value).toLowerCase())
 
-    }}
+    }
+}
 // check if you prevesley searched something and keep it on the searchbar so if you refressh then it wont un search
 
 var interest = document.URL.split("?interest=")[1]
@@ -268,17 +269,13 @@ if (interest != undefined) {
     interest = decodeURI(interest)
     if (interest == "college") {
         addColleges()
-    }
-    else if (interest == "military") {
+    } else if (interest == "military") {
         addMilitary()
-    }
-    else if (interest == "companies") {
+    } else if (interest == "companies") {
         addCompanies()
-    }
-    else if (interest == "Union") {
+    } else if (interest == "Union") {
         addUnions()
-    }
-    else {
+    } else {
         addinterest((interest))
     }
 
@@ -303,7 +300,7 @@ html {
 
 const head = document.head
 const style = document.createElement('style')
-// function to invert the colors of the screen 
+    // function to invert the colors of the screen 
 
 function invertColor() {
 
@@ -315,12 +312,15 @@ function invertColor() {
         style.appendChild(document.createTextNode(css));
     }
     if (inverted) {
-        head.removeChild(style); inverted = false; document.getElementById("inverted").classList.add("fa-moon-o");
-        document.getElementById("inverted").classList.remove("fa-sun-o"); return
+        head.removeChild(style);
+        inverted = false;
+        document.getElementById("inverted").classList.add("fa-moon-o");
+        document.getElementById("inverted").classList.remove("fa-sun-o");
+        return
     }
     inverted = true;
     head.appendChild(style);
 
     // document.getElementById("invert").
 }
-document.getElementById("invert").onclick = function () { invertColor() };
+document.getElementById("invert").onclick = function() { invertColor() };
