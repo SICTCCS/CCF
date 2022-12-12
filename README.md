@@ -117,19 +117,19 @@ This method was used for the addCard.html but is not required for the python scr
 * Finaly append the div create to the main div this all will repeat for every item that passed the sort opetion the user picks through
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addCardp2.PNG)
 
-# To top btn
+# To Top BTN
 
 * A simple button that will show when scrolled slightly down it will add a fast animation to to seting the scrolltop to 0
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/scroll.PNG)
 
-# Querry tags
+# Querry Tags
 
 * This is used to save info to the search bar so if the user reload the page it will save there search and re do it
 * It was also made to be able to send the link while something is looked up and it to still be the way they sent it
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/tags.PNG)
 
-# Dark/light mode
+# Dark/light Mode
 
 * This will invert the color of everything to make them dark or light depenting what they where befor they click then set button logo to a sun or moon 
 1. Sets the consts that will be set to or inverted from
@@ -138,7 +138,7 @@ This method was used for the addCard.html but is not required for the python scr
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/invertp2.PNG)
 
 
-# Map.js documentation 
+# Map.js Documentation 
 
 * Currenly hard coded variables but sould eventually make this auto generated also
 * These variables are the list of where they will be during the CCF that are the EXACT name that thay put in 
@@ -155,15 +155,16 @@ This method was used for the addCard.html but is not required for the python scr
 
 
 * Then run the same thing that was said in 
-Take me to [startup](#startup)
+* Start up [startup](#startup)
 
-# map canvis
+# Map Canvis
 
 * Now we create a html canvis and add event listeners for click and hover event to the canvis to get the x,y of clicks 
 * Then create an image sprite and set it to the image of the school 
 * Aswell as the button with the image sprite of a drop down box with height with and x,y cords 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/mapstart.PNG)
 
+# Map Functions
 * Then create a function that will plot all the button on the canvis, add them being ploted
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addbtn.PNG)
@@ -171,10 +172,13 @@ Take me to [startup](#startup)
 * Then a function for mouse click/hover on the canvis buttons it will
 * Check if where you clicked or hover is on top of a button 
 * It if is then set the buttons div that is the list of companys at that spot to show and all others to hide
-
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/clicked.PNG)
+# Draw Canvis
 
 * Finially a function that will draw the canvis and the buttons on the canvis 
 * Aswell as a interval that will trigger very 100ms so that if the user resizes the screen it will also update to that and put in in the right position
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/done.PNG)
+
+* website
+https://sictccs.github.io/CCF/mapView.html
