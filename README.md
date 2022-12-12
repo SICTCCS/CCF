@@ -72,37 +72,36 @@ This method was used for the addCard.html but is not required for the python scr
 4. Add your information to the addCard.html. **DO NOT PUSH THIS TO A PUBLIC GITHUB**
 
 
-# nathan doc get.js
-
+# Git.js information
 # init firebase
-* initialize fire base database
+* Initialize fire base database
 
 ![image](https://github.com/SICTCCS/CCF/blob/87e620f3e2dac1b37c6a786672d60efd7f1d06ea/images/firebase.PNG)
 
-# functions for site
+# Functions for site
 
-* add all function this will be called auto to load everything from firebase server in order to show all 
+* Add all function this will be called auto to load everything from firebase server in order to show all 
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addall.PNG)
 
 
-* then is is one of the 4 function used to sort by intrests they are all almost the same just detect different types 
+* Then is is one of the 4 function used to sort by intrests they are all almost the same just detect different types 
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addC.PNG)
 
 
-* next is a function that will if they use search it will sort through all data and if name type or dec match at all it will show it
+* Next is a function that will if they use search it will sort through all data and if name type or dec match at all it will show it
 
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/search.PNG)
 
-# Website start up
+# <a name="startup"></a>Website start up
 
-* this will run to set up all the button ready to be clicked and load the allall showing all the base information
+* This will run to set up all the button ready to be clicked and load the allall showing all the base information
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/load.PNG)
 
-* then a button was create in oder to remove the annying ness of haveing to click the search icon every time so that if you clicked enter it would load
+* Then a button was create in oder to remove the annying ness of haveing to click the search icon every time so that if you clicked enter it would load
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/enter.PNG)
 
@@ -114,26 +113,68 @@ This method was used for the addCard.html but is not required for the python scr
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addcardp1.PNG)
 
 * Then it will finish the base div template
-* after that it will sort through and through a conditional check how many intress there are and after getting amout of intress it will add each on to the intress sections 
-* finaly append the div create to the main div this all will repeat for every item that passed the sort opetion the user picks through
+* After that it will sort through and through a conditional check how many intress there are and after getting amout of intress it will add each on to the intress sections 
+* Finaly append the div create to the main div this all will repeat for every item that passed the sort opetion the user picks through
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/addCardp2.PNG)
 
-# to top btn
+# To top btn
 
 * A simple button that will show when scrolled slightly down it will add a fast animation to to seting the scrolltop to 0
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/scroll.PNG)
 
 # Querry tags
 
-* this is used to save info to the search bar so if the user reload the page it will save there search and re do it
-* it was also made to be able to send the link while something is looked up and it to still be the way they sent it
+* This is used to save info to the search bar so if the user reload the page it will save there search and re do it
+* It was also made to be able to send the link while something is looked up and it to still be the way they sent it
 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/tags.PNG)
 
-# dark/light mode
+# Dark/light mode
 
-* this will invert the color of everything to make them dark or light depenting what they where befor they click then set button logo to a sun or moon 
-1. sets the consts that will be set to or inverted from
+* This will invert the color of everything to make them dark or light depenting what they where befor they click then set button logo to a sun or moon 
+1. Sets the consts that will be set to or inverted from
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/invertp1.PNG)
-2. makes the functon to swap the colors when clicked 
+2. Makes the functon to swap the colors when clicked 
 ![image](https://github.com/SICTCCS/CCF/blob/main/images/invertp2.PNG)
+
+
+# Map.js documentation 
+
+* Currenly hard coded variables but sould eventually make this auto generated also
+* These variables are the list of where they will be during the CCF that are the EXACT name that thay put in 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/maplist.PNG)
+
+* Then is a function that will take a list of where they will be and then return a html list of them
+* Where each of them has an href that will reopne the get.js page with the intrest tag will be the name of the button 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/function.PNG)
+* Then runs fuction on all lists 
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/lists.PNG)
+
+
+* Then run the same thing that was said in 
+Take me to [startup](#startup)
+
+# map canvis
+
+* Now we create a html canvis and add event listeners for click and hover event to the canvis to get the x,y of clicks 
+* Then create an image sprite and set it to the image of the school 
+* Aswell as the button with the image sprite of a drop down box with height with and x,y cords 
+![image](https://github.com/SICTCCS/CCF/blob/main/images/mapstart.PNG)
+
+* Then create a function that will plot all the button on the canvis, add them being ploted
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/addbtn.PNG)
+
+* Then a function for mouse click/hover on the canvis buttons it will
+* Check if where you clicked or hover is on top of a button 
+* It if is then set the buttons div that is the list of companys at that spot to show and all others to hide
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/clicked.PNG)
+
+* Finially a function that will draw the canvis and the buttons on the canvis 
+* Aswell as a interval that will trigger very 100ms so that if the user resizes the screen it will also update to that and put in in the right position
+
+![image](https://github.com/SICTCCS/CCF/blob/main/images/done.PNG)
