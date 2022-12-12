@@ -70,3 +70,10 @@ This method was used for the addCard.html but is not required for the python scr
 ![image](https://user-images.githubusercontent.com/91961334/200909004-7da2e969-4d51-4e36-a2d2-7349e2b2c747.png)
 
 4. Add your information to the addCard.html. **DO NOT PUSH THIS TO A PUBLIC GITHUB**
+
+
+# nathan doc get.js
+
+* initialize fire base database
+
+![image](https://user-images.githubusercontent.com/91961334/firebase.png)
