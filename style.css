@@ -1,1 +1,227 @@
-.dropbtn{display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:#315879;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.dropbtn2{display:inline-block;font-weight:400;color:#fff;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:#708045;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.dropbtn2:hover{color:#fff;background-color:#006b00!important}.dropdown{position:relative;display:inline-block}.dropdown-content{display:none;position:absolute;background-color:#f1f1f1;min-width:160px;box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);z-index:1}.dropdown-content a{color:#000;padding:12px 16px;text-decoration:none;display:block}input{color:#000;text-decoration:none;display:block;padding-bottom:8px;padding-top:2px}.dropdown-content a:hover{background-color:#ddd}.dropdown:hover .dropdown-content{display:block}i.fa{font-family:FontAwesome!important}#search{display:inline-block;align-self:center;font-weight:400;line-height:1.5;color:#fff;text-align:center;text-decoration:none;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;background-color:#2b3316;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.return-to-top{position:fixed;bottom:20px;right:20px;background:#000;width:50px;height:50px;display:block;text-decoration:none;-webkit-border-radius:35px;-moz-border-radius:35px;border-radius:35px;display:none;-webkit-transition:all .3s linear;-moz-transition:all .3s ease;-ms-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;z-index:999}.return-to-top i{color:#000;margin:0;position:relative;top:13px;left:15px;font-size:22px;-webkit-transition:all .3s ease;-moz-transition:all .3s ease;-ms-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;color:#fff}.return-to-top:hover{background:rgba(0,0,0,0.9)}.return-to-top:hover i{color:#fff;top:5px}.contain{display:inline-block;position:relative}.drop{position:absolute}.ddm{border-bottom:solid #000 1px}.ddm2{border-bottom:none;text-decoration:none;font-size:135%;font-weight:700}#invert{position:fixed;bottom:20px;left:20px;background:#000;width:50px;height:50px;display:block;text-decoration:none;-webkit-border-radius:35px;-moz-border-radius:35px;border-radius:35px;-webkit-transition:all .3s linear;-moz-transition:all .3s ease;-ms-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;z-index:999}#invert i{color:#000;margin:0;position:relative;top:13px;left:15px;font-size:22px;-webkit-transition:all .3s ease;-moz-transition:all .3s ease;-ms-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;color:#fff}#invert:hover{background:rgba(0,0,0,0.9)}#invert:hover i{color:#fff;top:5px}.btn-union{color:#fff!important;background-color:purple!important;border-color:purple!important}.dropdown-content a:hover{cursor:pointer}
+.dropbtn {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #315879;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.dropbtn:hover {
+    background-color: #193650;
+}
+
+.dropbtn2 {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #708045;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.dropbtn2:hover {
+    color: #fff;
+    background-color: #006b00!important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+input {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding-bottom: 8px;
+    padding-top: 2px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+i.fa {
+    font-family: FontAwesome!important;
+}
+
+#search {
+    display: inline-block;
+    align-self: center;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #2b3316;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #000;
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 999;
+}
+
+.return-to-top i {
+    color: #000;
+    margin: 0;
+    position: relative;
+    top: 13px;
+    left: 15px;
+    font-size: 22px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    color: #fff;
+}
+
+.return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
+
+.contain {
+    display: inline-block;
+    position: relative;
+}
+
+.drop {
+    position: absolute;
+}
+
+.ddm {
+    border-bottom: solid #000 1px;
+}
+
+.ddm2 {
+    border-bottom: none;
+    text-decoration: none;
+    font-size: 135%;
+    font-weight: 700;
+}
+
+#invert {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #000;
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 999;
+}
+
+#invert i {
+    color: #000;
+    margin: 0;
+    position: relative;
+    top: 13px;
+    left: 15px;
+    font-size: 22px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    color: #fff;
+}
+
+#invert:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#invert:hover i {
+    color: #fff;
+    top: 5px;
+}
+
+.btn-union {
+    color: #fff!important;
+    background-color: purple!important;
+    border-color: purple!important;
+}
+
+.dropdown-content a:hover {
+    cursor: pointer;
+}

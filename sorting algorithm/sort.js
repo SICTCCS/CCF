@@ -1,5 +1,7 @@
 //open unsorted json file
-var json = require('C:/Users/padawan/Documents/CareerFair/sort/rawdata.json');
+var json = require('C:/Users/Stormtroopes/Documents/Github/CopyOfCCF/sorting algorithm/rawdata.json');
+// var json = require('C:/Users/Stormtroopes/Documents/CopyOfCCF/sorting algorithm/rawdata.json');
+
 
 //separate each dict from the firebase tag and out of the items tag
 var data = [];
