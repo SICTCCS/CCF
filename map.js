@@ -86,18 +86,18 @@ toList(automotive, "Automotive")
 var canvas = document.getElementById('imgcanvas');
 var context = canvas.getContext("2d");
 
-canvas.addEventListener("mousemove", mouseClicked, false);
+// canvas.addEventListener("mousemove", mouseClicked, false);
 canvas.addEventListener("click", mouseClicked, false);
 // makes map sprite so i can uses the cord on the image and will resize to the size of the users screen
 var mapSprite = new Image();
-mapSprite.src = "./images/sictcMapFinal.jpg";
+mapSprite.src = "./images/sictcMapFinalResized.jpg";
 
 
 var Button = function() {
     this.Sprite = new Image();
     this.Sprite.src = "./images/dropdown.png"
-    this.Width = 75;
-    this.Height = 75;
+    this.Width = 55;
+    this.Height = 55;
     this.XPos = 0;
     this.YPos = 0;
 }
@@ -113,10 +113,10 @@ var addButton = function(cord1, cord2) {
     buttons.push(button);
 }
 
-addButton(620, 440)
-addButton(360, 210)
-addButton(315, 150)
-addButton(100, 450)
+addButton(550, 440)
+addButton(355, 240)
+addButton(315, 175)
+addButton(140, 430)
 
 function mouseClicked(event) {
     for (var i = 0; i < buttons.length; i++) {
@@ -125,7 +125,7 @@ function mouseClicked(event) {
         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
         if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
-            document.getElementById("main").style.display = "block"
+            // document.getElementById("main").style.display = "block"
             document.getElementById("main").innerHTML = butten[i].innerHTML
             buttons[i].Sprite.src = "./images/dropdowns.png"
         } else { buttons[i].Sprite.src = "./images/dropdown.png" }

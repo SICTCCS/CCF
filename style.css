@@ -218,10 +218,17 @@ i.fa {
 
 .btn-union {
     color: #fff!important;
-    background-color: purple!important;
-    border-color: purple!important;
+    background-color: rgb(255, 213, 0)!important;
+    border-color: rgb(255, 213, 0)!important;
 }
 
 .dropdown-content a:hover {
     cursor: pointer;
+}
+
+.img-fluid.rounded-start {
+    margin-top:25%;
+    /* justify-content: center; */
+    min-height: 108px;
+    width:139px;
 }
