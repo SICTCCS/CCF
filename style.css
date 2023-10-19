@@ -232,3 +232,20 @@ i.fa {
     min-height: 108px;
     width:139px;
 }
+
+@media (max-width: 750px), (max-width: 1023px) {
+    ul .nav.nav-pills {
+        padding-left: 50%;
+    }
+
+    
+
+    #imgcanvas {
+        width:550px;
+        height:550px;
+    }
+
+    h2 {
+        align-items: center;
+    }
+}

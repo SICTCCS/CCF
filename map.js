@@ -113,10 +113,15 @@ var addButton = function(cord1, cord2) {
     buttons.push(button);
 }
 
-addButton(550, 440)
-addButton(355, 240)
-addButton(315, 175)
-addButton(140, 430)
+// addButton(550, 440)
+// addButton(355, 240)
+// addButton(315, 175)
+// addButton(140, 430)
+
+// addButton(550, 440)
+// addButton(355, 240)
+// addButton(315, 175)
+// addButton(140, 430)
 
 function mouseClicked(event) {
     for (var i = 0; i < buttons.length; i++) {
