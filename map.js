@@ -61,6 +61,12 @@ document.getElementById("AnimalScience/Agriculture").onclick = function() { wind
 document.getElementById("collegesbutton").onclick = function() { window.open("index.html?intrest=college", "_self") };
 document.getElementById("companiesbutton").onclick = function() { window.open("index.html?intrest=companies", "_self") };
 document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
+document.getElementById("foyerBTN").onclick = function() { window.open("index.html?area=1", "_self") };
+
+// document.getElementById("foyerBTN").onclick = function() { window.open("index.html?intrest=military", "_self") };
+// document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
+// document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
+// document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
 document.onkeydown = function(e) {
     e = e || window.event;
     switch (e.which || e.keyCode) {
