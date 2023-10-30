@@ -101,9 +101,9 @@ mapSprite.src = "./images/sictcMapFinalResized.jpg";
 
 var Button = function() {
     this.Sprite = new Image();
-    // this.Sprite.src = "./images/dropdown.png"
-    this.Width = 100;
-    this.Height = 100;
+    //this.Sprite.src = "./images/dropdown.png"
+    this.Width = 135;
+    this.Height = 135;
     this.XPos = 0;
     this.YPos = 0;
 }
@@ -124,10 +124,10 @@ var addButton = function(cord1, cord2) {
 // addButton(315, 175)
 // addButton(140, 430)
 
-addButton(550, 440)
-addButton(355, 240)
-addButton(315, 175)
-addButton(140, 430)
+addButton(550, 490) //construction
+addButton(355, 280) //foyer
+addButton(315, 210) //assembly
+addButton(140, 480) //auto
 
 // Function to get the pixel color at a specific coordinate
 function getPixelColor(x, y) {
@@ -153,13 +153,16 @@ function mouseClicked(event) {
         var rect = canvas.getBoundingClientRect()
         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
-        if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
             document.getElementById("main").style.display = "block"
             document.getElementById("main").innerHTML = butten[i].innerHTML
             // buttons[i].Sprite.src = "./images/dropdowns.png"
-        }
+        
     }
 }
+// console.log(document.getElementById("foyerBTN"))
+// document.getElementById("foyerBTN").onClick(foyerAdd());
+
+
 // draws the map 
 var draw = function() {
     context.fillStyle = "#000";
