@@ -96,14 +96,14 @@ var context = canvas.getContext("2d");
 canvas.addEventListener("click", mouseClicked, false);
 // makes map sprite so i can uses the cord on the image and will resize to the size of the users screen
 var mapSprite = new Image();
-mapSprite.src = "./images/sictcMapFinalResized.jpg";
+mapSprite.src = "./images/newMap.png";
 
 
 var Button = function() {
     this.Sprite = new Image();
     this.Sprite.src = "./images/dropdown.png"
-    this.Width = 100;
-    this.Height = 100;
+    this.Width = 50;
+    this.Height = 50;
     this.XPos = 0;
     this.YPos = 0;
 }
@@ -145,12 +145,16 @@ function mouseClicked(event) {
             
             if(i==0){
                 buttons[i].Sprite.src = "./images/1.png"
+                mapSprite.src = "./images/conMap.png";
             }else if(i==1){
                 buttons[i].Sprite.src = "./images/2.png"
+                mapSprite.src = "./images/foyerMap.png";
             }else if(i==2){
                 buttons[i].Sprite.src = "./images/3.png"
+                mapSprite.src = "./images/assemblyMap.png";
             }else if(i==3){
                 buttons[i].Sprite.src = "./images/4.png"
+                mapSprite.src = "./images/autoMap.png";
             }
             // buttons[i].Sprite.src = "./images/dropdowns.png"
         } else { buttons[i].Sprite.src = "./images/dropdown.png" }
