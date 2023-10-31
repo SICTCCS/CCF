@@ -1,7 +1,7 @@
-const automotive = ["Hopf Equipment", "H&R Agri-Power", "Henderson Ford", "Ivy Tech Automotive", "Evapar, Inc.", "Hutson, Inc.", "Boyd Company", "Black Equipment", "Wabash Valley College"]
-const construction = ["Healthy Spaces", "Hydromax Plumbing Inc.", "BNG Heating & Cooling", "Indiana Laborers Training Fund", "Evansville Electrical JATC", "Sheet Metal Workers Local 20", "Southwestern Indiana Builders Association", "A+ Derr Heating & Cooling", "Bricklayers Local 4", "Greer's Flooring America", "Carpenter/IKORCC", "Danco Construction, Inc."]
-const foyer = ["Kiesel Enterprises, INC", "Red Spot Paint & Varnish", "Parrish Consulting Services, Inc.", "AmeriQual Group LLC", "Berry Global", "Hafer", "Uniseal, LG Chem", "Jasper Rubber Products, Inc", "University of Evansville", "Vincennes University", "Traylor Brothers", "AstraZeneca", "Menard Inc.", "Universal Technical Institute", "Silgan Closures", "Matrix Design Group", "PIA Automation", "University of Southern Indiana -Dept of Engineering", "Industrial Filter Manufacturers", "Brake Supply Company Inc", "KIMBALL ELECTRONICS", "Henderson Community College", "McDonald's", "Warehouse Services, Inc.", "Ascension St. Vincent Evansville", "Indiana Tech", "Keller Schroeder", "Murray State University", "Sign Crafters, Inc.", "Trilogy Health Services", "Plumbers & Steamfitters LU 136", "NIX", "S & S Machine Shop, Inc", "American Senior Communities", "Triad Fabricators, LLC", "Purdue Polytechnic Vincennes", "SABIC", "ProgressiveHealth", "ProRehab", "Koorsen Fire & Security", "FLANDERS", "Meyer Distributing & Meyer Logistics", "WNIN Tri-State Public Media, Inc.", "Owensboro Community", "Southern Illinois University", "Wabash Valley College Radio/TV", "Vanderburgh County Sheriff's Office", "WEOA RADIO", "HCC FAME", "Murray State University", "Marine Corps", "Prodigy Mold & Tool, Inc.", "BFit"]
-const assembly = ["United States Navy", "Good Samaritan Home", "LIFT Academy", "Evansville Police Department", "Evansville Fire Department", "Southern Illinois University School of Health Sciences", "Infinity Molding & Assembly, Inc.", "US Army", "Deaconess", "Ciholas, Inc.", "BWX Technologies", "Metronet", "ECS Solutions Inc", "Project Associates Inc.", "Gribbins Specialty Group, Inc.", "The Arc Southwest Indiana", "Torsion Plastics", "Indiana Job Corps", "IU Luddy School of Informatics, Computing, and Engineering", "Hella Electronics Corp.", "Illinois Eastern Community Colleges", "Rose-Hulman Institute of Technology", "FedEx Ground", "Alliance Technical Group, LLC", "Franklin College", "ECS LIMITED", "Ivy Tech Community College"]
+const automotive = []
+const construction = []
+const foyer = ["Meyer Truck Equipment","","Toyota","American Senior Communities","Indiana Tech","Murray State University School of Nursing and Health Professions","Indiana Laborers Training Fund","Gribbins Specialty Group","Indiana State Police","AstraZeneca","University of Southern Indiana - Dept. of Engineering","Vermeer Midwest","Fibertech Plastics","Indiana Air National Guard","Rexing Companies","Brown Equipment Company (BEC)","American Grease and Septic","Euronique Inc.","Industrial Filter Manufacturers","EBN Bostwick Braun","Tri-State Orthopaedics","","Branchville Correctional Facility","Matrix Design Group","D-Patrick","E&B Paving","The State Group","Evansville Fire Department","FLANDERS","Owensboro Community & Technical College Vet Tech Program","Vincennes University Precision Machining Technology","ProRehab","American Senior Communities","US Army","NIX","Murray State University School of Nursing and Health Professions","Berry Global","Ivy Tech CC - School of Technology","Deaconess Health System","BFIT","Deaconess Cardiopulmonary Rehab and Deaconess Heart Group","Material Management Technologies","Purdue Polytechnic Institute/Vincennes","University of Southern Indiana Dental Assisting and Dental Hygiene Programs","Murray State University  / School of Engineering","FLANDERS","Aflac","University of Southern Indiana - Romain College of Business","HMC Gears","USI Food and Nutrition Dept.","Southern Illinois University - School of Aviation","Red Spot Paint & Varnish","USI Communication and Media Department","Illinois Eastern Community Colleges","University of Southern Indiana","Pappa Bear's Catering"]
+const assembly = []
     // makes list of loctaions
 
 // OLD TOLIST keep might eventualy go back to a img tag instade of canvas
@@ -47,21 +47,21 @@ class b {
 
 // all the button will open other screen and set querry tag to know to run a function on that page 
 document.getElementById("allbutton").onclick = function() { window.open("index.html?search=", "_self") };
-document.getElementById("search").onclick = function() { window.open(("index.html?search=" + document.getElementById("ui").value).toLowerCase(), "_self") };
-document.getElementById("Manufacturing").onclick = function() { window.open("index.html?intrest=Manufacturing", "_self") };
-document.getElementById("Transportation").onclick = function() { window.open("index.html?intrest=Transportation", "_self") };
-document.getElementById("Engineering").onclick = function() { window.open("index.html?intrest=Engineering", "_self") };
-document.getElementById("HealthSciences").onclick = function() { window.open("index.html?intrest=Health Sciences", "_self") };
-document.getElementById("Communication").onclick = function() { window.open("index.html?intrest=Communication", "_self") };
-document.getElementById("PublicSafety").onclick = function() { window.open("index.html?intrest=Public Safety", "_self") };
-document.getElementById("CulinaryArts").onclick = function() { window.open("index.html?intrest=Culinary Arts", "_self") };
-document.getElementById("Construction").onclick = function() { window.open("index.html?intrest=Construction", "_self") };
-document.getElementById("ComputerTechnology").onclick = function() { window.open("index.html?intrest=Computer Technology", "_self") };
-document.getElementById("AnimalScience/Agriculture").onclick = function() { window.open("index.html?intrest=Animal Science/Agriculture", "_self") };
-document.getElementById("collegesbutton").onclick = function() { window.open("index.html?intrest=college", "_self") };
-document.getElementById("companiesbutton").onclick = function() { window.open("index.html?intrest=companies", "_self") };
-document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
-document.getElementById("foyerBTN").onclick = function() { window.open("index.html?area=1", "_self") };
+// document.getElementById("search").onclick = function() { window.open(("index.html?search=" + document.getElementById("ui").value).toLowerCase(), "_self") };
+// document.getElementById("Manufacturing").onclick = function() { window.open("index.html?intrest=Manufacturing", "_self") };
+// document.getElementById("Transportation").onclick = function() { window.open("index.html?intrest=Transportation", "_self") };
+// document.getElementById("Engineering").onclick = function() { window.open("index.html?intrest=Engineering", "_self") };
+// document.getElementById("HealthSciences").onclick = function() { window.open("index.html?intrest=Health Sciences", "_self") };
+// document.getElementById("Communication").onclick = function() { window.open("index.html?intrest=Communication", "_self") };
+// document.getElementById("PublicSafety").onclick = function() { window.open("index.html?intrest=Public Safety", "_self") };
+// document.getElementById("CulinaryArts").onclick = function() { window.open("index.html?intrest=Culinary Arts", "_self") };
+// document.getElementById("Construction").onclick = function() { window.open("index.html?intrest=Construction", "_self") };
+// document.getElementById("ComputerTechnology").onclick = function() { window.open("index.html?intrest=Computer Technology", "_self") };
+// document.getElementById("AnimalScience/Agriculture").onclick = function() { window.open("index.html?intrest=Animal Science/Agriculture", "_self") };
+// document.getElementById("collegesbutton").onclick = function() { window.open("index.html?intrest=college", "_self") };
+// document.getElementById("companiesbutton").onclick = function() { window.open("index.html?intrest=companies", "_self") };
+// document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
+// document.getElementById("foyerBTN").onclick = function() { window.open("index.html?area=1", "_self") };
 
 // document.getElementById("foyerBTN").onclick = function() { window.open("index.html?intrest=military", "_self") };
 // document.getElementById("militarybutton").onclick = function() { window.open("index.html?intrest=military", "_self") };
@@ -99,20 +99,28 @@ var mapSprite = new Image();
 mapSprite.src = "./images/newMap.png";
 
 
-var Button = function() {
+var Button = function(btn) {
     this.Sprite = new Image();
-    this.Sprite.src = "./images/dropdown.png"
-    this.Width = 50;
-    this.Height = 50;
+    if(btn==1){
+        this.Sprite.src = "./images/1.png"
+    }else if(btn==2){
+        this.Sprite.src = "./images/2.png"
+    }else if(btn==3){
+        this.Sprite.src = "./images/3.png"
+    }else if(btn==4){
+        this.Sprite.src = "./images/4.png"
+    }
+    this.Width = 80;
+    this.Height = 80;
     this.XPos = 0;
     this.YPos = 0;
 }
 
 var buttons = []
 
-var addButton = function(cord1, cord2) {
+var addButton = function(cord1, cord2,btn) {
 
-    var button = new Button();
+    var button = new Button(btn);
     button.XPos = cord1 - (button.Width / 2);
     button.YPos = cord2 - button.Height;
 
@@ -124,10 +132,10 @@ var addButton = function(cord1, cord2) {
 // addButton(315, 175)
 // addButton(140, 430)
 
-addButton(115, 100) //construction
-addButton(250, 100) //foyer
-addButton(390, 100) //assembly
-addButton(545, 100) //auto
+addButton(115, 100,1) //construction
+addButton(250, 100,2) //foyer
+addButton(390, 100,4) //assembly
+addButton(545, 100,3) //auto
 
 
 
@@ -157,7 +165,15 @@ function mouseClicked(event) {
                 mapSprite.src = "./images/autoMap.png";
             }
             // buttons[i].Sprite.src = "./images/dropdowns.png"
-        } else { buttons[i].Sprite.src = "./images/dropdown.png" }
+        } else { if(i==0){
+            buttons[i].Sprite.src = "./images/1.png"
+        }else if(i==1){
+            buttons[i].Sprite.src = "./images/2.png"
+        }else if(i==2){
+            buttons[i].Sprite.src = "./images/4.png"
+        }else if(i==3){
+            buttons[i].Sprite.src = "./images/3.png"
+        }}
     }
 }
 
