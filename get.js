@@ -200,7 +200,7 @@ document.getElementById("Engineering").onclick = function() { addinterest("engin
 document.getElementById("HealthSciences").onclick = function() { addinterest("health sciences") };
 document.getElementById("Communication").onclick = function() { addinterest("communications") };
 document.getElementById("PublicSafety").onclick = function() { addinterest("public safety") };
-document.getElementById("CulinaryArts").onclick = function() { addinterest("culinary Arts") };
+document.getElementById("CulinaryArts").onclick = function() { addinterest("culinary arts") };
 document.getElementById("Construction").onclick = function() { addinterest("construction") };
 document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
@@ -209,6 +209,7 @@ document.getElementById("foyerBTN").onclick = function() { addFoyer() };
 document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
 document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
 document.getElementById("constructionBTN").onclick = function() { addConstruction() };
+
 // document.getElementById("assemblyBTN").onclick = function() { window.open("index.html?area=1", "_self") };
 // document.getElementById("autoServiceBTN").onclick = function() { window.open("index.html?area=3", "_self") };
 // document.getElementById("constructionBTN").onclick = function() { window.open("index.html?area=4", "_self") };
