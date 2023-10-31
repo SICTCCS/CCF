@@ -150,10 +150,10 @@ function mouseClicked(event) {
                 buttons[i].Sprite.src = "./images/2.png"
                 mapSprite.src = "./images/foyerMap.png";
             }else if(i==2){
-                buttons[i].Sprite.src = "./images/3.png"
+                buttons[i].Sprite.src = "./images/4.png"
                 mapSprite.src = "./images/assemblyMap.png";
             }else if(i==3){
-                buttons[i].Sprite.src = "./images/4.png"
+                buttons[i].Sprite.src = "./images/3.png"
                 mapSprite.src = "./images/autoMap.png";
             }
             // buttons[i].Sprite.src = "./images/dropdowns.png"
