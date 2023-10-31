@@ -101,9 +101,9 @@ mapSprite.src = "./images/sictcMapFinalResized.jpg";
 
 var Button = function() {
     this.Sprite = new Image();
-    //this.Sprite.src = "./images/dropdown.png"
-    this.Width = 135;
-    this.Height = 135;
+    this.Sprite.src = "./images/dropdown.png"
+    this.Width = 100;
+    this.Height = 100;
     this.XPos = 0;
     this.YPos = 0;
 }
@@ -124,41 +124,52 @@ var addButton = function(cord1, cord2) {
 // addButton(315, 175)
 // addButton(140, 430)
 
-addButton(550, 490) //construction
-addButton(355, 280) //foyer
-addButton(315, 210) //assembly
-addButton(140, 480) //auto
+addButton(115, 100) //construction
+addButton(250, 100) //foyer
+addButton(390, 100) //assembly
+addButton(545, 100) //auto
 
-// Function to get the pixel color at a specific coordinate
-function getPixelColor(x, y) {
-    const pixel = context.getImageData(x, y, 1, 1).data;
-    console.log(pixel);
-    
-    // console.log(`rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`);
-}
+
 
 // // Event listener for mouse click
-canvas.addEventListener('click', (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    const pixelColor = getPixelColor(x, y);
-    console.log(`Pixel color at (${x}, ${y}): ${pixelColor}`);
-});
 
 function mouseClicked(event) {
-    // getPixelColor();
     for (var i = 0; i < buttons.length; i++) {
         //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
         var rect = canvas.getBoundingClientRect()
         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+        if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
             document.getElementById("main").style.display = "block"
             document.getElementById("main").innerHTML = butten[i].innerHTML
+            
+            if(i==0){
+                buttons[i].Sprite.src = "./images/1.png"
+            }else if(i==1){
+                buttons[i].Sprite.src = "./images/2.png"
+            }else if(i==2){
+                buttons[i].Sprite.src = "./images/3.png"
+            }else if(i==3){
+                buttons[i].Sprite.src = "./images/4.png"
+            }
             // buttons[i].Sprite.src = "./images/dropdowns.png"
-        
+        } else { buttons[i].Sprite.src = "./images/dropdown.png" }
     }
 }
+
+// function mouseClicked(event) {
+//     // getPixelColor();
+//     for (var i = 0; i < buttons.length; i++) {
+//         //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+//         var rect = canvas.getBoundingClientRect()
+//         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+//         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+//             document.getElementById("main").style.display = "block"
+//             document.getElementById("main").innerHTML = butten[i].innerHTML
+//             buttons[i].Sprite.src = "./images/dropdown.png"
+                   
+//     }
+// }
 // console.log(document.getElementById("foyerBTN"))
 // document.getElementById("foyerBTN").onClick(foyerAdd());
 
