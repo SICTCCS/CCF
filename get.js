@@ -63,6 +63,57 @@ function addColleges() {
         }
     });
 }
+
+function addFoyer() {
+    database.ref("Items").on('value', (snapshot) => {
+        document.getElementById("body-output").innerHTML = "";
+        const data = snapshot.val();
+        var items = Object.values(data);
+        for (let l in items) {
+            if (items[l]["area"] == 1) {
+                addCard(items[l]);
+            }
+        }
+    });
+}
+
+function addAssembly() {
+    database.ref("Items").on('value', (snapshot) => {
+        document.getElementById("body-output").innerHTML = "";
+        const data = snapshot.val();
+        var items = Object.values(data);
+        for (let l in items) {
+            if (items[l]["area"] == 2) {
+                addCard(items[l]);
+            }
+        }
+    });
+}
+
+function addAuto() {
+    database.ref("Items").on('value', (snapshot) => {
+        document.getElementById("body-output").innerHTML = "";
+        const data = snapshot.val();
+        var items = Object.values(data);
+        for (let l in items) {
+            if (items[l]["area"] == 3) {
+                addCard(items[l]);
+            }
+        }
+    });
+}
+function addConstruction() {
+    database.ref("Items").on('value', (snapshot) => {
+        document.getElementById("body-output").innerHTML = "";
+        const data = snapshot.val();
+        var items = Object.values(data);
+        for (let l in items) {
+            if (items[l]["area"] == 4) {
+                addCard(items[l]);
+            }
+        }
+    });
+}
 //same function just with an if statement to only pass in Companies
 
 function addCompanies() {
@@ -149,11 +200,19 @@ document.getElementById("Engineering").onclick = function() { addinterest("engin
 document.getElementById("HealthSciences").onclick = function() { addinterest("health sciences") };
 document.getElementById("Communication").onclick = function() { addinterest("communications") };
 document.getElementById("PublicSafety").onclick = function() { addinterest("public safety") };
-document.getElementById("CulinaryArts").onclick = function() { addinterest("culinary Arts") };
+document.getElementById("CulinaryArts").onclick = function() { addinterest("culinary arts") };
 document.getElementById("Construction").onclick = function() { addinterest("construction") };
 document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
 document.getElementById("search").onclick = function() { addinterest((document.getElementById("ui").value).toLowerCase()) };
+document.getElementById("foyerBTN").onclick = function() { addFoyer() };
+document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
+document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
+document.getElementById("constructionBTN").onclick = function() { addConstruction() };
+
+// document.getElementById("assemblyBTN").onclick = function() { window.open("index.html?area=1", "_self") };
+// document.getElementById("autoServiceBTN").onclick = function() { window.open("index.html?area=3", "_self") };
+// document.getElementById("constructionBTN").onclick = function() { window.open("index.html?area=4", "_self") };
 
 
 // adds a event to lisen if enter is clicked when it is it will search the page becuase its annoying to have to type then click search button
