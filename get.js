@@ -35,13 +35,13 @@ if (!String.prototype.format) {
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
-    // call database catagory (reference) "Items" and on a changed value take a snapshot, then:
+    // call database category (reference) "Items" and on a changed value take a snapshot, then:
     database.ref("Items").on('value', (snapshot) => {
         //call the HTML document and get element with id "body-output" (body), set the HTML code to "" (resets the body to prevent duplication)
         document.getElementById("body-output").innerHTML = "";
         //constant data = snapshot.val() which makes snapshot a readable dictionary
         const data = snapshot.val();
-        //variable items = the values of data, which is all of the individual dictionaries in the "Items" catagory on firebase - AKA each college/company
+        //variable items = the values of data, which is all of the individual dictionaries in the "Items" category on firebase - AKA each college/company
         var items = Object.values(data);
         //for each object "l" in items (each item with the weird looking names - each college/company)
         for (let l in items) {
@@ -172,7 +172,7 @@ function addinterest(interest) {
             }
 
         }
-        // if no resalts are found then show this page saying try anouther search
+        // if no results are found then show this page saying try anouther search
         if (content === false) {
             document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
