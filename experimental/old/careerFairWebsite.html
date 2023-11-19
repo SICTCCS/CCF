@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <title>Career Fair
+        </title>
+        <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+        <!-- <script type="module" src="get.js"></script> -->
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyAneiYMGEzQslJ9stxikkG-WDIp4vFBIdE",
+                authDomain: "sictc-career-fair.firebaseapp.com",
+                projectId: "sictc-career-fair",
+                storageBucket: "sictc-career-fair.appspot.com",
+                messagingSenderId: "513234627322",
+                appId: "1:513234627322:web:bb29fecd5ceeea674b3743",
+                measurementId: "G-1GKEYRGJXZ",
+                databaseURL: "https://sictc-career-fair-default-rtdb.firebaseio.com/"
+              };
+            firebase.initializeApp(firebaseConfig);
+            const app = initializeApp(firebaseConfig);
+            var database = firebase.database();
+            
+            function getVals(database){
+                database.ref("Items").on('value', (snapshot) => {
+                    const data = snapshot.val();
+                    var items = Object.values(data);
+
+                    // returns array of objects
+                    console.log(items);
+
+                    // take each object out of array and pass it into setUpTable which will be setting up template
+                    for (let l in items){
+                        addTemplate(items[l]);
+                    }
+                    
+                    // listy.push(Object.keys(items).map((key) => [items[key]]));
+                });
+            }
+            
+            getVals(database);
+            
+            function addTemplate(l){
+                // in addTemplate add conditionals for interest areas and type (for background color) ????
+                
+                // 0 = image
+                // 1 = website
+                // 2 = name
+                // 3,4,5,6,7 = ia1,ia2,ia3,ia4,ia5
+                // 8 = desc
+
+                //https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
+                //modifying String's prototype - i love stack overflow
+                if (!String.prototype.format) {
+                    String.prototype.format = function() {
+                        var args = arguments;
+                        return this.replace(/{(\d+)}/g, function(match, number) { 
+                            return typeof args[number] != 'undefined'
+                                ? args[number]
+                                : match
+                            ;
+                        });
+                    };
+                }
+
+                var prevDiv = document.getElementById("output").innerHTML;
+
+                var div = `
+                    <div class="grid-container">
+                        <div class="item1"><img src={0} alt="picture" height="250" width="250" ></div>
+                        <div class="item4"><h1 align="left"><a href={1}>{2}</a></h1></div>
+                        <div class="item2"><h2>Interests</h2>
+                            <ul>
+                                <li>{3}</li> 
+                                <li> {4}</li> 
+                                <li> {5}</li> 
+                                <li>{6}</li> 
+                                <li>{7}</li>
+                            </ul>
+                        </div>
+                        <div class="item3"><p align="left">{8}</p></div>  
+                    </div>
+                    `.format(l["logo"],l["web"],l["name"],l["ia1"],l["ia2"],l["ia3"],l["ia4"],l["ia5"],l["desc"]);
+
+                document.getElementById("output").innerHTML = prevDiv + div;
+            }
+            </script>
+    </head>
+    
+    <body>
+        <div id="output"></div>
+    </body>
+</html>
+

@@ -1,5 +1,7 @@
+//importing the initializeApp method from another js file on the web
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
 
+//setting up a constant variable (never changes) with all of the database information
 const firebaseConfig = {
     apiKey: "AIzaSyAneiYMGEzQslJ9stxikkG-WDIp4vFBIdE",
     authDomain: "sictc-career-fair.firebaseapp.com",
@@ -11,8 +13,9 @@ const firebaseConfig = {
     databaseURL: "https://sictc-career-fair-default-rtdb.firebaseio.com/"
     };
 
+//initializing the firebase with our config
 firebase.initializeApp(firebaseConfig);
-const app = initializeApp(firebaseConfig);
+//making a "database" variable to prevent typing firebase.database() every time
 var database = firebase.database();
 
 //https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
@@ -31,19 +34,24 @@ if (!String.prototype.format) {
 }
 
 //four functions for filtering
-//script will run addAll() by default but when a filter button is click it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
+//script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 function addAll(){
+    //call database catagory (reference) "Items" and on a changed value take a snapshot, then:
     database.ref("Items").on('value', (snapshot) => {
-        // this resets the body since the .on() will run everytime the database is updated and cause duplication
+        //call the HTML document and get element with id "body-output" (body), set the HTML code to "" (resets the body to prevent duplication)
         document.getElementById("body-output").innerHTML = "";
+        //constant data = snapshot.val() which makes snapshot a readable dictionary
         const data = snapshot.val();
+        //variable items = the values of data, which is all of the individual dictionaries in the "Items" catagory on firebase - AKA each college/company
         var items = Object.values(data);
+        //for each object "l" in items (each item with the weird looking names - each college/company)
         for (let l in items){
+            //pass each individual college/company (each dictionary) into addCard, which builds out the html
             addCard(items[l]);
         }
     });
 }
-
+//same function just with an if statement to only pass in colleges
 function addColleges(){
     database.ref("Items").on('value', (snapshot) => {
         document.getElementById("body-output").innerHTML = "";
@@ -82,17 +90,20 @@ function addMilitary(){
         }
     });
 }
-
+//run addAll() by default
 addAll();
 
 //https://www.w3schools.com/jsref/event_onclick.asp
+//these are basically if statements or "onClickListeners" if you will
 document.getElementById("allbutton").onclick = function() {addAll()};
 document.getElementById("collegesbutton").onclick = function() {addColleges()};
 document.getElementById("companiesbutton").onclick = function() {addCompanies()};
 document.getElementById("militarybutton").onclick = function() {addMilitary()};
 
-function addCard(l){
 
+//the addCard function takes in "l" which would be a list and uses it to build out each card 
+function addCard(l){
+    //getting the body's previous information
     var prevDiv = document.getElementById("body-output").innerHTML;
 
     var div = `
@@ -148,6 +159,6 @@ function addCard(l){
     }
 
     div = div + `</ul></div></div></div>`;
-
+    //adding the new information to the previous information and putting it into the body
     document.getElementById("body-output").innerHTML = prevDiv + div;
 }

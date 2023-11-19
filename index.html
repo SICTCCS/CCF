@@ -1,115 +1,41 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
-<head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS only -->
-    <!-- this pulls in the bootstrap css that logan found-->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+        <title>Career Fair</title>
+        <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+        <script type="module" src="get.js"></script>
+    </head>
 
-    <title>College and Career Fair</title>
-
-    <!--gets the data from firebase-->
-    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--use the js file go through everything-->
-    <script type="module" src="get.js"></script>
-
-</head>
-
-<!-- this is how bootstrap centers their words-->
-<header class="d-lg-flex justify-content-center py-3" id="header-output">
-    <div class="title">
-        <h2>SICTC College and Career Fair</h2>
-    </div>    <!-- this is the button that will take you back to the top-->
-    <a href="javascript:" class="return-to-top"><i class="fa fa-arrow-up"></i></a>
-    <!-- this adds the button to invert the colors-->
-    <a href="javascript:" id="invert"><i id="inverted" class="fa fa-moon-o"></i></a>
-</header>
-
-<header class="d-lg-flex justify-content-center py-3 border-bottom" id="header-output">
-    <div>
-        <!-- list for the nav -->
+    <header class="modal-header" id="header-output">
+        <div class="title"><h2>SICTC College and Career Fair</h2></div>
         <ul class="nav nav-pills">
-            <!--pulls the buttons in the top right corner and depending on which button is pressed will call the class from the js file to organize it-->
+            <li class="nav-item">
+                <h5 style="padding-right:10px;">Filter:</h5>
+            </li>
             <li class="nav-item" style="padding-right:10px;">
                 <button class="btn btn-secondary" id="allbutton">All</button>
             </li>
-
-            <!-- this is the button to the map view currently disabled untell info is updated to the lists -->
-            <li class="nav-item" style="padding-right:10px;"><a class="dropbtn2" href="mapView.html" style="text-decoration:none; background-color: green;">MapView</a></li>
-
-            <!-- this is the button to the map view currently disabled untell info is updated to the lists -->
-            <!-- <li class="nav-item" style="padding-right:10px;"><a class="dropbtn2" href="mapView.html" style="text-decoration:none; background-color: green;">MapView</a></li> -->
-            <!-- types buttons -->
-
             <li class="nav-item" style="padding-right:10px;">
-                <div class="dropdown">
-                    <button class="dropbtn3">Areas <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                        <a class=" " id="assemblyBTN">Assembly Hall</a>
-                        <a class=" " id="foyerBTN">Foyer</a>
-                        <a class="" id="autoServiceBTN">Auto Service</a>
-                        <a class="" id="constructionBTN">Construction</a>
-                    </div>
-                </div>
+                <button class="btn btn-danger" id="collegesbutton">Colleges</button>
             </li>
             <li class="nav-item" style="padding-right:10px;">
-                <div class="dropdown">
-                    <button class="dropbtn2">Types <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                        <a class=" " id="collegesbutton">Colleges</a>
-                        <a class=" " id="companiesbutton">Companies</a>
-                        <a class="" id="militarybutton">Military</a>
-                        <a class="" id="Unionsbutton">Unions</a>
-                    </div>
-                </div>
+                <button class="btn btn-primary" id="companiesbutton">Companies</button>
             </li>
-
-            
-            <!--Interest buttons -->
             <li class="nav-item" style="padding-right:10px;">
-                <div class="dropdown">
-                    <button class="dropbtn">Interests <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                        <a id="Manufacturing">Manufacturing</a>
-                        <a id="Transportation">Transportation</a>
-                        <a id="Engineering">Engineering</a>
-                        <a id="HealthSciences">Health Sciences</a>
-                        <a id="Communication">Communication</a>
-                        <a id="PublicSafety">Public Safety</a>
-                        <a id="CulinaryArts">Culinary Arts</a>
-                        <a id="Construction">Construction</a>
-                        <a id="ComputerTechnology">Computer Technology</a>
-                        <a id="AnimalScience/Agriculture">Animal Science/Agriculture</a>
-                    </div>
-                </div>
-            </li>
-            <!-- search button -->
-            <li> <input type="text" id="ui" placeholder="Search Site" ></li>
-            <li class="nav-item" style="padding-right:10px;">
-
-
-                <button id="search"><i class="fa fa-search fa-1x"></i></button>
+                <button class="btn btn-success" id="militarybutton">Military</button>
             </li>
         </ul>
-    </div>
-</header>
+    </header>
 
-
-<body class="container-sm">
-    <div id="body-output" align="center" style="padding-top:15px;"></div>
-
-    
-
-
-</body>
+    <body class="container-sm">
+        <div id="body-output" align="center" style="padding-top:15px;"></div>
+    </body>
 
 </html>

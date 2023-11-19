@@ -31,14 +31,19 @@ if (!String.prototype.format) {
 }
 
 //four functions for filtering
-//script will run addAll() by default but when a filter button is click it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
+//script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 function addAll(){
+    //call database catagory (reference) "Items" and on a changed value take a snapshot, then:
     database.ref("Items").on('value', (snapshot) => {
-        // this resets the body since the .on() will run everytime the database is updated and cause duplication
+        //call the HTML document and get element with id "body-output" (body), set the HTML code to "" (resets the body to prevent duplication)
         document.getElementById("body-output").innerHTML = "";
+        //constant data = snapshot.val() which makes snapshot a readable dictionary
         const data = snapshot.val();
+        //variable items = the values of data, which is all of the individual dictionaries in the "Items" catagory on firebase - AKA each college/company
         var items = Object.values(data);
+        //for each object "l" in items (each item with the weird looking names - each college/company)
         for (let l in items){
+            //pass each individual college/company (each dictionary) into addCard, which builds out the html
             addCard(items[l]);
         }
     });
@@ -83,6 +88,14 @@ function addMilitary(){
     });
 }
 
+class addObjects{
+    constructor(name,logo,website,description,interests)
+}
+
+
+
+
+
 addAll();
 
 //https://www.w3schools.com/jsref/event_onclick.asp
@@ -90,6 +103,8 @@ document.getElementById("allbutton").onclick = function() {addAll()};
 document.getElementById("collegesbutton").onclick = function() {addColleges()};
 document.getElementById("companiesbutton").onclick = function() {addCompanies()};
 document.getElementById("militarybutton").onclick = function() {addMilitary()};
+
+
 
 function addCard(l){
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS only -->
+        <!-- this pulls in the bootstrap css that logan found-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+        <title>Career Fair</title>
+
+        <!--gets the data from firebase-->
+        <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+        <!--use the js file go through everything-->
+        <script type="module" src="get.js"></script>
+    </head>
+
+    <!-- this is how bootstrap centers their words-->
+    <header class="d-lg-flex justify-content-center py-3" id="header-output">
+        <div class="title"><h2>SICTC College and Career Fair</h2></div>
+    </header>
+
+    <header class="d-lg-flex justify-content-center py-3 border-bottom" id="header-output">
+        <div>
+            <ul class="nav nav-pills">
+                <!-- <li class="nav-item">
+                    <h5 style="padding-right:10px;">Filter:</h5>
+                </li> -->
+
+                <!--pulls the buttons in the top right corner and depending on which button is pressed will call the class from the js file to organize it-->
+                <li class="nav-item" style="padding-right:10px;">
+                    <button class="btn btn-secondary" id="allbutton">All</button>
+                </li>
+                <li class="nav-item" style="padding-right:10px;">
+                    <button class="btn btn-danger" id="collegesbutton">Colleges</button>
+                </li>
+                <li class="nav-item" style="padding-right:10px;">
+                    <button class="btn btn-primary" id="companiesbutton">Companies</button>
+                </li>
+                <li class="nav-item" style="padding-right:10px;">
+                    <button class="btn btn-success" id="militarybutton">Military</button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox -->
+
+    <!-- <header class="modal-header" id="header-filters">
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="manufacturing" name="manufacturing">
+                <label class="form-check-label" for="manufacturing">Manufacturing</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="welding" name="welding">
+                <label class="form-check-label" for="welding">Welding</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="engineering" name="engineering">
+                <label class="form-check-label" for="engineering">Engineering</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="comptech" name="comptech">
+                <label class="form-check-label" for="comptech">Computer Technology</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="healthsci" name="healthsci">
+                <label class="form-check-label" for="healthsci">Health Sciences</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="pubsaf" name="pubsaf">
+                <label class="form-check-label" for="pubsaf">Public Safety</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="construction" name="construction">
+                <label class="form-check-label" for="construction">Construction</label>
+        </div>
+        
+    </header> -->
+
+    <!--this goes throught the js class to print out all the different companies or colleges inside the style that we want-->
+    <body class="container-sm">
+        <div id="body-output" align="center" style="padding-top:15px;"></div>
+    </body>
+
+</html>

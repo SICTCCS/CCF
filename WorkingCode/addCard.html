@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Add Items</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!--uses bootstrap to style the website-->
+	<link rel="stylesheet" 
+        href="bootstrap.min.css">
+</head>
+
+<body class="container" style="margin-top: 50px; width: 50%; height:auto;">
+	
+	<h2 class="text-primary" style="margin-left: 15px; margin-bottom: 10px">
+		Add Items
+	</h2>
+	
+	<form class="container" id="contactForm">
+
+		<div class="card">
+			<!--this prints out the different bars to enter-->
+			<div class="card-body">
+				<!--the next 4 will print out the text boxes to type in and use the class from bootstrap to pull the info the user entered-->
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Name</label>
+					<input type="text" class="form-control" id="name" placeholder="Name">
+				</div>
+
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Logo</label>
+					<input type="text" class="form-control" id="logo" placeholder="Logo(picture)">
+				</div>
+
+                <div class="form-group">
+					<label for="exampleFormControlInput1">Website</label>
+					<input type="text" class="form-control" id="web" placeholder="Website html">
+				</div>
+				
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Description</label>
+					<input type="text" class="form-control" id="desc" placeholder="Description">
+				</div>
+
+				<!--will print out a group of text boxes to input interest areas in and set their id-->
+				<div class="form-group">
+					<fieldset>
+						<legend>Interest Areas:</legend>
+						<label for="ia1">1:</label><br>
+						<input type="text" id="ia1" name="ia1" value=""><br>
+						<label for="ia2">2:</label><br>
+						<input type="text" id="ia2" name="ia2" value=""><br>
+						<label for="ia3">3:</label><br>
+						<input type="text" id="ia3" name="ia3" value=""><br>
+						<label for="ia4">4:</label><br>
+						<input type="text" id="ia4" name="ia4" value=""><br>
+						<label for="ia5">5:</label><br>
+						<input type="text" id="ia5" name="ia5" value=""><br>
+					  </fieldset>
+				</div>
+
+				<!--this will create the drop down menu to choose what type it is-->
+                <div class="form-group">
+					<label for="exampleFormControlInput1">Type</label>
+						<select name="type" id="type">
+							<option value="College">College</option>
+							<option value="Company">Company</option>
+							<option value="Military">Military</option>
+						</select>
+				</div>
+
+			</div>
+			<!--creates the button and will call the class to take everything in when it is pushed-->
+			<button type="submit" class="btn btn-primary"
+				style="margin: 15px;">Submit</button>
+		</div>
+	</form>
+	<!--this creates the back button. When it is clicked it takes you back to the html career fair website-->
+	<form class="container" method="post" action="careerFairWebsite.html">
+		<button class="btn btn-secondary"
+			style="margin: 15px;">Back</button>
+	</form>
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	
+	<script>	//turns it back into js
+		var firebaseConfig = {
+		apiKey: "AIzaSyAneiYMGEzQslJ9stxikkG-WDIp4vFBIdE",
+		authDomain: "sictc-career-fair.firebaseapp.com",
+		projectId: "sictc-career-fair",
+		storageBucket: "sictc-career-fair.appspot.com",
+		messagingSenderId: "513234627322",
+		appId: "1:513234627322:web:bb29fecd5ceeea674b3743",
+		measurementId: "G-1GKEYRGJXZ",
+		databaseURL: "https://sictc-career-fair-default-rtdb.firebaseio.com/"
+		};
+		//this starts the firebase
+		firebase.initializeApp(firebaseConfig);
+
+		var db = firebase.database();
+
+		var messagesRef = db.ref('Items');
+		//this listens to see if the button is clicked and keeps track of the time stamp that it has
+		document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+		//this takes all the inputs from the user and puts them into the fire base function then clears the form
+		function submitForm(e) {e.preventDefault();
+
+			// Get values
+			var name = getInputVal('name');
+			var logo = getInputVal('logo');
+            var web = getInputVal('web');
+            var desc = getInputVal('desc');
+			var ia1 = getInputVal('ia1');
+			var ia2 = getInputVal('ia2');
+			var ia3 = getInputVal('ia3');
+			var ia4 = getInputVal('ia4');
+			var ia5 = getInputVal('ia5');
+			var type = getInputVal('type')
+
+			saveMessage(name,logo,web,desc,ia1,ia2,ia3,ia4,ia5,type);
+			document.getElementById('contactForm').reset();
+		}
+
+		// Function to get get form values
+		function getInputVal(id) {
+			return document.getElementById(id).value;
+		}
+
+		// Save message to firebase
+		function saveMessage(name,logo,web,desc,ia1,ia2,ia3,ia4,ia5,type) {
+			var newMessageRef = messagesRef.push();
+			newMessageRef.set({
+				name: name,
+                logo: logo,
+                web: web,
+                desc: desc,
+				ia1: ia1,
+				ia2: ia2,
+				ia3: ia3,
+				ia4: ia4,
+				ia5: ia5,
+				type: type,
+			});
+		}
+	</script>
+
+
+</body>
+
+</html>
