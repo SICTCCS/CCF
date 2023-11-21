@@ -9,7 +9,7 @@ class FirebaseClass:
     def __init__(self):
         #try:
             #Runs if ran with python.
-        self.default_app = initialize_app(credentials.Certificate('./private/private.json'),{'databaseURL': "https://fir-6c37f-default-rtdb.firebaseio.com"})
+        self.default_app = initialize_app(credentials.Certificate('./private/private.json'),{'databaseURL': "https://sictcccf-default-rtdb.firebaseio.com"})
         #except:
             #Runs if ran from .exe.
             #self.default_app = initialize_app(credentials.Certificate(f"{sys._MEIPASS}/private.json"),{'databaseURL': "https://fir-6c37f-default-rtdb.firebaseio.com"})

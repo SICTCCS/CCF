@@ -3,14 +3,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase
 
 //setting up a constant variable (never changes) with all of the database information
 const firebaseConfig = {
-    apiKey: "AIzaSyDila2fCQm8ZABBDxzTKh3HvMdBHHkxvEk",
-    authDomain: "fir-6c37f.firebaseapp.com",
-    databaseURL: "https://fir-6c37f-default-rtdb.firebaseio.com",
-    projectId: "fir-6c37f",
-    storageBucket: "fir-6c37f.appspot.com",
-    messagingSenderId: "717008018343",
-    appId: "1:717008018343:web:0308241cc1c1c43bea3482",
-    measurementId: "G-HEPEFVP8YJ"
+    apiKey: "AIzaSyBIgYvPowZd3viGd7moLOUjAe92r3H4SlE",
+    authDomain: "sictcccf.firebaseapp.com",
+    databaseURL: "https://sictcccf-default-rtdb.firebaseio.com",
+    projectId: "sictcccf",
+    storageBucket: "sictcccf.appspot.com",
+    messagingSenderId: "238921521038",
+    appId: "1:238921521038:web:417620ad7630a3330276df"
   };
 
 //initializing the firebase with our config
@@ -35,13 +34,13 @@ if (!String.prototype.format) {
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
-    // call database catagory (reference) "Items" and on a changed value take a snapshot, then:
+    // call database category (reference) "Items" and on a changed value take a snapshot, then:
     database.ref("Items").on('value', (snapshot) => {
         //call the HTML document and get element with id "body-output" (body), set the HTML code to "" (resets the body to prevent duplication)
         document.getElementById("body-output").innerHTML = "";
         //constant data = snapshot.val() which makes snapshot a readable dictionary
         const data = snapshot.val();
-        //variable items = the values of data, which is all of the individual dictionaries in the "Items" catagory on firebase - AKA each college/company
+        //variable items = the values of data, which is all of the individual dictionaries in the "Items" category on firebase - AKA each college/company
         var items = Object.values(data);
         //for each object "l" in items (each item with the weird looking names - each college/company)
         for (let l in items) {
@@ -172,7 +171,7 @@ function addinterest(interest) {
             }
 
         }
-        // if no resalts are found then show this page saying try anouther search
+        // if no results are found then show this page saying try anouther search
         if (content === false) {
             document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 

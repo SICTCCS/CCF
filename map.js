@@ -16,7 +16,7 @@ const assembly = ["Trilogy Health Services","Inotiv","Healthy Spaces","Boyd Comp
 //     all.appendChild(listy[i].button)
 //   }
 // }
-var butten = []
+var buttonList = []
     // makes list that can be hover over to show whats in them 
 function toList(listy, name) {
     let all = document.createElement("div")
@@ -28,7 +28,7 @@ function toList(listy, name) {
         listy[i] = new b(listy[i])
         all.appendChild(listy[i].button)
     }
-    butten.push(all)
+    buttonList.push(all)
 }
 
 // creates a class for the buttons so i can add href and classed to the button
@@ -149,7 +149,7 @@ function mouseClicked(event) {
         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
         if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
             document.getElementById("main").style.display = "block"
-            document.getElementById("main").innerHTML = butten[i].innerHTML
+            document.getElementById("main").innerHTML = buttonList[i].innerHTML
             
             if(i==0){
                 buttons[i].Sprite.src = "./images/1.png"
@@ -185,7 +185,7 @@ function mouseClicked(event) {
 //         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
 //         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
 //             document.getElementById("main").style.display = "block"
-//             document.getElementById("main").innerHTML = butten[i].innerHTML
+//             document.getElementById("main").innerHTML = buttonList[i].innerHTML
 //             buttons[i].Sprite.src = "./images/dropdown.png"
                    
 //     }
