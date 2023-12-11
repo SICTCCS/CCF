@@ -85,7 +85,7 @@ This method was used for the addCard.html, but it's not required for the python 
 
 ![image](docImg/docAddAllFunction.png)
 
-* Thenis one of the 4 function used to sort by interests they are all almost the same, but each detects different types
+* Then is one of the 4 function used to sort by interests they are all almost the same, but each detects different types
 
 ![image](docImg/docAddTypeFunction.png)
 
