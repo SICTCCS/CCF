@@ -17,7 +17,7 @@ const assembly = ["Trilogy Health Services","Inotiv","Healthy Spaces","Boyd Comp
 //   }
 // }
 var buttonList = []
-    // makes list that can be hover over to show whats in them 
+//     // makes list that can be hover over to show whats in them 
 function toList(listy, name) {
     let all = document.createElement("div")
     let div = document.createElement("div")
@@ -89,32 +89,80 @@ toList(automotive, "Automotive")
 
 // Original: 
 // https://stackoverflow.com/questions/39253980/how-to-draw-a-point-on-image-based-on-coordinate-value-of-various-points-on-imag
-var canvas = document.getElementById('imgcanvas');
-var context = canvas.getContext("2d");
+// var canvas = document.getElementById('imgcanvas');
+// var context = canvas.getContext("2d");
 
 // canvas.addEventListener("mousemove", mouseClicked, false);
-canvas.addEventListener("click", mouseClicked, false);
+//canvas.addEventListener("click", mouseClicked, false);
 // makes map sprite so i can uses the cord on the image and will resize to the size of the users screen
-var mapSprite = new Image();
+// var mapSprite = new Image();
 // mapSprite.src = "./images/newMap.png";
+document.addEventListener('DOMContentLoaded', function() {
+    var canvas = document.getElementById('mapCanvas');
+    var ctx = canvas.getContext('2d');
+  
+    // Draw your map on the canvas
+    // Example: Draw a red square
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(100, 100, 200, 200);
+
+    const img = document.getElementById("map");
+    ctx.drawImage(img, -100, 0,1000,600);
+    
+
+  
+    canvas.addEventListener('click', function(event) {
+      var x = event.offsetX;
+      var y = event.offsetY;
+  
+      // Get the color of the clicked pixel
+      var pixel = ctx.getImageData(x, y, 1, 1).data;
+      var color = 'rgb(' + pixel[0] + ',' + pixel[1] + ',' + pixel[2] + ')';
+  
+      // Check the color and perform actions accordingly
+      if (color === 'rgb(255,0,0)') {
+        alert('You clicked on the red area!');
+        for (var i = 0; i < buttons.length; i++) {
+                    //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+                    var rect = canvas.getBoundingClientRect()
+                    var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+                    var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+                        document.getElementById("main").style.display = "block"
+                        document.getElementById("main").innerHTML = buttonList[i].innerHTML
+                        buttons[i].Sprite.src = "./images/dropdown.png"
+                               
+                }
+
+        // Add your custom action for the red area
+      }else if(color === 'rgb(0,0,255)'){
+        alert('You clicked on the blue area!');
+      }else if(color === 'rgb(255,222,89)'){
+        alert('You clicked on the yeller area!');
+      }else if(color === 'rgb(0,255,0)'){
+        alert('You clicked on the greenly area!');
+      }
+      // Add more conditions based on the colors you have on your map
+    });
+  });
+  
 
 
-// var Button = function(btn) {
-//     this.Sprite = new Image();
-//     if(btn==1){
-//         this.Sprite.src = "./images/1.png"
-//     }else if(btn==2){
-//         this.Sprite.src = "./images/2.png"
-//     }else if(btn==3){
-//         this.Sprite.src = "./images/3.png"
-//     }else if(btn==4){
-//         this.Sprite.src = "./images/4.png"
-//     }
-//     this.Width = 80;
-//     this.Height = 80;
-//     this.XPos = 0;
-//     this.YPos = 0;
-// }
+var Button = function(btn) {
+    this.Sprite = new Image();
+    if(btn==1){
+        this.Sprite.src = "./images/1.png"
+    }else if(btn==2){
+        this.Sprite.src = "./images/2.png"
+    }else if(btn==3){
+        this.Sprite.src = "./images/3.png"
+    }else if(btn==4){
+        this.Sprite.src = "./images/4.png"
+    }
+    this.Width = 80;
+    this.Height = 80;
+    this.XPos = 0;
+    this.YPos = 0;
+}
 
 var buttons = []
 
@@ -132,50 +180,49 @@ var addButton = function(cord1, cord2,btn) {
 // addButton(315, 175)
 // addButton(140, 430)
 
-addButton(115, 100,1) //construction
-addButton(250, 100,2) //foyer
-addButton(390, 100,4) //assembly
-addButton(545, 100,3) //auto
+// addButton(115, 100,1) //construction
+// addButton(250, 100,2) //foyer
+// addButton(390, 100,4) //assembly
+// addButton(545, 100,3) //auto
 
 
 
 // // Event listener for mouse click
 
-function mouseClicked(event) {
-    for (var i = 0; i < buttons.length; i++) {
-        //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
-        var rect = canvas.getBoundingClientRect()
-        var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
-        var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
-        if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
-            document.getElementById("main").style.display = "block"
-            document.getElementById("main").innerHTML = buttonList[i].innerHTML
+// function mouseClicked(event) {
+//     for (var i = 0; i < buttons.length; i++) {
+//         //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+//         var rect = canvas.getBoundingClientRect()
+//         var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+//         var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+//         if (currentButtonPos[0] - 25 < currentMousePos[0] && currentButtonPos[0] + 25 > currentMousePos[0] && currentButtonPos[1] - 25 < currentMousePos[1] && currentButtonPos[1] + 25 > currentMousePos[1]) {
+//              
             
-            if(i==0){
-                buttons[i].Sprite.src = "./images/1.png"
-                mapSprite.src = "./images/conMap.png";
-            }else if(i==1){
-                buttons[i].Sprite.src = "./images/2.png"
-                mapSprite.src = "./images/foyerMap.png";
-            }else if(i==2){
-                buttons[i].Sprite.src = "./images/4.png"
-                mapSprite.src = "./images/assemblyMap.png";
-            }else if(i==3){
-                buttons[i].Sprite.src = "./images/3.png"
-                mapSprite.src = "./images/autoMap.png";
-            }
-            // buttons[i].Sprite.src = "./images/dropdowns.png"
-        } else { if(i==0){
-            buttons[i].Sprite.src = "./images/1.png"
-        }else if(i==1){
-            buttons[i].Sprite.src = "./images/2.png"
-        }else if(i==2){
-            buttons[i].Sprite.src = "./images/4.png"
-        }else if(i==3){
-            buttons[i].Sprite.src = "./images/3.png"
-        }}
-    }
-}
+//             if(i==0){
+//                 buttons[i].Sprite.src = "./images/1.png"
+//                 mapSprite.src = "./images/conMap.png";
+//             }else if(i==1){
+//                 buttons[i].Sprite.src = "./images/2.png"
+//                 mapSprite.src = "./images/foyerMap.png";
+//             }else if(i==2){
+//                 buttons[i].Sprite.src = "./images/4.png"
+//                 mapSprite.src = "./images/assemblyMap.png";
+//             }else if(i==3){
+//                 buttons[i].Sprite.src = "./images/3.png"
+//                 mapSprite.src = "./images/autoMap.png";
+//             }
+//             // buttons[i].Sprite.src = "./images/dropdowns.png"
+//         } else { if(i==0){
+//             buttons[i].Sprite.src = "./images/1.png"
+//         }else if(i==1){
+//             buttons[i].Sprite.src = "./images/2.png"
+//         }else if(i==2){
+//             buttons[i].Sprite.src = "./images/4.png"
+//         }else if(i==3){
+//             buttons[i].Sprite.src = "./images/3.png"
+//         }}
+//     }
+// }
 
 // function mouseClicked(event) {
 //     // getPixelColor();
@@ -195,18 +242,18 @@ function mouseClicked(event) {
 
 
 // draws the map 
-var draw = function() {
-    context.fillStyle = "#000";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+// var draw = function() {
+//     context.fillStyle = "#000";
+//     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.drawImage(mapSprite, 0, 0, 700, 700);
+//     context.drawImage(mapSprite, 0, 0, 700, 700);
 
-    for (var i = 0; i < buttons.length; i++) {
-        var tempMarker = buttons[i];
-        context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
-    }
-};
+//     for (var i = 0; i < buttons.length; i++) {
+//         var tempMarker = buttons[i];
+//         context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
+//     }
+// };
 // plans the button on the map
 
 
-setInterval(() => { draw() }, 100);
+// setInterval(() => { draw() }, 100);
