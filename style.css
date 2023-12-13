@@ -177,9 +177,30 @@ i.fa {
 }
 
 .contain {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     position: relative;
+    padding:0px;
+    max-width: 800px;
+    max-height: 600px;
 }
+
+#main {
+    /* display: flex;
+    flex-direction: column; */
+    min-width: 500px;
+    padding: 0px;
+    margin:0px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+body.container.sm{
+    padding:0;
+    margin:0px;
+}
+
+
 
 .drop {
     position: absolute;

@@ -16,9 +16,12 @@ const assembly = ["Trilogy Health Services","Inotiv","Healthy Spaces","Boyd Comp
 //     all.appendChild(listy[i].button)
 //   }
 // }
-var buttonList = []
+var buttonListCon = []
+var buttonListAssm = []
+var buttonListAuto = []
+var buttonListFoy = []
 //     // makes list that can be hover over to show whats in them 
-function toList(listy, name) {
+function toListConstruction(listy, name) {
     let all = document.createElement("div")
     let div = document.createElement("div")
     div.innerHTML = name
@@ -28,7 +31,46 @@ function toList(listy, name) {
         listy[i] = new b(listy[i])
         all.appendChild(listy[i].button)
     }
-    buttonList.push(all)
+    buttonListCon.push(all)
+}
+
+function toListAutomotive(listy, name) {
+    let all = document.createElement("div")
+    let div = document.createElement("div")
+    div.innerHTML = name
+    div.classList.add("ddm")
+    all.appendChild(div)
+    for (var i in listy) {
+        listy[i] = new b(listy[i])
+        all.appendChild(listy[i].button)
+    }
+    buttonListAuto.push(all)
+}
+
+function toListFoyer(listy, name) {
+    let all = document.createElement("div")
+    let div = document.createElement("div")
+    div.innerHTML = name
+    div.classList.add("ddm")
+    all.appendChild(div)
+    for (var i in listy) {
+        listy[i] = new b(listy[i])
+        all.appendChild(listy[i].button)
+    }
+    buttonListFoy.push(all)
+}
+
+function toListAssembly(listy, name) {
+    let all = document.createElement("div")
+    let div = document.createElement("div")
+    div.innerHTML = name
+    div.classList.add("ddm")
+    all.appendChild(div)
+    for (var i in listy) {
+        listy[i] = new b(listy[i])
+        all.appendChild(listy[i].button)
+    }
+    buttonListAssm.push(all)
 }
 
 // creates a class for the buttons so i can add href and classed to the button
@@ -81,10 +123,10 @@ document.onkeydown = function(e) {
 
 // Runs list of them
 
-toList(construction, "Construction")
-toList(foyer, "Foyer")
-toList(assembly, "Assembly")
-toList(automotive, "Automotive")
+toListConstruction(construction, "Construction")
+toListFoyer(foyer,"Foyer")
+toListAssembly(assembly, "Assembly")
+toListAutomotive(automotive, "Automotive")
 
 
 // Original: 
@@ -100,6 +142,7 @@ toList(automotive, "Automotive")
 document.addEventListener('DOMContentLoaded', function() {
     var canvas = document.getElementById('mapCanvas');
     var ctx = canvas.getContext('2d');
+    var container = document.getElementById("main")
   
     // Draw your map on the canvas
     // Example: Draw a red square
@@ -108,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const img = document.getElementById("map");
     ctx.drawImage(img, -100, 0,1000,600);
+
     
 
   
@@ -121,25 +165,55 @@ document.addEventListener('DOMContentLoaded', function() {
   
       // Check the color and perform actions accordingly
       if (color === 'rgb(255,0,0)') {
-        alert('You clicked on the red area!');
-        for (var i = 0; i < buttons.length; i++) {
+        // alert('You clicked on the red area!');
+        for (var i = 0; i < toListAssembly.length; i++) {
                     //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
-                    var rect = canvas.getBoundingClientRect()
-                    var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
-                    var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
-                        document.getElementById("main").style.display = "block"
-                        document.getElementById("main").innerHTML = buttonList[i].innerHTML
-                        buttons[i].Sprite.src = "./images/dropdown.png"
+                    // var rect = canvas.getBoundingClientRect()
+                    // var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+                    // var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+                        container.style.display = "block"
+                        container.innerHTML = buttonListAssm[i].innerHTML
+                        // buttons[i].Sprite.src = "./images/dropdown.png"
                                
                 }
 
         // Add your custom action for the red area
       }else if(color === 'rgb(0,0,255)'){
-        alert('You clicked on the blue area!');
+        //alert('You clicked on the blue area!');
+        for (var i = 0; i < toListAutomotive.length; i++) {
+            //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+            var rect = canvas.getBoundingClientRect()
+            // var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+            // var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+                container.style.display = "block"
+                container.innerHTML = buttonListAuto[i].innerHTML
+                // buttons[i].Sprite.src = "./images/dropdown.png"
+                       
+        }
       }else if(color === 'rgb(255,222,89)'){
-        alert('You clicked on the yeller area!');
+        //alert('You clicked on the yeller area!');
+        for (var i = 0; i < toListConstruction.length; i++) {
+            //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+            var rect = canvas.getBoundingClientRect()
+            // var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+            // var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+                container.style.display = "block"
+                container.innerHTML = buttonListCon[i].innerHTML
+                // buttons[i].Sprite.src = "./images/dropdown.png"
+                       
+        }
       }else if(color === 'rgb(0,255,0)'){
-        alert('You clicked on the greenly area!');
+        //alert('You clicked on the greenly area!');
+        for (var i = 0; i < toListFoyer.length; i++) {
+            //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
+            var rect = canvas.getBoundingClientRect()
+            // var currentMousePos = [event["clientX"] - rect.left - 37.5, event["clientY"] - rect.top - 35]
+            // var currentButtonPos = [buttons[i]["XPos"], buttons[i]["YPos"]]
+                container.style.display = "block"
+                container.innerHTML = buttonListFoy[i].innerHTML
+                // buttons[i].Sprite.src = "./images/dropdown.png"
+                       
+        }
       }
       // Add more conditions based on the colors you have on your map
     });
