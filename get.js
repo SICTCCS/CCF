@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase
 
 //setting up a constant variable (never changes) with all of the database information
 const firebaseConfig = {
-    apiKey: "AIzaSyBIgYvPowZd3viGd7moLOUjAe92r3H4SlE",
-    authDomain: "sictcccf.firebaseapp.com",
-    databaseURL: "https://sictcccf-default-rtdb.firebaseio.com",
-    projectId: "sictcccf",
-    storageBucket: "sictcccf.appspot.com",
-    messagingSenderId: "238921521038",
-    appId: "1:238921521038:web:417620ad7630a3330276df"
+    apiKey: "AIzaSyAtvfNv0KwNVMdpTKwsSiYP0SYBfljoQqg",
+    authDomain: "ccfdummyfirebase.firebaseapp.com",
+    databaseURL: "https://ccfdummyfirebase-default-rtdb.firebaseio.com",
+    projectId: "ccfdummyfirebase",
+    storageBucket: "ccfdummyfirebase.appspot.com",
+    messagingSenderId: "574609540369",
+    appId: "1:574609540369:web:b2fbd680d516e5cb0938b0",
+    measurementId: "G-6K46WLKT7B"
   };
 
 //initializing the firebase with our config
@@ -321,7 +322,7 @@ function search(search) {
 
     }
 }
-// check if you prevesley searched something and keep it on the searchbar so if you refressh then it wont un search
+// check if you previously searched something and keep it on the searchbar so if you refresh then it won't un-search
 
 var interest = document.URL.split("?interest=")[1]
 if (interest != undefined) {
@@ -344,14 +345,14 @@ var inverted = false;
 const css = `
 img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
     -webkit-filter: invert(100%);
-    -moz-filter: invert(100%);
+    -moz-filter: invert(50%);
     -o-filter: invert(100%);
     -ms-filter: invert(100%);
     z-index: 999;
 }
 
 html {
-    -webkit-filter: invert(100%);
+    -webkit-filter: invert(85%);
     -moz-filter: invert(100%);
     -o-filter: invert(100%);
     -ms-filter: invert(100%);
