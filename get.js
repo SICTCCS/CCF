@@ -351,10 +351,10 @@ img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
 }
 
 html {
-    -webkit-filter: invert(100%);
-    -moz-filter: invert(100%);
-    -o-filter: invert(100%);
-    -ms-filter: invert(100%);
+    -webkit-filter: invert(85%);
+    -moz-filter: invert(85%);
+    -o-filter: invert(85%);
+    -ms-filter: invert(85%);
 }`
 
 const head = document.head
