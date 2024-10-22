@@ -61,7 +61,7 @@ class WindowClass:
         self.addToGrid(Label(self.tk,text="Type"),998,0)
         self.addToGrid(OptionMenu(self.tk,self.type,*["College","Company","Military"]),998,1,2)
         self.addToGrid(Button(self.tk,text="Submit",bg="darkgreen",fg="lime",command=self.submit),999,0,3)
-        se lf.addToGrid(Button(self.tk,text="Item List",bg="black",fg="yellow",command=lambda:self.newWindow(self.showItems)),1000,0,3)
+        self.addToGrid(Button(self.tk,text="Item List",bg="black",fg="yellow",command=lambda:self.newWindow(self.showItems)),1000,0,3)
 
     #Select file and upload to firebase.
     def select_file(self):
