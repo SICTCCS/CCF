@@ -1,0 +1,28 @@
+{
+  "companies": {
+    "company_id_1": {
+      "name": "Google",
+      "booth_number": "A101",
+      "hiring_for": "Software Engineer, Product Manager",
+      "website": "https://careers.google.com"
+    },
+    "company_id_2": {
+      "name": "Microsoft",
+      "booth_number": "B202",
+      "hiring_for": "Data Scientist, UX Designer",
+      "website": "https://careers.microsoft.com"
+    }
+  },
+  "colleges": {
+    "college_id_1": {
+      "name": "Indiana University",
+      "booth_number": "C303",
+      "majors": "Computer Science, Business, Informatics"
+    },
+    "college_id_2": {
+      "name": "Purdue University",
+      "booth_number": "D404",
+      "majors": "Engineering, Agriculture, Science"
+    }
+  }
+}
