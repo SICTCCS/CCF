@@ -294,3 +294,8 @@ body.container.sm{
         align-items: center;
     }
 }
+
+.dark-mode{
+    background-color: #000;
+    color: #fff
+}

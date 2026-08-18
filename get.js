@@ -204,10 +204,10 @@ document.getElementById("Construction").onclick = function() { addinterest("cons
 document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
 document.getElementById("search").onclick = function() { addinterest((document.getElementById("ui").value).toLowerCase()) };
-document.getElementById("foyerBTN").onclick = function() { addFoyer() };
-document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
-document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
-document.getElementById("constructionBTN").onclick = function() { addConstruction() };
+// document.getElementById("foyerBTN").onclick = function() { addFoyer() };
+// document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
+// document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
+// document.getElementById("constructionBTN").onclick = function() { addConstruction() };
 
 // document.getElementById("assemblyBTN").onclick = function() { window.open("index.html?area=1", "_self") };
 // document.getElementById("autoServiceBTN").onclick = function() { window.open("index.html?area=3", "_self") };
@@ -342,7 +342,7 @@ if (interest != undefined) {
 // add the code to invert the colors of the screen 
 var inverted = false;
 const css = `
-img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
+img,.btn, .dropdown-content,#search{
     -webkit-filter: invert(100%);
     -moz-filter: invert(100%);
     -o-filter: invert(100%);
@@ -350,12 +350,22 @@ img,.btn, .dropbtn, .dropbtn2, .nav-item, .dropdown-content,#search{
     z-index: 999;
 }
 
+
 html {
     -webkit-filter: invert(85%);
     -moz-filter: invert(85%);
     -o-filter: invert(85%);
     -ms-filter: invert(85%);
+}
+    
+.nav-item{
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -ms-filter: invert(100%);
+    z-index: 999;
 }`
+
 
 const head = document.head
 const style = document.createElement('style')
