@@ -260,16 +260,11 @@ async function addCard(l) {
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
             <div class="card-body">
-            <button id="starButton"><img src="images/starUnchecked.png"  id="star"></button>
+           
            
             <p class="card-text">Interest Areas:</p>
             </div> 
-                <script>
-                    let star = document.body.getElementById("starButton")
-                    star.onclick = function() {
-                        alert("Didy");
-                    }
-                </script>
+                
                 <ul class="list-group list-group-flush">`.format(l["desc"]);
 
     
