@@ -72,7 +72,7 @@ function toListAssembly(listy, name) {
     buttonListAssm.push(all)
 }
 
-// creates a class for the buttons so i can add href and classed to the button
+// creates a class for the buttons so i can add href and classed (spelt like "classes" actually) to the button
 class b {
     constructor(name) {
         this.button = document.createElement("a")
