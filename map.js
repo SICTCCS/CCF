@@ -19,6 +19,8 @@ var buttonListCon = []
 var buttonListAssm = []
 var buttonListAuto = []
 var buttonListFoy = []
+let mapSprite = document.getElementById("map")
+
 //     // makes list that can be hover over to show whats in them 
 function toListConstruction(listy, name) {
     let all = document.createElement("div")
@@ -165,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Check the color and perform actions accordingly
       if (color === 'rgb(255,0,0)') {
         // alert('You clicked on the red area!');
+        
         for (var i = 0; i < toListAssembly.length; i++) {
                     //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element
                     // var rect = canvas.getBoundingClientRect()
@@ -190,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
                        
         }
       }else if(color === 'rgb(255,222,89)'){
+        mapSprite.src = "./images/conMap.png";
         //alert('You clicked on the yeller area!');
         for (var i = 0; i < toListConstruction.length; i++) {
             //https://stackoverflow.com/questions/55677/how-do-i-get-the-coordinates-of-a-mouse-click-on-a-canvas-element

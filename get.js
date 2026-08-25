@@ -242,6 +242,7 @@ async function addCard(l) {
     <div class="card-body">
     <h5 class="card-title" style="font-size: 27px;">{1}</h5>
     <div class="card-body">`.format(l["logo"], l["name"]);
+
     // check the type and make the color change depending of wha type it is 
     if (l["type"] === "College") {
         div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
@@ -259,11 +260,19 @@ async function addCard(l) {
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
             <div class="card-body">
+            <button id="starButton"><img src="images/starUnchecked.png"  id="star"></button>
+           
             <p class="card-text">Interest Areas:</p>
             </div> 
+                <script>
+                    let star = document.body.getElementById("starButton")
+                    star.onclick = function() {
+                        alert("Didy");
+                    }
+                </script>
                 <ul class="list-group list-group-flush">`.format(l["desc"]);
 
-
+    
     //adding to div depending on how many interest areas are blank
     //will make this smaller is a final version
     if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {

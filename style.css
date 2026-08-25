@@ -299,3 +299,11 @@ body.container.sm{
     background-color: #000;
     color: #fff
 }
+
+#starButton{
+    display: inline;
+}
+
+#star{
+    width: 55%;
+}
