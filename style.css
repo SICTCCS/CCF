@@ -200,11 +200,6 @@ body.container.sm{
     margin:0px;
 }
 
-#body-output{
-    display: grid;  
-    
-    grid-template-columns: auto auto;
-}
 
 .drop {
     position: absolute;
