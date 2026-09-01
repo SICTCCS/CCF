@@ -299,6 +299,16 @@ body.container.sm{
     color: #fff
 }
 
+#body-output{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 15px;
+    
+}
+
+.list-group-item{
+    font-size: 13px;
+}
 /* .card{
     
 } */
