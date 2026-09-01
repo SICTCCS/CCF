@@ -241,7 +241,7 @@ body.container.sm{
     margin: 0;
     position: relative;
     top: 13px;
-    left: 15px;
+    left: 14px;
     font-size: 22px;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -308,4 +308,11 @@ body.container.sm{
 
 .list-group-item{
     font-size: 13px;
+}
+/* .card{
+    
+} */
+
+footer{
+    text-align: center;
 }
