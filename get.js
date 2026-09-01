@@ -233,7 +233,7 @@ async function addCard(l) {
     // creates basic div layout of the div that we append to the main div
 
     var div = `
-    <div class="card mb-3" style="max-width: 75%;" align="left">
+    <div class="card mb-3" style="max-width: 95%;" align="left">
     <div class="row g-0">
     <div class="col-md-2">
     <img src="{0}" class="img-fluid rounded-start" style="padding:10px;" alt="{1} logo" >
