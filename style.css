@@ -300,18 +300,31 @@ body.container.sm{
 }
 
 #body-output{
-    display: grid;
-    grid-template-columns: auto auto;
     padding-top: 15px;
     
 }
 
+.body-2-column{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+/* .body-4-column{
+    display: grid;
+    grid-template-columns: auto;
+} */
+
+/* .body-4-column div{
+    max-height: 500px;
+    max-width: 100%;
+    font-size: 12.5px;
+} */
+
+
+
 .list-group-item{
     font-size: 13px;
 }
-/* .card{
-    
-} */
 
 footer{
     text-align: center;

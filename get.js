@@ -397,3 +397,14 @@ function invertColor() {
     // document.getElementById("invert").
 }
 document.getElementById("invert").onclick = function() { invertColor() };
+
+//view switching (2-Column and Compact)
+function toggleView(){
+    if (document.getElementById("body-output").className == "body-2-column") {
+        document.getElementById("body-output").className = "body-compact"
+    }
+    else{
+        document.getElementById("body-output").className = "body-2-column"
+    }
+}
+document.getElementById("view-toggle").onclick = function() { toggleView() };
