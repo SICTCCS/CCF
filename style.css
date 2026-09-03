@@ -309,6 +309,15 @@ body.container.sm{
     grid-template-columns: auto auto;
 }
 
+.body-compact div{
+    font-size: small;
+
+} 
+
+.body-compact div *{
+
+}
+
 /* .body-4-column{
     display: grid;
     grid-template-columns: auto;

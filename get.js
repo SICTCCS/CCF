@@ -236,7 +236,7 @@ async function addCard(l) {
     <div class="card mb-3" style="max-width: 95%;" align="left">
     <div class="row g-0">
     <div class="col-md-2">
-    <img src="{0}" class="img-fluid rounded-start" style="padding:10px;" alt="{1} logo" >
+    <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
     </div>
     <div class="col-md-7">
     <div class="card-body">
