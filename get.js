@@ -31,6 +31,8 @@ if (!String.prototype.format) {
     };
 }
 
+let favorites = []
+
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
@@ -240,6 +242,7 @@ async function addCard(l) {
     </div>
     <div class="col-md-7">
     <div class="card-body">
+    
     <h5 class="card-title" style="font-size: 27px;">{1}</h5>
     <div class="card-body">`.format(l["logo"], l["name"]);
 
@@ -260,12 +263,11 @@ async function addCard(l) {
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
             <div class="card-body">
-           
-           
+            <button style="height:50px;"><img src="images/starUnchecked.png" style="height:100%;" id="{1}-star"></button>
             <p class="card-text">Interest Areas:</p>
             </div> 
-                
-                <ul class="list-group list-group-flush">`.format(l["desc"]);
+            
+                <ul class="list-group list-group-flush">`.format(l["desc"],["name"]);
 
     
     //adding to div depending on how many interest areas are blank
@@ -294,7 +296,9 @@ async function addCard(l) {
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
     document.getElementById("body-output").innerHTML = prevDiv + div;
-    // document.onclick=sortInterest(1)
+    const star = document.body.getElementById(l["name"+"star"])
+     
+        // document.onclick=sortInterest(1)
 }
 
 
@@ -338,6 +342,8 @@ if (interest != undefined) {
         addCompanies()
     } else if (interest == "Union") {
         addUnions()
+    } else if (interest == "favorites") {
+
     } else {
         addinterest((interest))
     }
@@ -401,7 +407,11 @@ document.getElementById("invert").onclick = function() { invertColor() };
 //view switching (2-Column and Compact)
 function toggleView(){
     if (document.getElementById("body-output").className == "body-2-column") {
+        //document.getElementById("body-output").innerHTML = "";
         document.getElementById("body-output").className = "body-compact"
+        
+
+        
     }
     else{
         document.getElementById("body-output").className = "body-2-column"
