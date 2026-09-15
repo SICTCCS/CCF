@@ -235,7 +235,7 @@ async function addCard(l) {
     // creates basic div layout of the div that we append to the main div
 
     var div = `
-    <div class="card mb-3" style="max-width: 95%;" align="left">
+    <div class="card mb-3" id="{1}-card" style="max-width: 95%;" align="left">
     <div class="row g-0">
     <div class="col-md-2">
     <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
@@ -263,11 +263,12 @@ async function addCard(l) {
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
             <div class="card-body">
-            <button style="height:50px;"><img src="images/starUnchecked.png" style="height:100%;" id="{1}-star"></button>
+            <button style="height:50px;" id="{1}-star"><img src="images/starUnchecked.png" style="height:100%;"  id="{1}star-img" onclick="addFavorite('{1}')" ></button>
+
             <p class="card-text">Interest Areas:</p>
             </div> 
             
-                <ul class="list-group list-group-flush">`.format(l["desc"],["name"]);
+                <ul class="list-group list-group-flush">`.format(l["desc"],l["name"]);
 
     
     //adding to div depending on how many interest areas are blank
@@ -296,11 +297,25 @@ async function addCard(l) {
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
     document.getElementById("body-output").innerHTML = prevDiv + div;
-    const star = document.body.getElementById(l["name"+"star"])
-     
+    // let currentCard = document.getElementById(l["name"]+"-card")
+    // let star = document.getElementById(l["name"]+"-star")
+    // star.onclick= function() {
+    //       if (favorites.includes(star) == false){
+    //         favorites.push(star)
+    //     }
+    //     console.log(l["name"])
+      
+    // }
+
         // document.onclick=sortInterest(1)
 }
 
+function addFavorite(name){
+    if (favorites.includes(name) == false){
+        favorites.push(name);
+        console.log(name);
+    }
+}
 
 // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
 $(window).scroll(function() {
@@ -409,9 +424,6 @@ function toggleView(){
     if (document.getElementById("body-output").className == "body-2-column") {
         //document.getElementById("body-output").innerHTML = "";
         document.getElementById("body-output").className = "body-compact"
-        
-
-        
     }
     else{
         document.getElementById("body-output").className = "body-2-column"
