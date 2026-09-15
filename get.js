@@ -399,12 +399,13 @@ function invertColor() {
 document.getElementById("invert").onclick = function() { invertColor() };
 
 //view switching (2-Column and Compact)
-function toggleView(){
-    if (document.getElementById("body-output").className == "body-2-column") {
-        document.getElementById("body-output").className = "body-compact"
-    }
-    else{
+function toggleView(cardType){
+    if (cardType == "casual") {
         document.getElementById("body-output").className = "body-2-column"
     }
+    else{
+        document.getElementById("body-output").className = "body-compact"
+    }
 }
-document.getElementById("view-toggle").onclick = function() { toggleView() };
+document.getElementById("casualLayout").onclick = function() { toggleView("casual") };
+document.getElementById("compactLayout").onclick = function() { toggleView("compact") };
