@@ -31,6 +31,9 @@ if (!String.prototype.format) {
     };
 }
 
+//This is for the compact / casual layout, determines if the description is visible or not
+let cardLayout = "casual";
+
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
@@ -223,7 +226,7 @@ document.onkeydown = function(e) {
                 break;
         }
     }
-    //the addCard function takes in "l" which would be a list and uses it to build out each card 
+    //the addCard function takes in "l" which would be a list and uses it to build out each card
 async function addCard(l) {
 
     //getting the body's previous information
@@ -232,16 +235,31 @@ async function addCard(l) {
     if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
     // creates basic div layout of the div that we append to the main div
 
-    var div = `
-    <div class="card mb-3" style="max-width: 95%;" align="left">
-    <div class="row g-0">
-    <div class="col-md-2">
-    <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
-    </div>
-    <div class="col-md-7">
-    <div class="card-body">
-    <h5 class="card-title" style="font-size: 27px;">{1}</h5>
-    <div class="card-body">`.format(l["logo"], l["name"]);
+    if (cardLayout == "casual"){
+        var div = `
+        <div class="card mb-3" style="max-width: 95%;" align="left">
+        <div class="row g-0">
+        <div class="col-md-2">
+        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
+        </div>
+        <div class="col-md-7">
+        <div class="card-body">
+        <h5 class="card-title" style="font-size: 27px;">{1}</h5>
+        <div class="card-body">`.format(l["logo"], l["name"]);
+    }
+    else{
+        var div = `
+        <div class="card mb-3" style="max-width: 95%;" align="left">
+        <div class="row g-0">
+        <div class="col-md-2">
+        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
+        </div>
+        <div class="col-md-7">
+        <div class="card-body">
+        <h5 class="card-title" style="font-size: 20px;">{1}</h5>
+        <div class="card-body">`.format(l["logo"], l["name"]);
+    }
+    
 
     // check the type and make the color change depending of wha type it is 
     if (l["type"] === "College") {
@@ -254,20 +272,20 @@ async function addCard(l) {
         div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
 
-    div = div + `   </div>
-    <p class="card-text">{0}</p>
-                </div>
-                </div>
-                <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
-            <div class="card-body">
-           
-           
-            <p class="card-text">Interest Areas:</p>
-            </div> 
-                
-                <ul class="list-group list-group-flush">`.format(l["desc"]);
+    if(cardLayout == "casual"){
+        div = div + `   </div>
+        <p class="card-text">{0}</p>
+                    </div>
+                    </div>
+                    <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+                <div class="card-body">
+            
+            
+                <p class="card-text">Interest Areas:</p>
+                </div> 
+                    
+                    <ul class="list-group list-group-flush">`.format(l["desc"]); //{0} = description, saving this for compact mode hi lol
 
-    
     //adding to div depending on how many interest areas are blank
     //will make this smaller is a final version
     if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
@@ -291,6 +309,10 @@ async function addCard(l) {
                     <li class="list-group-item">{3}</li> 
                     <li class="list-group-item">{4}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"], l["ia5"]);
     }
+
+    }
+    
+    
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
     document.getElementById("body-output").innerHTML = prevDiv + div;
@@ -325,7 +347,7 @@ function search(search) {
 
     }
 }
-// check if you prevesley searched something and keep it on the searchbar so if you refressh then it wont un search
+// check if you previously* searched something and keep it on the searchbar so if you refressh then it wont un search
 
 var interest = document.URL.split("?interest=")[1]
 if (interest != undefined) {
@@ -400,12 +422,18 @@ document.getElementById("invert").onclick = function() { invertColor() };
 
 //view switching (2-Column and Compact)
 function toggleView(cardType){
+
+    document.getElementById("body-output").innerHTML = "";``
+    cardLayout = cardType;
+
     if (cardType == "casual") {
         document.getElementById("body-output").className = "body-2-column"
     }
     else{
         document.getElementById("body-output").className = "body-compact"
     }
+
+    addAll()
 }
 document.getElementById("casualLayout").onclick = function() { toggleView("casual") };
 document.getElementById("compactLayout").onclick = function() { toggleView("compact") };
