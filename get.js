@@ -48,6 +48,12 @@ async function addAll() {
         for (let l in items) {
             //pass each individual college/company (each dictionary) into addCard, which builds out the html
             addCard(items[l]);
+            console.log(l["name"]+"-star")
+            const idkbro = items[l]
+            const cardStar = document.getElementById(idkbro["name"]+"-star")
+            cardStar.addEventListener("click",() => {
+                addFavorite(l["name"]);
+            })
         }
     });
 }
@@ -234,6 +240,8 @@ async function addCard(l) {
     if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
     // creates basic div layout of the div that we append to the main div
 
+    //container
+
     var div = `
     <div class="card mb-3" id="{1}-card" style="max-width: 95%;" align="left">
     <div class="row g-0">
@@ -262,8 +270,9 @@ async function addCard(l) {
                 </div>
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+            <button style="height:50px;" id="{1}-star"><img src="images/starUnchecked.png" style="height:100%;"  id="{1}star-img" ></button>
             <div class="card-body">
-            <button style="height:50px;" id="{1}-star"><img src="images/starUnchecked.png" style="height:100%;"  id="{1}star-img" onclick="addFavorite('{1}')" ></button>
+            
 
             <p class="card-text">Interest Areas:</p>
             </div> 
@@ -296,26 +305,30 @@ async function addCard(l) {
     }
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
-    document.getElementById("body-output").innerHTML = prevDiv + div;
-    // let currentCard = document.getElementById(l["name"]+"-card")
-    // let star = document.getElementById(l["name"]+"-star")
-    // star.onclick= function() {
-    //       if (favorites.includes(star) == false){
-    //         favorites.push(star)
-    //     }
-    //     console.log(l["name"])
-      
-    // }
+    // const container = document.getElementById("body-output");
+    // const cardHTML = prevDiv + div
+    //document.getElementById("body-output").insertAdjacentHTML("beforeend",prevDiv + div)
+    document.getElementById("body-output").innerHTML = prevDiv + div
+
+    //Thanks fingle AI Olivia For fixinging I want to perish!
+    
+    // const currentCard = document.getElementById("body-output").lastElementChild
+    // const star =  document.getElementById(l["name"]+"-star")
+    // return star
+    // star.addEventListener("click", () => {
+    //     addFavorite(l["name"]);
+    // });
 
         // document.onclick=sortInterest(1)
 }
 
-function addFavorite(name){
-    if (favorites.includes(name) == false){
-        favorites.push(name);
-        console.log(name);
-    }
-}
+// function addFavorite(name){
+//     console.log(name);
+//     if (favorites.includes(name) == false){
+//         favorites.push(name);
+//         console.log(name+" added");
+//     }
+// }
 
 // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
 $(window).scroll(function() {
@@ -423,6 +436,7 @@ document.getElementById("invert").onclick = function() { invertColor() };
 function toggleView(){
     if (document.getElementById("body-output").className == "body-2-column") {
         //document.getElementById("body-output").innerHTML = "";
+        //cardType = "w"
         document.getElementById("body-output").className = "body-compact"
     }
     else{
