@@ -259,19 +259,24 @@ async function addCard(l) {
         <h5 class="card-title" style="font-size: 20px;">{1}</h5>
         <div class="card-body">`.format(l["logo"], l["name"]);
     }
-    
 
-    // check the type and make the color change depending of wha type it is 
-    if (l["type"] === "College") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
-    } else if (l["type"] === "Company") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
-    } else if (l["type"] === "Union") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
-    } else {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
+        // check the type and make the color change depending of wha type it is 
+    //  with it being in this if statement the buttons won't appear within compact mode
+    if(cardLayout == "casual"){
+        if (l["type"] === "College") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
+        } else if (l["type"] === "Company") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+        } else if (l["type"] === "Union") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
+        } else {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
+        }
     }
-
+    if(cardLayout == "compact"){
+        //
+    }
+    
     if(cardLayout == "casual"){
         div = div + `   </div>
         <p class="card-text">{0}</p>
@@ -285,6 +290,8 @@ async function addCard(l) {
                 </div> 
                     
                     <ul class="list-group list-group-flush">`.format(l["desc"]); //{0} = description, saving this for compact mode hi lol
+
+
 
     //adding to div depending on how many interest areas are blank
     //will make this smaller is a final version
