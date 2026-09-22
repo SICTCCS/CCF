@@ -329,7 +329,10 @@ body.container.sm{
     font-size: 12.5px;
 } */
 
-
+.star-button{
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+}
 
 .list-group-item{
     font-size: 13px;

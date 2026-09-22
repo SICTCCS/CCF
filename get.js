@@ -1,7 +1,7 @@
 //importing the initializeApp method from another js file on the web
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
 
-//setting up a constant variable (never changes) with all of the database information
+//setting up a constant variable (never changes) with all of the database information Ok thanks bo
 const firebaseConfig = {
     apiKey: "AIzaSyBIgYvPowZd3viGd7moLOUjAe92r3H4SlE",
     authDomain: "sictcccf.firebaseapp.com",
@@ -48,15 +48,21 @@ async function addAll() {
         for (let l in items) {
             //pass each individual college/company (each dictionary) into addCard, which builds out the html
             addCard(items[l]);
-            console.log(l["name"]+"-star")
-            const idkbro = items[l]
-            const cardStar = document.getElementById(idkbro["name"]+"-star")
+            // let idkbro = items[l]
+            //  console.log(idkbro["name"]+"-star")
+        }
+        //Fix for For loop addevent not working: https://stackoverflow.com/questions/36946159/adding-addeventlistener-in-loop-only-works-for-last-button THANK YOU SO MUCH
+        for (let l in items){
+            let currentCard = items[l]
+            let cardStar = document.getElementById(currentCard["name"]+"-star")
             cardStar.addEventListener("click",() => {
-                addFavorite(l["name"]);
+            addFavorite(currentCard);
+            console.log(favorites)
             })
         }
-    });
+    })
 }
+
 //same function just with an if statement to only pass in colleges
 function addColleges() {
     database.ref("Items").on('value', (snapshot) => {
@@ -190,6 +196,13 @@ function addinterest(interest) {
 
 }
 
+function addFavoriteCards() {
+    document.getElementById("body-output").innerHTML = "";
+    for (let l in favorites) {
+        addCard(favorites[l]);
+    }
+}
+
 
 
 //run addAll() by default and waits for it to finish befor anything else
@@ -212,6 +225,7 @@ document.getElementById("Construction").onclick = function() { addinterest("cons
 document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
 document.getElementById("search").onclick = function() { addinterest((document.getElementById("ui").value).toLowerCase()) };
+document.getElementById("favorite-view").onclick = function() { addFavoriteCards() };
 // document.getElementById("foyerBTN").onclick = function() { addFoyer() };
 // document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
 // document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
@@ -264,20 +278,23 @@ async function addCard(l) {
     } else {
         div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
-
+    let setStar = "images/starUnchecked.png"
+    if (favorites.includes(l) == true){
+        setStar = "images/star.png"
+    }
     div = div + `   </div>
     <p class="card-text">{0}</p>
                 </div>
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
-            <button style="height:50px;" id="{1}-star"><img src="images/starUnchecked.png" style="height:100%;"  id="{1}star-img" ></button>
+            <button style="height:50px;" id="{1}-star" class="star-button"><img src="{2}" style="height:100%;"  id="{1}star-img" ></button>
             <div class="card-body">
             
 
             <p class="card-text">Interest Areas:</p>
             </div> 
             
-                <ul class="list-group list-group-flush">`.format(l["desc"],l["name"]);
+                <ul class="list-group list-group-flush">`.format(l["desc"],l["name"],setStar);
 
     
     //adding to div depending on how many interest areas are blank
@@ -322,13 +339,24 @@ async function addCard(l) {
         // document.onclick=sortInterest(1)
 }
 
-// function addFavorite(name){
-//     console.log(name);
-//     if (favorites.includes(name) == false){
-//         favorites.push(name);
-//         console.log(name+" added");
-//     }
-// }
+function addFavorite(name){
+    let starImg = document.getElementById(name["name"]+"star-img")
+    console.log(name);
+    if (favorites.includes(name) == false){
+        favorites.push(name);
+        console.log(name+" added");
+        
+        starImg.src = "images/star.png"
+    }
+    else{
+        let nameIndex = favorites.indexOf(name)
+        delete favorites[nameIndex]
+        console.log(name+" removed");
+        console.log(favorites)
+
+        starImg.src = "images/starUnchecked.png"
+    }
+}
 
 // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
 $(window).scroll(function() {
