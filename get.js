@@ -1,7 +1,7 @@
 //importing the initializeApp method from another js file on the web
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
 
-//setting up a constant variable (never changes) with all of the database information
+//setting up a constant variable (never changes) with all of the database information Ok thanks bo
 const firebaseConfig = {
     apiKey: "AIzaSyBIgYvPowZd3viGd7moLOUjAe92r3H4SlE",
     authDomain: "sictcccf.firebaseapp.com",
@@ -31,6 +31,8 @@ if (!String.prototype.format) {
     };
 }
 
+let favorites = []
+
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
@@ -46,9 +48,21 @@ async function addAll() {
         for (let l in items) {
             //pass each individual college/company (each dictionary) into addCard, which builds out the html
             addCard(items[l]);
+            // let idkbro = items[l]
+            //  console.log(idkbro["name"]+"-star")
         }
-    });
+        //Fix for For loop addevent not working: https://stackoverflow.com/questions/36946159/adding-addeventlistener-in-loop-only-works-for-last-button THANK YOU SO MUCH
+        for (let l in items){
+            let currentCard = items[l]
+            let cardStar = document.getElementById(currentCard["name"]+"-star")
+            cardStar.addEventListener("click",() => {
+            addFavorite(currentCard);
+            console.log(favorites)
+            })
+        }
+    })
 }
+
 //same function just with an if statement to only pass in colleges
 function addColleges() {
     database.ref("Items").on('value', (snapshot) => {
@@ -182,6 +196,13 @@ function addinterest(interest) {
 
 }
 
+function addFavoriteCards() {
+    document.getElementById("body-output").innerHTML = "";
+    for (let l in favorites) {
+        addCard(favorites[l]);
+    }
+}
+
 
 
 //run addAll() by default and waits for it to finish befor anything else
@@ -204,6 +225,7 @@ document.getElementById("Construction").onclick = function() { addinterest("cons
 document.getElementById("ComputerTechnology").onclick = function() { addinterest("computer technology") };
 document.getElementById("AnimalScience/Agriculture").onclick = function() { addinterest("animal science/agriculture") };
 document.getElementById("search").onclick = function() { addinterest((document.getElementById("ui").value).toLowerCase()) };
+document.getElementById("favorite-view").onclick = function() { addFavoriteCards() };
 // document.getElementById("foyerBTN").onclick = function() { addFoyer() };
 // document.getElementById("assemblyBTN").onclick = function() { addAssembly() };
 // document.getElementById("autoServiceBTN").onclick = function() { addAuto() };
@@ -232,14 +254,17 @@ async function addCard(l) {
     if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
     // creates basic div layout of the div that we append to the main div
 
+    //container
+
     var div = `
-    <div class="card mb-3" style="max-width: 95%;" align="left">
+    <div class="card mb-3" id="{1}-card" style="max-width: 95%;" align="left">
     <div class="row g-0">
     <div class="col-md-2">
     <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
     </div>
     <div class="col-md-7">
     <div class="card-body">
+    
     <h5 class="card-title" style="font-size: 27px;">{1}</h5>
     <div class="card-body">`.format(l["logo"], l["name"]);
 
@@ -253,19 +278,23 @@ async function addCard(l) {
     } else {
         div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
     }
-
+    let setStar = "images/starUnchecked.png"
+    if (favorites.includes(l) == true){
+        setStar = "images/star.png"
+    }
     div = div + `   </div>
     <p class="card-text">{0}</p>
                 </div>
                 </div>
                 <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+            <button style="height:50px;" id="{1}-star" class="star-button"><img src="{2}" style="height:100%;"  id="{1}star-img" ></button>
             <div class="card-body">
-           
-           
+            
+
             <p class="card-text">Interest Areas:</p>
             </div> 
-                
-                <ul class="list-group list-group-flush">`.format(l["desc"]);
+            
+                <ul class="list-group list-group-flush">`.format(l["desc"],l["name"],setStar);
 
     
     //adding to div depending on how many interest areas are blank
@@ -293,10 +322,41 @@ async function addCard(l) {
     }
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
-    document.getElementById("body-output").innerHTML = prevDiv + div;
-    // document.onclick=sortInterest(1)
+    // const container = document.getElementById("body-output");
+    // const cardHTML = prevDiv + div
+    //document.getElementById("body-output").insertAdjacentHTML("beforeend",prevDiv + div)
+    document.getElementById("body-output").innerHTML = prevDiv + div
+
+    //Thanks fingle AI Olivia For fixinging I want to perish!
+    
+    // const currentCard = document.getElementById("body-output").lastElementChild
+    // const star =  document.getElementById(l["name"]+"-star")
+    // return star
+    // star.addEventListener("click", () => {
+    //     addFavorite(l["name"]);
+    // });
+
+        // document.onclick=sortInterest(1)
 }
 
+function addFavorite(name){
+    let starImg = document.getElementById(name["name"]+"star-img")
+    console.log(name);
+    if (favorites.includes(name) == false){
+        favorites.push(name);
+        console.log(name+" added");
+        
+        starImg.src = "images/star.png"
+    }
+    else{
+        let nameIndex = favorites.indexOf(name)
+        delete favorites[nameIndex]
+        console.log(name+" removed");
+        console.log(favorites)
+
+        starImg.src = "images/starUnchecked.png"
+    }
+}
 
 // jquerry to add function to a button that shows up when you scroll down a bit that wil take you back to the top of the screen
 $(window).scroll(function() {
@@ -338,6 +398,8 @@ if (interest != undefined) {
         addCompanies()
     } else if (interest == "Union") {
         addUnions()
+    } else if (interest == "favorites") {
+
     } else {
         addinterest((interest))
     }
@@ -401,6 +463,8 @@ document.getElementById("invert").onclick = function() { invertColor() };
 //view switching (2-Column and Compact)
 function toggleView(){
     if (document.getElementById("body-output").className == "body-2-column") {
+        //document.getElementById("body-output").innerHTML = "";
+        //cardType = "w"
         document.getElementById("body-output").className = "body-compact"
     }
     else{
