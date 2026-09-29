@@ -261,9 +261,31 @@ body.container.sm{
 }
 
 .btn-union {
-    color: #fff!important;
+    color: #fff;
     background-color: rgb(255, 213, 0)!important;
     border-color: rgb(255, 213, 0)!important;
+}
+
+
+
+.card-primary {
+    background-color: rgb(0, 89, 255, 0.5)!important;
+    border-color: rgb(0, 68, 195)!important;
+}
+
+.card-union {
+    background-color: rgba(255, 213, 0, 0.5)!important;
+    border-color: rgb(161, 135, 0)!important;
+}
+
+.card-danger {
+    background-color: rgb(255, 17, 0, 0.5)!important;
+    border-color: rgb(135, 9, 0)!important;
+}
+
+.card-success {
+    background-color: rgba(0, 199, 10, 0.5)!important;
+    border-color: rgb(0, 75, 4)!important;
 }
 
 .dropdown-content a:hover {
@@ -319,6 +341,16 @@ re add this when its READY!!!!! I KEEP ACCIDENTALLY COMMITING TO MAIN IM SORYYYY
     /* grid-template-columns: auto auto auto; */
 } 
 
+.card-link-text{
+    color: #000000;
+    text-decoration-line: none;
+}
+
+.card-link-text:hover{
+    color:#ffffff;
+    transition: ease 0.5s ;
+}
+
 .list-group-item{
     font-size: 13px;
 }
@@ -326,3 +358,4 @@ re add this when its READY!!!!! I KEEP ACCIDENTALLY COMMITING TO MAIN IM SORYYYY
 footer{
     text-align: center;
 }
+

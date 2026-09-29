@@ -235,6 +235,18 @@ async function addCard(l) {
     if (l["logo"] === " ") { l["logo"] = "./images/duck.png" }
     // creates basic div layout of the div that we append to the main div
 
+    let cardColor
+    if (l["type"] === "College") {
+        cardColor = "danger"
+    } else if (l["type"] === "Company") {
+        cardColor = "primary"
+    } else if (l["type"] === "Union") {
+        cardColor = "union"
+    } else {
+        cardColor = "success"
+    }
+
+
     if (cardLayout == "casual"){
         var div = `
         <div class="card mb-3" style="max-width: 95%;" align="left">
@@ -249,18 +261,18 @@ async function addCard(l) {
     }
     else{
         var div = `
-        <div class="card mb-3" style="max-width: 95%;" align="left">
+        <div class="card mb-3 card-{3}" style="max-width: 95%;" align="left">
         <div class="row g-0">
         <div class="col-md-2">
         <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
         </div>
         <div class="col-md-7">
         <div class="card-body">
-        <h5 class="card-title" style="font-size: 20px;">{1}</h5>
-        <div class="card-body">`.format(l["logo"], l["name"]);
+        <div class="card-body-compact">`.format(l["logo"], l["name"],l["web"],cardColor);
     }
 
-        // check the type and make the color change depending of wha type it is 
+
+    // check the type and make the color change depending of wha type it is 
     //  with it being in this if statement the buttons won't appear within compact mode
     if(cardLayout == "casual"){
         if (l["type"] === "College") {
@@ -273,9 +285,12 @@ async function addCard(l) {
             div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
         }
     }
-    if(cardLayout == "compact"){
-        //
+    else{
+        div = div + `<a href="{0}" target="_blank" class="card-link-text" style="font-size: 20px;">{1} Website</a>`.format(l["web"], l["name"]);
     }
+
+
+
     
     if(cardLayout == "casual"){
         div = div + `   </div>
@@ -323,6 +338,7 @@ async function addCard(l) {
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
     document.getElementById("body-output").innerHTML = prevDiv + div;
+    
     // document.onclick=sortInterest(1)
 }
 
