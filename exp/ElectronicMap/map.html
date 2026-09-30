@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Fair Map Builder</title>
+    
+    <!-- Bootstrap 5 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="theme-color-bar"></div>
+    
+    <div class="container-lg mt-4">
+        <header class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <h2 class="fw-bold text-dark mb-1">Interactive Map Builder</h2>
+                <p class="text-muted mb-0">Assign companies to tables. Drag tables to position them in Admin Mode.</p>
+            </div>
+            <div>
+                    <i class="fa fa-code"></i> Export Layout
+                </button>
+                <button class="btn btn-success" onclick="toggleStudentMode()" id="mode-btn">
+                    <i class="fa fa-eye"></i> Preview Student Mode
+                </button>
+            </div>
+        </header>
+
+        <div class="map-wrapper">
+            <div class="map-canvas admin-mode" id="map-canvas">
+                <!-- Zones for Construction and Transportation -->
+                <div class="zone-slot" id="zone-CO" style="left: 50px; top: 50px;">
+                    <span class="slot-label text-muted fs-6">Construction Zone</span>
+                </div>
+                <div class="zone-slot" id="zone-T" style="left: 1100px; top: 50px;">
+                    <span class="slot-label text-muted fs-6">Transportation Zone</span>
+                </div>
+                <!-- Standard table slots injected here -->
+            </div>
+        </div>
+
+        <div class="table-input-card" id="admin-controls">
+            <h5 class="fw-bold mb-3"><i class="fa fa-edit text-primary me-2"></i> Table Assignments</h5>
+            
+            <div class="accordion" id="accordionInputs">
+                <!-- Accordion items injected by JavaScript -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- External JS script file -->
+    <script src="map_builder_logic.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding-bottom: 4rem;
+}
+
+.theme-color-bar {
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(90deg, #0d6efd 0%, #dc3545 33%, #ffc107 66%, #198754 100%);
+}
+
+.map-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.map-canvas {
+    position: relative;
+    width: 1400px; /* Wider canvas for the full floorplan */
+    height: 900px; 
+    /* CHANGE THIS URL to the link of your actual floorplan image */
+    background: url('https://placehold.co/1400x900/e9ecef/a3a8ad?text=Replace+With+Your+Floorplan+Image') no-repeat center center;
+    background-size: contain;
+    border: 2px solid #dee2e6;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Standard Table Styling */
+.map-slot {
+    position: absolute;
+    width: 45px;  /* Smaller tables to fit the large map */
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px dashed #adb5bd;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
+    user-select: none;
+}
+
+.admin-mode .map-slot {
+    cursor: grab;
+}
+.admin-mode .map-slot:active {
+    cursor: grabbing;
+    z-index: 1000 !important;
+}
+
+.map-slot.filled {
+    border: 2px solid #0d6efd;
+    border-style: solid;
+}
+
+.map-slot:hover {
+    transform: scale(1.3);
+    z-index: 20;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.slot-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #495057;
+}
+
+.slot-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2px;
+    background: white;
+    border-radius: 0.2rem;
+}
+
+.zone-slot {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 3px dashed #ffc107;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 4px;
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 5;
+}
+
+.admin-mode .zone-slot {
+    cursor: grab;
+}
+
+.zone-slot.filled {
+    border-style: solid;
+    border-color: #198754;
+    background-color: rgba(25, 135, 84, 0.05);
+}
+
+.zone-mini-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* Form styling */
+.table-input-card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+}
