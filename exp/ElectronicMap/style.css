@@ -11,13 +11,12 @@ body {
 }
 
 .map-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    background: #ffffff;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
-    padding: 1rem;
-    margin-bottom: 2rem;
+    width: 100vw;           /* Forces it to take up 100% of the viewport width */
+    max-width: 100%;        /* Prevents horizontal scrollbars on the body */
+    margin: 0;              
+    padding: 0;             
+    overflow-x: auto;       /* Adds a scrollbar underneath if the image is huge */
+    position: relative;     /* Required for dragging the tables */
 }
 
 .map-canvas {
@@ -25,7 +24,7 @@ body {
     width: 1400px; /* Wider canvas for the full floorplan */
     height: 900px; 
     /* CHANGE THIS URL to the link of your actual floorplan image */
-    background: url('https://placehold.co/1400x900/e9ecef/a3a8ad?text=Replace+With+Your+Floorplan+Image') no-repeat center center;
+    background: url('FloorPlan.jpg') no-repeat center center;
     background-size: contain;
     border: 2px solid #dee2e6;
     border-radius: 0.5rem;

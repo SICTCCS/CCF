@@ -1,5 +1,6 @@
 //importing the initializeApp method from another js file on the web
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
 
 //setting up a constant variable (never changes) with all of the database information Ok thanks bo
 const firebaseConfig = {
@@ -11,28 +12,13 @@ const firebaseConfig = {
     messagingSenderId: "238921521038",
     appId: "1:238921521038:web:417620ad7630a3330276df"
 };
-//initializing the firebase with our config
-firebase.initializeApp(firebaseConfig);
-//making a "database" variable to prevent typing firebase.database() every time
-var database = firebase.database();
+// 3. Initialize the app and assign it to a variable
+const app = initializeApp(firebaseConfig);
+// 4. Get the database instance by passing the app into getDatabase()
+const database = getDatabase(app);
 
-//TODO: Need to convert the database snapshot to the 
-//      databaseItems below
-
-
-
-
-
-
-// Mock Database of Companies
-const databaseItems = [
-    { name: "Apex Robotics", logo: "https://via.placeholder.com/150/0d6efd/ffffff?text=Apex" },
-    { name: "Indiana University", logo: "https://via.placeholder.com/150/dc3545/ffffff?text=IU" },
-    { name: "IBEW Local 16", logo: "https://via.placeholder.com/150/ffc107/000000?text=IBEW" },
-    { name: "National Guard", logo: "https://via.placeholder.com/150/198754/ffffff?text=Guard" },
-    { name: "TechCorp", logo: "https://via.placeholder.com/150/0d6efd/ffffff?text=TechCorp" },
-    { name: "Purdue", logo: "https://via.placeholder.com/150/dc3545/ffffff?text=Purdue" }
-];
+// This will hold the live data from Firebase
+let databaseItems = [];
 
 // Layout Configuration based on the PDF
 const mapSections = [
@@ -48,7 +34,11 @@ const mapSections = [
 // Array to hold the coordinates for all individual tables
 let tableCoordinates = [];
 
-async function initializeApp() {
+async function initMapBuilder() {
+    // 1. Fetch live data from Firebase FIRST
+    await fetchCompaniesFromFirebase();
+    
+    // 2. Build the autocomplete list with the live data
     createDatalist();
     
     try {
@@ -58,13 +48,11 @@ async function initializeApp() {
             tableCoordinates = await response.json();
             console.log("Successfully loaded layout from coordinates.json!");
         } else {
-            // Fallback if the file exists but throws an error (e.g., 404)
             console.warn("coordinates.json not found. Generating default grid.");
             generateInitialCoordinates();
         }
     } catch (error) {
-        // Fallback if the fetch completely fails
-        console.warn("Could not fetch coordinates.json (You may need a local server). Generating default grid.", error);
+        console.warn("Could not fetch coordinates.json. Generating default grid.", error);
         generateInitialCoordinates();
     }
 
@@ -73,11 +61,30 @@ async function initializeApp() {
     setupDraggable();
 }
 
+// Fetches the live company data from Firebase
+async function fetchCompaniesFromFirebase() {
+    const itemsRef = ref(database, "Items");
+    try {
+        const snapshot = await get(itemsRef);
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            // Object.values() converts your Firebase dictionaries into an array
+            databaseItems = Object.values(data);
+            console.log(`Successfully loaded ${databaseItems.length} companies from Firebase!`);
+        } else {
+            console.log("No data found in the Items node.");
+        }
+    } catch (error) {
+        console.error("Error fetching data from Firebase:", error);
+    }
+}
+
 function createDatalist() {
     const dataListHTML = `<datalist id="company-list">
         ${databaseItems.map(item => `<option value="${item.name}"></option>`).join('')}
     </datalist>`;
     document.body.insertAdjacentHTML('beforeend', dataListHTML);
+    console.log(database)
 }
 
 // This generates a starting grid for the tables so they aren't all piled on top of each other.
@@ -163,6 +170,9 @@ function generateAccordionInputs() {
         isFirst = false;
     });
 }
+
+// Make the function global so the HTML can see it
+window.handleAssignment = handleAssignment;
 
 function handleAssignment(tableId, type, prefix) {
     if (type === 'table') {
@@ -316,4 +326,4 @@ function toggleStudentMode() {
 }
 
 // Boot up the app
-window.onload = initializeApp;
+window.onload = initMapBuilder;

@@ -34,20 +34,20 @@
                 </button>
             </div>
         </header>
-
-        <div class="map-wrapper">
-            <div class="map-canvas admin-mode" id="map-canvas">
-                <!-- Zones for Construction and Transportation -->
-                <div class="zone-slot" id="zone-CO" style="left: 50px; top: 50px;">
-                    <span class="slot-label text-muted fs-6">Construction Zone</span>
+        <div class="container">
+            <div class="map-wrapper">
+                <div class="map-canvas admin-mode" id="map-canvas">
+                    <!-- Zones for Construction and Transportation -->
+                    <div class="zone-slot" id="zone-CO" style="left: 50px; top: 50px;">
+                        <span class="slot-label text-muted fs-6">Construction Zone</span>
+                    </div>
+                    <div class="zone-slot" id="zone-T" style="left: 1100px; top: 50px;">
+                        <span class="slot-label text-muted fs-6">Transportation Zone</span>
+                    </div>
+                    <!-- Standard table slots injected here -->
                 </div>
-                <div class="zone-slot" id="zone-T" style="left: 1100px; top: 50px;">
-                    <span class="slot-label text-muted fs-6">Transportation Zone</span>
-                </div>
-                <!-- Standard table slots injected here -->
             </div>
         </div>
-
         <div class="table-input-card" id="admin-controls">
             <h5 class="fw-bold mb-3"><i class="fa fa-edit text-primary me-2"></i> Table Assignments</h5>
             
@@ -59,6 +59,6 @@
     </div>
 
     <!-- External JS script file -->
-    <script src="map_builder_logic.js"></script>
+    <script type="module" src="map_builder_logic.js"></script>
 </body>
 </html>
