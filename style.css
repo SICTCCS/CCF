@@ -267,25 +267,58 @@ body.container.sm{
 }
 
 
-
+/* this is for the compact mode's cards wallah */
 .card-primary {
+    text-align: center;
     background-color: rgb(0, 89, 255, 0.5)!important;
     border-color: rgb(0, 68, 195)!important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-union {
+    text-align: center;
     background-color: rgba(255, 213, 0, 0.5)!important;
     border-color: rgb(161, 135, 0)!important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-danger {
+    text-align: center;
     background-color: rgb(255, 17, 0, 0.5)!important;
     border-color: rgb(135, 9, 0)!important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-success {
+    text-align: center;
     background-color: rgba(0, 199, 10, 0.5)!important;
     border-color: rgb(0, 75, 4)!important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* this is for the compact card's hover stuff hi */
+.card-primary:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transition: .2s;
+}
+
+.card-union:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transition: .2s;
+}
+
+.card-danger:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transition: .2s;
+}
+
+.card-success:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transition: .2s;
 }
 
 .dropdown-content a:hover {
@@ -295,8 +328,8 @@ body.container.sm{
 .img-fluid.rounded-start {
     margin-top:25%;
     /* justify-content: center; */
-    min-height: 108px;
-    width:139px;
+    max-height: 150px;
+    width:100px;
 }
 
 @media (max-width: 750px), (max-width: 1023px) {
@@ -336,19 +369,21 @@ re add this when its READY!!!!! I KEEP ACCIDENTALLY COMMITING TO MAIN IM SORYYYY
 
 .body-compact{
     font-size: small;
+    text-align: center;
     display: grid;
     grid-template-columns: auto auto auto auto;
     /* grid-template-columns: auto auto auto; */
 } 
 
+/* for the compact card links hi lol */
 .card-link-text{
     color: #000000;
-    text-decoration-line: none;
+    text-decoration: none;
 }
 
 .card-link-text:hover{
-    color:#ffffff;
-    transition: ease 0.5s ;
+    color:#570a9ab7;
+    transition: ease 0.3s ;
 }
 
 .list-group-item{

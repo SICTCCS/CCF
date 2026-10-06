@@ -176,7 +176,7 @@ function addinterest(interest) {
         }
         // if no results are found then show this page saying try anouther search
         if (content === false) {
-            document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
+            document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry, nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
         }
         document.getElementById("ui").value = "";
@@ -264,7 +264,7 @@ async function addCard(l) {
         <div class="card mb-3 card-{3}" style="max-width: 95%;" align="left">
         <div class="row g-0">
         <div class="col-md-2">
-        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
+        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; justify-content: center;" alt="{1} logo" >
         </div>
         <div class="col-md-7">
         <div class="card-body">
