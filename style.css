@@ -329,7 +329,7 @@ body.container.sm{
     margin-top:25%;
     /* justify-content: center; */
     max-height: 150px;
-    width:100px;
+    max-width:100px;
 }
 
 @media (max-width: 750px), (max-width: 1023px) {

@@ -263,11 +263,11 @@ async function addCard(l) {
         var div = `
         <div class="card mb-3 card-{3}" style="max-width: 95%;" align="left">
         <div class="row g-0">
-        <div class="col-md-2">
+        <div class="col-md-2" style="width:25%">
         <img src="{0}" class="img-fluid rounded-start" style="padding:10px; justify-content: center;" alt="{1} logo" >
         </div>
-        <div class="col-md-7">
-        <div class="card-body">
+        <div class="col-md-7" style="width:75%;display:table;">
+        <div class="card-body" style="display: table-cell;vertical-align: middle;">
         <div class="card-body-compact">`.format(l["logo"], l["name"],l["web"],cardColor);
     }
 
