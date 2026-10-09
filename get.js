@@ -33,6 +33,10 @@ if (!String.prototype.format) {
 
 let favorites = []
 
+
+//This is for the compact / casual layout, determines if the description is visible or not
+let cardLayout = "casual";
+
 //four functions for filtering
 //script will run addAll() by default, but when a filter button is clicked it resets the body and uses an if statement to only pass in colleges,companies,etc to addCard()
 async function addAll() {
@@ -187,7 +191,7 @@ function addinterest(interest) {
         }
         // if no results are found then show this page saying try anouther search
         if (content === false) {
-            document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
+            document.getElementById("body-output").innerHTML = "<h1 style=color:grey>Sorry, nothing found with that search.</h1><img width=15% src=https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1410400/rubber-duck-clipart-xl.png>";
 
         }
         document.getElementById("ui").value = "";
@@ -245,7 +249,7 @@ document.onkeydown = function(e) {
                 break;
         }
     }
-    //the addCard function takes in "l" which would be a list and uses it to build out each card 
+    //the addCard function takes in "l" which would be a list and uses it to build out each card
 async function addCard(l) {
 
     //getting the body's previous information
@@ -269,34 +273,101 @@ async function addCard(l) {
     <div class="card-body">`.format(l["logo"], l["name"]);
 
     // check the type and make the color change depending of wha type it is 
+    let cardColor
     if (l["type"] === "College") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
+        cardColor = "danger"
     } else if (l["type"] === "Company") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+        cardColor = "primary"
     } else if (l["type"] === "Union") {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
+        cardColor = "union"
     } else {
-        div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
+        cardColor = "success"
     }
+
+    //Card start here
     let setStar = "images/starUnchecked.png"
     if (favorites.includes(l) == true){
         setStar = "images/star.png"
     }
-    div = div + `   </div>
-    <p class="card-text">{0}</p>
-                </div>
-                </div>
-                <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
-            <button style="height:50px;" id="{1}-star" class="star-button"><img src="{2}" style="height:100%;"  id="{1}star-img" ></button>
-            <div class="card-body">
-            
+    //div = div + `   </div>
+    //<p class="card-text">{0}</p>
+    //            </div>
+    //            </div>
+    //            <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+    //        <button style="height:50px;" id="{1}-star" class="star-button"><img src="starUnchecked.png" style="height:100%;"  id="{1}star-img" ></button>
+    //        <div class="card-body">
+    //        
 
-            <p class="card-text">Interest Areas:</p>
-            </div> 
-            
-                <ul class="list-group list-group-flush">`.format(l["desc"],l["name"],setStar);
+    //        <p class="card-text">Interest Areas:</p>
+    //        </div> 
+    //        
+    //            <ul class="list-group list-group-flush">`.format(l["desc"],l["name"],setStar);
+
+
+    if (cardLayout == "casual"){
+        var div = `
+        <div class="card mb-3" style="max-width: 95%;" align="left">
+        <div class="row g-0">
+        <div class="col-md-2">
+        <button style="height:50px;" id="{1}-star" class="star-button"><img src="{2}" style="height:100%;"  id="{1}star-img" ></button>
+        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; object-fit:contain;" alt="{1} logo" >
+        </div>
+        <div class="col-md-7">
+        <div class="card-body">
+        
+        <h5 class="card-title" style="font-size: 27px;">{1}</h5>
+        <div class="card-body">`.format(l["logo"], l["name"],setStar);
+    }
+    else{
+        var div = `
+        <div class="card mb-3 card-{3}" style="max-width: 95%;" align="left">
+        <div class="row g-0">
+        <div class="col-md-2" style="width:25%">
+        <img src="{0}" class="img-fluid rounded-start" style="padding:10px; justify-content: center;" alt="{1} logo" >
+        </div>
+        <div class="col-md-7" style="width:75%;display:table;">
+        <div class="card-body" style="display: table-cell;vertical-align: middle;">
+        <div class="card-body-compact">`.format(l["logo"], l["name"],l["web"],cardColor);
+    }
+
+
+    // check the type and make the color change depending of wha type it is 
+    //  with it being in this if statement the buttons won't appear within compact mode
+    if(cardLayout == "casual"){
+        if (l["type"] === "College") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-danger">{1} Website</a>`.format(l["web"], l["name"]);
+        } else if (l["type"] === "Company") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-primary">{1} Website</a>`.format(l["web"], l["name"]);
+        } else if (l["type"] === "Union") {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-union">{1} Website</a>`.format(l["web"], l["name"]);
+        } else {
+            div = div + `<a href="{0}" target="_blank" class="btn btn-success">{1} Website</a>`.format(l["web"], l["name"]);
+        }
+    }
+    else{
+        div = div + `<a href="{0}" target="_blank" class="card-link-text" style="font-size: 20px;">{1} Website</a>`.format(l["web"], l["name"]);
+    }
+    //card end here hi lol
+
+
 
     
+    if(cardLayout == "casual"){
+        div = div + `   </div>
+        <p class="card-text">{0}</p>
+                    </div>
+                    </div>
+                    <div class="col-md-3" align="center" style="padding-right:15px;padding-left:15px;">
+                <div class="card-body">
+            
+            
+                <p class="card-text">Interest Areas:</p>
+                </div> 
+                    
+                    <ul class="list-group list-group-flush">`.format(l["desc"]); //{0} = description, saving this for compact mode hi lol
+
+
+
     //adding to div depending on how many interest areas are blank
     //will make this smaller is a final version
     if (l["ia2"] === "" && l["ia3"] === "" && l["ia4"] === "" && l["ia5"] === "") {
@@ -320,6 +391,10 @@ async function addCard(l) {
                     <li class="list-group-item">{3}</li> 
                     <li class="list-group-item">{4}</li>`.format(l["ia1"], l["ia2"], l["ia3"], l["ia4"], l["ia5"]);
     }
+
+    }
+    
+    
     div = div + `</ul></div></div></div>`;
     //adding the new information to the previous information and putting it into the body
     // const container = document.getElementById("body-output");
@@ -385,7 +460,7 @@ function search(search) {
 
     }
 }
-// check if you prevesley searched something and keep it on the searchbar so if you refressh then it wont un search
+// check if you previously* searched something and keep it on the searchbar so if you refressh then it wont un search
 
 var interest = document.URL.split("?interest=")[1]
 if (interest != undefined) {
@@ -461,14 +536,19 @@ function invertColor() {
 document.getElementById("invert").onclick = function() { invertColor() };
 
 //view switching (2-Column and Compact)
-function toggleView(){
-    if (document.getElementById("body-output").className == "body-2-column") {
-        //document.getElementById("body-output").innerHTML = "";
-        //cardType = "w"
-        document.getElementById("body-output").className = "body-compact"
-    }
-    else{
+function toggleView(cardType){
+
+    document.getElementById("body-output").innerHTML = "";``
+    cardLayout = cardType;
+
+    if (cardType == "casual") {
         document.getElementById("body-output").className = "body-2-column"
     }
+    else{
+        document.getElementById("body-output").className = "body-compact"
+    }
+
+    addAll()
 }
-document.getElementById("view-toggle").onclick = function() { toggleView() };
+document.getElementById("casualLayout").onclick = function() { toggleView("casual") };
+document.getElementById("compactLayout").onclick = function() { toggleView("compact") };
