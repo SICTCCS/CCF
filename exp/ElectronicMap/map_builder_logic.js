@@ -59,6 +59,7 @@ async function initMapBuilder() {
     generateMapSlots();
     generateAccordionInputs();
     setupDraggable();
+    restoreAssignments();
 }
 
 // Fetches the live company data from Firebase
@@ -85,6 +86,28 @@ function createDatalist() {
     </datalist>`;
     document.body.insertAdjacentHTML('beforeend', dataListHTML);
     console.log(database)
+}
+
+// Puts the saved companies back into the input boxes and onto the map
+function restoreAssignments() {
+    // Sort sections so "CO" (Construction) is checked before "C" (Commons)
+    const sortedSections = [...mapSections].sort((a, b) => b.id.length - a.id.length);
+
+    tableCoordinates.forEach(table => {
+        if (table.company && table.company.trim() !== "") {
+            const inputElement = document.getElementById(`input-${table.id}`);
+            if (inputElement) {
+                // 1. Put the text back in the box
+                inputElement.value = table.company;
+                
+                // 2. Tell the map to show the logo
+                const sectionConfig = sortedSections.find(s => table.id.startsWith(s.id));
+                if (sectionConfig) {
+                    handleAssignment(table.id, sectionConfig.type, sectionConfig.id);
+                }
+            }
+        }
+    });
 }
 
 // This generates a starting grid for the tables so they aren't all piled on top of each other.
@@ -172,7 +195,7 @@ function generateAccordionInputs() {
 }
 
 // Make the function global so the HTML can see it
-window.handleAssignment = handleAssignment;
+
 
 function handleAssignment(tableId, type, prefix) {
     if (type === 'table') {
@@ -268,6 +291,7 @@ function setupDraggable() {
     document.onmouseup = function() {
         if (currentElement && currentElement.classList.contains('map-slot')) {
             // Save coordinates back to our array
+            console.log(currentElement.id)
             const id = currentElement.id.replace('slot-', '');
             const configItem = tableCoordinates.find(c => c.id === id);
             if (configItem) {
@@ -282,10 +306,41 @@ function setupDraggable() {
 
 // Dumps the final coordinates so you can permanently save your layout!
 function exportCoordinates() {
+    // 1. Save all typed companies into our array before exporting
+    mapSections.forEach(section => {
+        for (let i = 1; i <= section.count; i++) {
+            const tableId = `${section.id}${i}`;
+            const inputElement = document.getElementById(`input-${tableId}`);
+            
+            if (inputElement) {
+                let tableData = tableCoordinates.find(t => t.id === tableId);
+                // If it's a zone input (like CO1), it might not have coordinates yet, so we create it
+                if (!tableData) {
+                    tableData = { id: tableId, label: tableId };
+                    tableCoordinates.push(tableData);
+                }
+                // Attach the typed company name to the table data
+                tableData.company = inputElement.value;
+            }
+        }
+    });
     const dataStr = JSON.stringify(tableCoordinates, null, 2);
+    // Grab the current positions of the dragged zones
+    const zoneCO = document.getElementById('zone-CO');
+    const zoneT = document.getElementById('zone-T');
+
     navigator.clipboard.writeText(dataStr).then(() => {
-        // Fallback custom alert since standard alert is restricted
-        showTemporaryMessage("Coordinates copied to clipboard! Paste them into your code to save the layout.");
+        // Output the exact HTML you need to update to the console
+        console.log("--- UPDATE YOUR HTML WITH THESE ZONE POSITIONS ---");
+        console.log(`<div class="zone-slot" id="zone-CO" style="left: ${zoneCO.style.left}; top: ${zoneCO.style.top};">`);
+        console.log(`<div class="zone-slot" id="zone-T" style="left: ${zoneT.style.left}; top: ${zoneT.style.top};">`);
+        console.log("--------------------------------------------------");
+        
+        showTemporaryMessage("Coordinates copied! Check the console (F12) for your Zone HTML code!");
+        
+        // Pop up an alert so you can easily see the new zone coordinates
+        alert(`Tables copied to clipboard!\n\nTo save the zones, update your HTML file to:\n\nConstruction:\nleft: ${zoneCO.style.left}; top: ${zoneCO.style.top};\n\nTransportation:\nleft: ${zoneT.style.left}; top: ${zoneT.style.top};`);
+        
     }).catch(err => {
         console.log("Coordinates:", dataStr);
         showTemporaryMessage("Check the browser console (F12) for the layout JSON!");
@@ -327,3 +382,6 @@ function toggleStudentMode() {
 
 // Boot up the app
 window.onload = initMapBuilder;
+window.handleAssignment = handleAssignment;
+window.exportCoordinates = exportCoordinates;
+window.toggleStudentMode = toggleStudentMode;

@@ -19,6 +19,7 @@
 <body>
     <div class="theme-color-bar"></div>
     
+    <!-- 1. The Header (Kept in a container so it stays centered and readable) -->
     <div class="container-lg mt-4">
         <header class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
@@ -34,27 +35,34 @@
                 </button>
             </div>
         </header>
-        <div class="container">
-            <div class="map-wrapper">
-                <div class="map-canvas admin-mode" id="map-canvas">
-                    <!-- Zones for Construction and Transportation -->
-                    <div class="zone-slot" id="zone-CO" style="left: 50px; top: 50px;">
-                        <span class="slot-label text-muted fs-6">Construction Zone</span>
-                    </div>
-                    <div class="zone-slot" id="zone-T" style="left: 1100px; top: 50px;">
-                        <span class="slot-label text-muted fs-6">Transportation Zone</span>
-                    </div>
-                    <!-- Standard table slots injected here -->
+    </div>
+
+    <!-- 2. The Map (Moved OUTSIDE the container-lg, using container-fluid to span 100%) -->
+    <div class="container-fluid px-0">
+        <div class="map-wrapper">
+            <div class="map-canvas admin-mode" id="map-canvas">
+                <!-- Zones for Construction and Transportation -->
+                <div class="zone-slot" id="zone-CO" style="left: 316px; top: 22px;">
+                    <span class="slot-label text-muted fs-6">Construction Zone</span>
                 </div>
+                <div class="zone-slot" id="zone-T" style="left: 1563px; top: 29px;">
+                    <span class="slot-label text-muted fs-6">Transportation Zone</span>
+                </div>
+                <!-- Standard table slots injected here -->
             </div>
         </div>
+    </div>
+
+    <!-- 3. The Form Controls (Put back inside a container-lg so they don't stretch too wide) -->
+    <div class="container-lg mt-4">
         <div class="table-input-card" id="admin-controls">
             <h5 class="fw-bold mb-3"><i class="fa fa-edit text-primary me-2"></i> Table Assignments</h5>
             
             <div class="accordion" id="accordionInputs">
-                <!-- Accordion items injected by JavaScript -->
-            </div>
+    <!-- Accordion items injected by JavaScript -->
         </div>
+    </div>
+</div>
 
     </div>
 

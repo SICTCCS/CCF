@@ -21,11 +21,11 @@ body {
 
 .map-canvas {
     position: relative;
-    width: 1400px; /* Wider canvas for the full floorplan */
+    width: 2048px; /* Wider canvas for the full floorplan */
     height: 900px; 
     /* CHANGE THIS URL to the link of your actual floorplan image */
     background: url('FloorPlan.jpg') no-repeat center center;
-    background-size: contain;
+    background-size: 100% 100%;
     border: 2px solid #dee2e6;
     border-radius: 0.5rem;
     margin: 0 auto;
@@ -35,8 +35,8 @@ body {
 /* Standard Table Styling */
 .map-slot {
     position: absolute;
-    width: 45px;  /* Smaller tables to fit the large map */
-    height: 45px;
+    width: 30px;  /* Smaller tables to fit the large map */
+    height: 30px;
     background-color: rgba(255, 255, 255, 0.95);
     border: 2px dashed #adb5bd;
     border-radius: 0.25rem;
