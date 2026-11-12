@@ -1,0 +1,18 @@
+function updateStandardTable(tableId) {
+    const inputElement = document.getElementById(`input-${tableId}`);
+    const slotElement = document.getElementById(`slot-${tableId}`);
+    const typedName = inputElement.value;
+    const foundCompany = databaseItems.find(c => c.name.toLowerCase() === typedName.toLowerCase());
+
+    if (foundCompany) {
+        // Show the table ID instead of the logo, but keep the company name as a hover tooltip
+        slotElement.innerHTML = `<span class="slot-label" title="${tableId}: ${foundCompany.name}">${tableId}</span>`;
+        slotElement.classList.add('filled');
+    } else if (typedName.trim() !== "") {
+        slotElement.innerHTML = `<span class="slot-label text-primary" style="font-size:0.5rem; word-break:break-all;">${typedName}</span>`;
+        slotElement.classList.add('filled');
+    } else {
+        slotElement.innerHTML = `<span class="slot-label">${tableId}</span>`;
+        slotElement.classList.remove('filled');
+    }
+}
