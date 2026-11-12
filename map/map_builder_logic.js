@@ -60,6 +60,7 @@ async function initMapBuilder() {
     generateAccordionInputs();
     setupDraggable();
     restoreAssignments();
+    toggleStudentMode();
 }
 
 // Fetches the live company data from Firebase
@@ -366,7 +367,7 @@ function showTemporaryMessage(msg) {
     document.body.appendChild(msgBox);
     setTimeout(() => msgBox.remove(), 4000);
 }
-
+/*  For the button
 function toggleStudentMode() {
     const controls = document.getElementById('admin-controls');
     const canvas = document.getElementById('map-canvas');
@@ -390,7 +391,68 @@ function toggleStudentMode() {
         modeBtn.classList.replace('btn-warning', 'btn-success');
     }
 }
+*/
+function toggleStudentMode() {
+    const controls = document.getElementById('admin-controls');
+    const canvas = document.getElementById('map-canvas');
+    const modeBtn = document.getElementById('mode-btn');
+    const exportBtn = document.getElementById('export-btn');
+    
+    isStudentMode = !isStudentMode;
+    
+    if (isStudentMode) {
+        controls.style.display = 'none';
+        exportBtn.style.display = 'none';
+        canvas.classList.remove('admin-mode');
+        modeBtn.innerHTML = '<i class="fa fa-edit"></i> Back to Admin Mode';
+        modeBtn.classList.replace('btn-success', 'btn-warning');
+        modeBtn.classList.replace('text-white', 'text-dark');
+        
+        // Bonus: Force the browser into true Full Screen for the Promethean board!
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(err => console.log(err));
+        }
+    } else {
+        controls.style.display = 'block';
+        exportBtn.style.display = 'inline-block';
+        canvas.classList.add('admin-mode');
+        modeBtn.innerHTML = '<i class="fa fa-eye"></i> Preview Student Mode';
+        modeBtn.classList.replace('btn-warning', 'btn-success');
+        
+        // Exit Full Screen when returning to Admin Mode
+        if (document.fullscreenElement && document.exitFullscreen) {
+            document.exitFullscreen().catch(err => console.log(err));
+        }
+    }
 
+    // Recalculate the map scale to span the exact width of the screen.
+    // The 50ms delay gives the browser time to hide the admin controls first.
+    setTimeout(scaleMapToFit, 50); 
+}
+let currentScale = 1; // Tracks the current zoom level
+
+// This calculates how much to shrink/grow the map to fit the screen
+function scaleMapToFit() {
+    const wrapper = document.querySelector('.map-wrapper');
+    const canvas = document.getElementById('map-canvas');
+    
+    // CHANGE THIS NUMBER: 1.1 = 10% bigger, 1.2 = 20% bigger, 1.5 = 50% bigger
+    const zoomMultiplier = 1.15; 
+    
+    // Calculate the base scale and multiply it by your chosen zoom level
+    currentScale = (window.innerWidth / 2048) * zoomMultiplier;
+    
+    // Apply the zoom and remove any centering margins
+    canvas.style.margin = '0';
+    canvas.style.transform = `scale(${currentScale})`;
+    canvas.style.transformOrigin = 'top left';
+    
+    // Shrink the wrapper height so there isn't a huge empty gap below the map
+    wrapper.style.height = (900 * currentScale) + 'px';
+}
+
+// Automatically recalculate if the user resizes their browser window
+window.addEventListener('resize', scaleMapToFit);
 // Boot up the app
 window.onload = initMapBuilder;
 window.handleAssignment = handleAssignment;

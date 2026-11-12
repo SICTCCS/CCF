@@ -24,8 +24,15 @@
         <header class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
                 <h2 class="fw-bold text-dark mb-1">Interactive Map Builder</h2>
-                <p class="text-muted mb-0">Assign companies to tables. Drag tables to position them in Admin Mode.</p>
-            </div>
+                <div>
+                <!-- list for the nav -->
+                <ul class="nav nav-pills">
+                    <!--pulls the buttons in the top right corner and depending on which button is pressed will call the class from the js file to organize it-->
+                    <li class="nav-item" style="padding-right:10px;">
+                        <button class="btn btn-secondary" id="allbutton" onclick="window.location.href='/index.html'">All</button>
+                    </li>
+                </ul>
+                </div>
             <!-- <div>
                 <button class="btn btn-outline-secondary me-2" onclick="exportCoordinates()" id="export-btn">
                     <i class="fa fa-code"></i> Export Layout
