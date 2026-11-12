@@ -451,6 +451,22 @@ function scaleMapToFit() {
     wrapper.style.height = (900 * currentScale) + 'px';
 }
 
+
+// Manually re-triggers the logo assignment for every single table
+function refreshLogos() {
+    mapSections.forEach(section => {
+        for (let i = 1; i <= section.count; i++) {
+            const tableId = `${section.id}${i}`;
+            // Re-run the update logic based on whatever is currently in the box
+            handleAssignment(tableId, section.type, section.id);
+        }
+    });
+    showTemporaryMessage("Logos re-rendered!");
+}
+
+// Add this to the bottom of your file with the other window exports
+window.refreshLogos = refreshLogos;
+
 // Automatically recalculate if the user resizes their browser window
 window.addEventListener('resize', scaleMapToFit);
 // Boot up the app
